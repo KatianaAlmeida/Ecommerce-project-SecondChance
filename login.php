@@ -1,6 +1,5 @@
 <?php
  session_start();
- 
  include('includes/header.php');
  ?>
  <div class="login_container">

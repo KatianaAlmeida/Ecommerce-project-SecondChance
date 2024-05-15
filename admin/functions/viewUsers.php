@@ -31,11 +31,11 @@ include('../config/dbcon.php');
       <?
     } else {
       $_SESSION['permission_message'] = 'No user found!';
-      header('Location: ../admin/add_users.php');
+      header('Location: ../add_users.php');
     }
   } else {
     $_SESSION['permission_message'] = 'Execution Error: '. $connection->error;
-    header('Location: ../admin/add_users.php');
+    header('Location: ../add_users.php');
   }
 
 ?>

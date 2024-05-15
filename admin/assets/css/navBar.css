@@ -120,6 +120,18 @@
   font-size: 18px;
 }
 
+.custom-dropdown {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 18px;
+}
+
+.custom-dropdown option {
+  background-color: #fff;
+  color: black;
+  font-size: 18px; 
+}
 
 /*================== laptop (responsive) =================== */
 @media(min-width: 1281px){

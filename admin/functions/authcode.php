@@ -42,27 +42,34 @@ if(isset($_POST['register-btn'])){
 }
 
 if(isset($_POST['login-btn'])){
-  $email = mysqli_real_escape_string($connection, $_POST['email']);
-  $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-  $login_query = "SELECT * FROM users WHERE email='$email' AND password='$password' AND role != 'customer'";
-  $run_query = mysqli_query($connection, $login_query);
-
-  if($run_query->num_rows > 0){
-    $_SESSION['auth'] = true;
-    $userdata = mysqli_fetch_array($run_query);
-    $user_name = $userdata['name'];
-    $user_email = $userdata['email'];
-
-    $_SESSION['auth_user'] = [
-      'name' => $user_name,
-      'email' => $user_email,
-    ];
+  if(isset($_SESSION['auth'])){ 
     header('Location: ../dashboard.php');
-
-  } else{
-    $_SESSION['message'] = 'Invalid Credentials!';
-    header('Location: ../index.php');
-  }
+   }else{
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $password = mysqli_real_escape_string($connection, $_POST['password']);
+  
+    $login_query = "SELECT * FROM users WHERE email='$email' AND password='$password' AND role != 'customer'";
+    $run_query = mysqli_query($connection, $login_query);
+  
+    if($run_query->num_rows > 0){
+      $_SESSION['auth'] = true;
+      $userdata = mysqli_fetch_array($run_query);
+      $user_name = $userdata['full_name'];
+      $user_email = $userdata['email'];
+      $user_picture = $userdata['profile_pic'];
+  
+      $_SESSION['auth_user'] = [
+        'full_name' => $user_name,
+        'email' => $user_email,
+        'profile_pic' => $user_picture
+      ];
+      header('Location: ../dashboard.php');
+  
+    } else{
+      $_SESSION['message'] = 'Invalid Credentials!';
+      header('Location: ../index.php');
+    }
+   }
 }
 ?>

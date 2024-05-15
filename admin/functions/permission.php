@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include('../config/dbcon.php');
+include('../../config/dbcon.php');
 
 if(isset($_POST['save-btn'])){
   $username = mysqli_real_escape_string($connection, $_POST['username']);
@@ -18,7 +18,7 @@ if(isset($_POST['save-btn'])){
     if (mysqli_num_rows($result) > 0) {
       if(($permission_to_add != 'allow') && ($permission_to_update != 'allow') && ($permission_to_delete != 'allow')){
         $_SESSION['permission_message'] = 'No permissions granted to this user!';
-        header('Location: ../admin/add_users.php');
+        header('Location: ../add_users.php'); 
       }
       // permission to insert user data
       if($permission_to_add == 'allow'){
@@ -30,10 +30,10 @@ if(isset($_POST['save-btn'])){
 
         if($grant_permission_to_add){
           $_SESSION['permission_message'] = 'Permission granted to '. $username .'.';
-          header('Location: ../admin/add_users.php');
+          header('Location: ../add_users.php');
         }else{
           $_SESSION['permission_message'] = $connection->error;
-          header('Location: ../admin/add_users.php');
+          header('Location: ../add_users.php');
         }
       }
 
@@ -47,10 +47,10 @@ if(isset($_POST['save-btn'])){
 
         if($grant_permission_to_update){
           $_SESSION['permission_message'] = 'Permission granted to '. $username .'.';
-          header('Location: ../admin/add_users.php');
+          header('Location: ../add_users.php');
         }else{
           $_SESSION['permission_message'] = $connection->error;
-          header('Location: ../admin/add_users.php');
+          header('Location: ../add_users.php');
         }
       }
 
@@ -64,19 +64,19 @@ if(isset($_POST['save-btn'])){
 
         if($grant_permission_to_delete){
           $_SESSION['permission_message'] = 'Permission granted to '. $username .'.';
-          header('Location: ../admin/add_users.php');
+          header('Location: ../add_users.php');
         }else{
           $_SESSION['permission_message'] = $connection->error;
-          header('Location: ../admin/add_users.php');
+          header('Location: ../add_users.php');
         }
       }
     } else {
       $_SESSION['permission_message'] = 'No user found with that email!';
-      header('Location: ../admin/add_users.php');
+      header('Location: ../add_users.php');
     }
   } else {
     $_SESSION['permission_message'] = 'Execution Error: '. $connection->error;;
-    header('Location: ../admin/add_users.php');
+    header('Location: ../add_users.php');
   }
 }
 ?>

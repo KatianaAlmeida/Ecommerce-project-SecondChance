@@ -20,17 +20,17 @@
             <div><img class="search_img" src="https://img.icons8.com/ios-glyphs/30/search--v1.png" alt="search--v1"/></div>
           </div>  
           <div class="radio-container">
-            <button class="new_user"><a href="./add_users.php">+ Add new</a></button>
+            <button class="new_user"><a href="add_users.php">+ Add new</a></button>
           </div>
         </div>
         <?php
-        include('./../functions/viewUsers.php');
+        include('functions/viewUsers.php');
         ?>
       </div>
       <div class="form_container">
         <h2>Update Details or Delete Users</h2>
         <p class="description">Update or delete users (type username)</p>
-        <form id="update-details" action="./../functions/updateUsers.php" method="POST">
+        <form id="update-details" action="functions/updateUsers.php" method="POST">
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" id="username" name="username" required>

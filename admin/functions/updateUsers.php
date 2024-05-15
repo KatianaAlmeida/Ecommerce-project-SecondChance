@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include('../config/dbcon.php');
+include('../../config/dbcon.php');
 
 if(isset($_POST['update-btn'])){
   $username = mysqli_real_escape_string($connection, $_POST['username']);
@@ -23,7 +23,7 @@ if(isset($_POST['update-btn'])){
 
       if(($fullName == null || $fullName == '') && ($email == null || $email == '') && ($role == null || $role == '') && ($password == null || $password == '')){
         $_SESSION['update'] = 'Field is empty!';
-        header('Location: ../admin/view_update_user.php');
+        header('Location: ../view_update_user.php');
       }
 
       // full name
@@ -32,10 +32,10 @@ if(isset($_POST['update-btn'])){
         $update_fullName_run = mysqli_query($connection, $sql_fullName);
         if($update_fullName_run){
           $_SESSION['update'] = 'Updated Successfully!';
-          header('Location: ../admin/view_update_user.php');
+          header('Location: ../view_update_user.php');
         }else{
           $_SESSION['update'] = "Error updating user's detail: " . $connection->error;
-          header('Location: ../admin/view_update_user.php');
+          header('Location: ../view_update_user.php');
         }
       }
 
@@ -45,10 +45,10 @@ if(isset($_POST['update-btn'])){
         $update_email_run = mysqli_query($connection, $sql_email);
         if($update_email_run){
           $_SESSION['update'] = 'Updated Successfully!';
-          header('Location: ../admin/view_update_user.php');
+          header('Location: ../view_update_user.php');
         }else{
           $_SESSION['update'] = "Error updating user's detail: " . $connection->error;
-          header('Location: ../admin/view_update_user.php');
+          header('Location: ../view_update_user.php');
         }
       }
 
@@ -58,10 +58,10 @@ if(isset($_POST['update-btn'])){
         $update_role_run = mysqli_query($connection, $sql_role);
         if($update_role_run){
           $_SESSION['update'] = 'Updated Successfully!';
-          header('Location: ../admin/view_update_user.php');
+          header('Location: ../view_update_user.php');
         }else{
           $_SESSION['update'] = "Error updating user's detail: " . $connection->error;
-          header('Location: ../admin/view_update_user.php');
+          header('Location: ../view_update_user.php');
         }
       }
 
@@ -72,23 +72,23 @@ if(isset($_POST['update-btn'])){
           $update_password_run = mysqli_query($connection, $sql_password);
           if($update_password_run){
             $_SESSION['update'] = 'Updated Successfully!';
-            header('Location: ../admin/view_update_user.php');
+            header('Location: ../view_update_user.php');
           }else{
             $_SESSION['update'] = "Error updating user's detail: " . $connection->error;
-            header('Location: ../admin/view_update_user.php');
+            header('Location: ../view_update_user.php');
           }
         }
       }
 
     } else {
       $_SESSION['update'] = "User not found.";
-      header('Location: ../admin/view_update_user.php');
+      header('Location: ../view_update_user.php');
     }
     // Free result set
     $result->free();
   } else {
     $_SESSION['update'] = 'No user found with that username!';
-    header('Location: ../admin/view_update_user.php');
+    header('Location: ../view_update_user.php');
   }
 }
 
@@ -109,21 +109,21 @@ if(isset($_POST['delete-btn'])){
       $delete_user = mysqli_query($connection, $sql_delete);
       if($delete_user){
         $_SESSION['update'] = 'User Deleted Successfully!';
-        header('Location: ../admin/view_update_user.php');
+        header('Location: ../view_update_user.php');
       }else{
         $_SESSION['update'] = "Error deleting user: " . $connection->error;
-        header('Location: ../admin/view_update_user.php');
+        header('Location: ../view_update_user.php');
       }
 
     } else {
       $_SESSION['update'] = "User not found.";
-      header('Location: ../admin/view_update_user.php');
+      header('Location: ../view_update_user.php');
     }
     // Free result set
     $result->free();
   } else {
     $_SESSION['update'] = 'No user found with that username!';
-    header('Location: ../admin/view_update_user.php');
+    header('Location: ../view_update_user.php');
   }
 }
 

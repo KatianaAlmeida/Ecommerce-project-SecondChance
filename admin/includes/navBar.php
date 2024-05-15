@@ -17,9 +17,19 @@
     <div class="messages_container">
       <img class="messages" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/speech-bubble-with-dots.png" alt="speech-bubble-with-dots"/>
     </div>
-    <div class="user_container">
-      <img class="user" src="https://img.icons8.com/ink/48/person-female.png" alt="person-female"/>
-    </div>
-    <p class="admin_name">Adam Joe</p>
+    <?php
+    if(isset($_SESSION['auth']) && $_SESSION['auth'] == true){ 
+      $user_name = $_SESSION['auth_user']['full_name'];
+      //$user_picture = $_SESSION['auth_user']['profile_pic'];
+    ?>
+      <div class="user_container">
+        <img class="user" src="https://img.icons8.com/ink/48/person-female.png" alt="person-female"/>
+      </div>
+      <select id="pages" class="custom-dropdown" onchange="navigate();">
+        <option value="" class="admin_name" disabled selected hidden><?= $user_name?></option>
+        <option value="http://localhost:3000/admin/logout.php">Logout</option>
+      </select>
+    <?php
+    }?>
   </div>
 </nav>

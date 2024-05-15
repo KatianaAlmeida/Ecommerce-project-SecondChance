@@ -14,7 +14,7 @@
       <div class="form_container">
         <h2>User Registration</h2>
         <p class="description">Fill in the information below to add a new account</p>
-        <form id="user-details" action="./../functions/authcode.php" method="POST">
+        <form id="user-details" action="functions/authcode.php" method="POST">
           <div class="form-group">
               <label for="fullName">Full Name</label>
               <input type="text" id="fullName" name="fullName" required>
@@ -61,7 +61,7 @@
       <div class="form_container">
         <h2>Permission</h2>
         <p class="description">Products that the account is allowed to edit</p>
-        <form id="user-permissions" action="./../functions/permission.php" method="POST">
+        <form id="user-permissions" action="functions/permission.php" method="POST">
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" name="username" required>
