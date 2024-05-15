@@ -38,9 +38,9 @@ a{
 }
 
 .form_container {
-  margin: 20px;
+  margin: 50px;
   flex: 1;
-  max-width: 500px;
+  max-width: 600px;
   padding: 10px 50px;
   border: 1px solid #ccc;
   border-radius: 5px;

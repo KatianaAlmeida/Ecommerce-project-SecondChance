@@ -58,8 +58,21 @@
           <div class="sub_item "><a href="/admin/add_products.php"><span>Add Products</span></a></div>
           <div class="sub_item "><a href="/admin/update_products.php"><span>Update Products</span></a></div>
           <div class="sub_item "><a href="/admin/productList.php"><span>Products List</span></a></div>
-          <div class="sub_item "><a href="/admin/category.php"><span>Category</span></a></div>
           <div class="sub_item "><a href="/admin/review.php"><span>Review</span></a></div>
+        </div>
+      </div>
+      <!-- category-->
+      <div onclick="showItems('category', 'category', '4');">
+        <div class="title">
+          <div><img width="24" height="24" src="https://img.icons8.com/fluency-systems-regular/48/shopping-cart--v1.png" alt="shopping-cart--v1"/></div>
+          <div>
+            <span>Category</span>
+            <span class="js-arrow-4"><img class="arrow" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
+          </div>
+        </div>
+        <div class="category_management category_off">
+          <div class="sub_item "><a href="/admin/category.php"><span>Add category</span></a></div>
+          <div class="sub_item "><a href="/admin/category.php"><span>Category List</span></a></div>
         </div>
       </div>
       <!-- order management -->

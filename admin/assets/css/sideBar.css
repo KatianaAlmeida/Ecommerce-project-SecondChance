@@ -97,7 +97,8 @@
 .account_off,
 .customer_off,
 .product_off,
-.analytics_of{
+.category_off,
+.analytics_off{
   display: none;
   transition: all 0.05s ease;
 }
@@ -105,6 +106,7 @@
 .account_on,
 .customer_on,
 .product_on,
+.category_on,
 .analytics_on{
   display: flex;
   transition: all 0.09s ease;
@@ -117,6 +119,7 @@
 .account_management,
 .customer_management,
 .product_management,
+.category_management,
 .analytics_management{
   display: none;
   flex-direction: column;

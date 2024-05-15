@@ -64,11 +64,11 @@
 }
 
 /*================== tablet (responsive) =================== */
-@media(min-width: 820px) and (max-width: 1280px){
+@media(min-width: 899px) and (max-width: 1280px){
 
 }
 
-@media(min-width: 700px) and (max-width: 819px){
+@media(min-width: 700px) and (max-width: 900px){
   .content{
     flex-direction: column;
   }
