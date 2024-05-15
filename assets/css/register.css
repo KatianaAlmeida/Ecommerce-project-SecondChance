@@ -1,0 +1,26 @@
+.sign_up{
+  margin-left: 200px;
+  padding: 5px;
+}
+.close_register{
+  display: flex;
+  justify-content: right;
+  margin-top: 10px;
+}
+.close_register img{
+  height: 70px;
+  width: 70px;
+}
+.register{
+  margin-top: 20px;
+}
+
+.register_container{
+  display: flex;
+  justify-content: center;
+}
+
+.sign_in{
+  margin-left: 135px;
+  padding: 5px;
+}

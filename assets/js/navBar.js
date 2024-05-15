@@ -20,9 +20,21 @@ const html_Array = [`
   <input class="search_bar" type="search" placeholder="Search for products, category..." aria-label="Search">
   <button class="search_button" type="submit"><img class="search_icon" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/search--v1.png" alt="search--v1"/></button>
   `, `
-  <a class="user_account" href="">
+  <a class="user_account" href="register.php">
     <img class="user_icon" src="https://img.icons8.com/material-sharp/24/user-male-circle.png" alt="user-male-circle"/>
-    <span class="sign_up_in">Sign Up</span>
+    
+    <?php
+    if(isset($_SESSION['auth']) && $_SESSION['auth'] == true){ 
+      $user_name = $_SESSION['auth_user']['full_name'];
+    ?>
+    <span class="sign_up_in"><?= $user_name?></span>
+    <?php
+    }else{
+      ?>
+      <span class="sign_up_in">Sign Up</span>
+      <?php
+    }?>
+
   </a>
   <a href=""><img class="favorite_icon" src="https://img.icons8.com/fluency-systems-filled/48/hearts.png" alt="hearts"/></a>
   <a href=""><img class="cart_icon" src="https://img.icons8.com/windows/32/shopping-cart.png" alt="shopping-cart"/></a>
@@ -41,7 +53,12 @@ const html_Array = [`
 ];
 
 loadHTMLItems('search1', 'search2', html_Array[0]);   // search_HTML
-loadHTMLItems('account1', 'account2', html_Array[1]); // accountItems_HTML
+//loadHTMLItems('account1', 'account2', html_Array[1]); // accountItems_HTML
 loadHTMLItems('support1', 'support2', html_Array[2]); // support_HTML
 loadHTMLItems('service1', 'service2', html_Array[3]); // service_HTML
 
+const signin_Container = document.querySelector('.js-signin_Container');
+  signin_Container.addEventListener('click', function() {
+  const tooltipElement = document.querySelector('.tooltip'); 
+  tooltipElement.style.display = 'flex';
+});

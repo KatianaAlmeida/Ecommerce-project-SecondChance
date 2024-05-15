@@ -57,12 +57,10 @@ if(isset($_POST['login-btn'])){
       $userdata = mysqli_fetch_array($run_query);
       $user_name = $userdata['full_name'];
       $user_email = $userdata['email'];
-      $user_picture = $userdata['profile_pic'];
   
       $_SESSION['auth_user'] = [
         'full_name' => $user_name,
-        'email' => $user_email,
-        'profile_pic' => $user_picture
+        'email' => $user_email
       ];
       header('Location: ../dashboard.php');
   

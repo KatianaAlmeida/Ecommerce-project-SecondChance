@@ -20,7 +20,6 @@
     <?php
     if(isset($_SESSION['auth']) && $_SESSION['auth'] == true){ 
       $user_name = $_SESSION['auth_user']['full_name'];
-      //$user_picture = $_SESSION['auth_user']['profile_pic'];
     ?>
       <div class="user_container">
         <img class="user" src="https://img.icons8.com/ink/48/person-female.png" alt="person-female"/>

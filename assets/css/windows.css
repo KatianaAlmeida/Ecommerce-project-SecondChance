@@ -1,0 +1,20 @@
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.form_container {
+  margin: 50px;
+  flex: 1;
+  max-width: 600px;
+  padding: 10px 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: -1px 1px 5px rgb(194, 192, 192);
+}
+
+input:focus{
+  outline: none;
+}
