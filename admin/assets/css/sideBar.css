@@ -1,0 +1,164 @@
+.sideBar{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+
+  z-index: 2;
+}
+
+.sideBar_off{
+  display: none;
+  transition: all 0.05s ease;
+}
+
+.sideBar_on{
+  display: flex;
+  transition: all 0.09s ease;
+}
+
+/* ------------------------------------------------ */
+.top,
+.user_management,
+.items_management{
+  display: flex;
+  flex-direction: column;
+}
+
+.top{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo{
+  height: 80px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.top span {
+  font-size: 30px;
+  margin-left: 5px;
+}
+
+/* ------------------------------------------------ */
+.title:hover{
+  cursor: pointer;
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.title div:nth-child(1){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+}
+
+.title div:nth-child(2){
+  flex: 1;
+  display: flex;
+  align-items: center;  
+  justify-content: space-between;
+}
+
+.title div span:nth-child(1){
+  font-family: 'Lato';
+}
+
+.arrow{
+  width: 10px;
+  height: 10px;
+  rotate: -30deg;
+}
+
+.arrowUp{
+  rotate: 30deg;
+}
+
+.arrowDown{
+  rotate: -30deg;
+}
+
+/* ------------------------------------------------ */
+.account_off,
+.customer_off,
+.product_off,
+.analytics_of{
+  display: none;
+  transition: all 0.05s ease;
+}
+
+.account_on,
+.customer_on,
+.product_on,
+.analytics_on{
+  display: flex;
+  transition: all 0.09s ease;
+}
+
+.user_management{
+  margin-bottom: 35px;
+}
+
+.account_management,
+.customer_management,
+.product_management,
+.analytics_management{
+  display: none;
+  flex-direction: column;
+  padding-left: 72px;
+}
+
+.sub_item{
+  margin-bottom: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+
+/*================== laptop (responsive) =================== */
+@media(min-width: 1281px){
+
+}
+
+/*================== tablet (responsive) =================== */
+@media(min-width: 700px) and (max-width: 1280px){
+  .sideBar_container{
+    min-width: 300px;
+  }  
+}
+
+/*================== phone (responsive) =================== */
+@media(min-width: 360px) and (max-width: 699px){
+  .sideBar_container{
+    z-index: 1;
+  }  
+  .sideBar{
+    background-color: white;
+    width: 300px;
+  }
+  .logo{
+    height: 65px;
+    margin-left: 10px;
+  }
+  .top span {
+    font-size: 28px;
+    margin-left: 5px;
+  }
+
+}
+

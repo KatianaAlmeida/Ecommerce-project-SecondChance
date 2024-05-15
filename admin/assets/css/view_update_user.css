@@ -1,0 +1,105 @@
+.displayUser {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+.table-container {
+  overflow-x: auto;
+}
+.displayUser th, 
+.user_row {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.displayUser th {
+  background-color: #f2f2f2;
+}
+.search_users{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.search_users_container{
+  background-color: white;
+  border: 0.5px solid rgb(213, 213, 213);
+  border-radius: 3px;
+  padding: 0 10px;
+  border-radius: 5px;
+  height: 40px;
+  max-width: 350px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
+.search_users_input{
+  height: 34px;
+  min-width: 220px;
+  border: none;
+}
+
+.new_user{
+  background-color: white;
+  border: 2px solid #751fff;
+  border-radius: 3px;
+  margin-right: -10px;
+
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 20px;
+}
+.search_img{
+  margin-left: 50px;
+  height: 20px;
+}
+.new_user_checked{
+  background-color: #751fff;
+  color: white;
+}
+
+@media(min-width: 700px) and (max-width: 1280px){
+  .new_user{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  /* Hide table headers on small screens */
+  th {
+    display: none;
+  }
+
+  /* Display table cells as block for better stacking */
+  td {
+    display: block;
+    border: none;
+  }
+
+  .new_user{
+    display: none;
+  }
+
+  /* Optional: Add some padding or margin to separate cells vertically */
+  td {
+    margin-top: 10px;
+  }
+
+  .search_users_container{
+    max-width: 190px;
+  }
+
+  .search_users_input{
+    min-width: 120px;
+  }
+
+  .search_img{
+    height: 20px;
+  }
+}

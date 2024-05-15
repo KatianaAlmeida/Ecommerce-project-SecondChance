@@ -1,0 +1,81 @@
+.content{
+  padding: 20px;
+  position: relative;  
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+.description{
+  color: gray;
+  font-size: 13px;
+  margin-top: -15px;
+  padding-bottom: 15px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+.form-group button {
+  padding: 10px 20px;
+  background-color: #751fff;;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+/*-----------------------------------*/
+.radio-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+.radio-input {
+  display: none;
+}
+.radio-label {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #e9e9ea;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.radio-input:checked + .radio-label {
+  background-color: white;
+  border: 2px solid #751fff;
+  border-radius: 3px;
+}
+
+/*================== laptop (responsive) =================== */
+@media(min-width: 1281px){
+
+}
+
+/*================== tablet (responsive) =================== */
+@media(min-width: 820px) and (max-width: 1280px){
+
+}
+
+@media(min-width: 700px) and (max-width: 819px){
+  .content{
+    flex-direction: column;
+  }
+}
+/*================== phone (responsive) =================== */
+@media(min-width: 360px) and (max-width: 699px){
+  .content{
+    flex-direction: column;
+  }
+}

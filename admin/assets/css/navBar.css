@@ -1,0 +1,172 @@
+.navigation{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  height: 90px;
+}
+
+/* ============================ left section =============================*/
+.left_section{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: left;
+}
+
+.hamburger_button{
+  width: 45px;
+  height: 45px;
+  margin-right: 15px;
+  transition: all 0.5s ease;
+}
+
+.search_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: left;
+}
+
+.search_bar{
+  flex: 1;
+  max-width: 350px;
+  height: 45px;
+
+  padding-left: 10px;
+  font-size: 16px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(192, 192, 192);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  box-shadow: inset 1px 2px 3px rgb(0, 0, 0, 0.06); /* shadows inside the buuton*/
+  margin-left: 10px;
+}
+
+.search_bar::placeholder{
+  font-size: 15px;
+}
+
+.search_button{
+  height: 46px;
+  width: 66px;
+  background-color: #751fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(192, 192, 192);
+  margin-left: -1px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.search_icon{
+  width: 22px;
+  height: 22px;
+}
+
+/* ============================ right section =============================*/
+.right_section{
+  width: 400px;
+  padding: 0 10px;
+  display: flex;
+  align-content: center;
+  justify-content: right;
+}
+
+.notification_Container{
+  position: relative;
+}
+
+.notification,
+.messages,
+.user{
+  height: 25px;
+}
+
+.notificationCount{
+  background-color: rgb(200, 0, 0);
+  color: white;
+  font-size: 11px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 10px;
+
+  position: absolute;
+  top: -2px;
+  right: -5px;
+}
+
+.notification_Container,
+.messages_container,
+.user_container{
+  background-color: #e9e9ea;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin-right: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin_name{
+  font-size: 18px;
+}
+
+
+/*================== laptop (responsive) =================== */
+@media(min-width: 1281px){
+  .dashboard_container{
+    background-color: lightgoldenrodyellow;
+    padding: 5px;
+  }
+}
+
+/*================== tablet (responsive) =================== */
+@media(min-width: 820px) and (max-width: 1280px){
+  .dashboard_container{
+    min-width: 50%;
+
+    background-color: lightblue;
+    padding: 5px;
+  }
+}
+
+@media(min-width: 700px) and (max-width: 819px){
+  .dashboard_container{
+    min-width: 50%;
+
+    background-color: lightblue;
+    padding: 5px;
+  }
+}
+
+/*================== phone (responsive) =================== */
+@media(min-width: 360px) and (max-width: 699px){
+  .search_container{
+    display: none;
+  }
+  .dashboard_container{
+    min-width: 100%;
+
+    background-color: lightcoral;
+    padding: 5px;
+  }
+
+}
+
+@media (min-width: 365px) and (max-width: 569px){
+
+}
+
+@media (max-width: 500px) {
+
+}
+

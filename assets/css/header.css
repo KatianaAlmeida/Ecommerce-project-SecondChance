@@ -1,0 +1,54 @@
+/* ===================================== header ===================================== */
+body{
+  font-family: 'Lato';
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+
+  background-color: black;
+  color: white;
+}
+
+.header a{
+  color: white;
+}
+
+/*-----------------*/
+.promotion{
+  width: 300px;
+  height: 60px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+}
+
+.promo_image{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/*-----------------*/
+.support{
+  flex: 1; /* take remaining space*/
+
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.support a {
+  margin-right: 20px;
+}
+
+/*================== phone =================== */
+@media(min-width: 360px) and (max-width: 799px){
+  .support a {
+    display: none;
+    transition: all 0.5s ease;
+  }
+}
