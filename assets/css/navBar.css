@@ -74,7 +74,7 @@
 
 /*-----------------*/
 .right{
-  width: 350px;
+  width: 490px;
   margin-right: 100px;
   display: flex;
   align-items: center;
@@ -90,27 +90,41 @@
   align-items: center;
 }
 
-.signin_Container{
+.signin_Container,
+.signin_Container2{
   display: flex;
   align-items: center;
+  position: relative;
+  cursor: pointer;
 }
 
-.signin_Container .tooltip{
-  background-color: rgb(102, 102, 102);
-  color: white;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-right: 8px;
-  padding-left: 8px;
-  border-radius: 2px;
-  font-size: 12px;
-
+.dropdown-content,
+.dropdown-content2{
+  display: none;
   position: absolute;
-  bottom: -40px;
-  transition: opacity 0.15s;
-  pointer-events: none; /* the tooltip wont appear when we pass the cursor over it*/
-  white-space: nowrap; /* all text stays on the same line*/
-  cursor: pointer;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  margin-top: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.dropdown-content .dropdown-item,
+.dropdown-content2 .dropdown-item{
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.dropdown-content .dropdown-item:hover,
+.dropdown-content2 .dropdown-item:hover {
+  background-color: #f1f1f1;
+  color: #751fff;
+}
+
+.dropdown_on{
+  display: block;
 }
 
 .user_icon,
@@ -152,9 +166,6 @@
   .account{
     display: none;
   }
-  .tooltip{
-    display: none;
-  }
 }
 
 /*================== tablet (responsive) =================== */
@@ -186,9 +197,6 @@
   .search_menu,
   .frontbar_bottom,
   .account{
-    display: none;
-  }
-  .tooltip{
     display: none;
   }
 }
@@ -252,7 +260,7 @@
     right: 0;
     left: 300px;
     bottom: 0;
-    z-index: 999;
+    z-index: 900;
     background-color: #e9e9ea;
 
     display: none;
@@ -260,20 +268,21 @@
     transition: all 0.09s ease;
   }
 
-  .frontbar a {
+  .frontbar .icon_link,
+  .frontbar .support_link,
+  .frontbar .service_link{
     text-decoration: none;
     color: black;
     font-size: 18px;
+    background-color: red;
+    z-index: 910;
+
   }
 
   .frontbar .frontbar_top{
     display: flex;
     justify-content: right;
     margin-top: 50px;
-  }
-
-  .tooltip{
-    display: none;
   }
 
   .frontbar .account{
