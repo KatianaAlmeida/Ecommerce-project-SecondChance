@@ -23,6 +23,15 @@
         <?php
         include('functions/viewCategory.php');
         ?>
+        <div class="form-group">
+          <?php
+          if(isset($_SESSION['message'])){ ?>
+          <span class="message"> <?= $_SESSION['message'];?></span>
+          <?php
+            unset($_SESSION['message']);
+          }
+          ?>
+        </div>
       </div>
       <div class="form_container">
         <h2>Add Category</h2>

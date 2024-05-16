@@ -19,7 +19,22 @@ if(isset($_POST['add_category-btn'])){
 
   if($check_query_run){
     move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
-    $_SESSION['message'] = 'Category Added Sucessfully';
+    $_SESSION['message'] = 'Category Added Sucessfully!';
+    header('Location: ../category.php');
+  }else{
+    $_SESSION['message'] = 'Someting Went Wrong'.$connection->error;
+    header('Location: ../category.php');
+  }
+}
+
+if(isset($_POST['delete_category-btn'])){
+  $category_id = mysqli_real_escape_string($connection, $_POST['category_id']);
+
+  $sql = "DELETE FROM categories WHERE id='$category_id'";
+  $result =  mysqli_query($connection, $sql);
+
+  if ($result) {
+    $_SESSION['message'] = 'Category Deleted Sucessfully';
     header('Location: ../category.php');
   }else{
     $_SESSION['message'] = 'Someting Went Wrong'.$connection->error;

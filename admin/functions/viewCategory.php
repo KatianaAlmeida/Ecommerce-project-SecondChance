@@ -28,7 +28,12 @@ if (!is_dir($imageDirectory)) {
             <td class="user_row"><?= $items["name"]; ?></td>
             <td class="user_row"><?= $items["description"]; ?></td>
             <td class="user_row"><?= $items["status"]; ?></td>
-            <td class="user_row"><button class="edit_btn">Edit</button></td>
+            <td class="user_row">
+              <form action="/admin/functions/add_category.php" method="POST">
+                <input type="hidden" name="category_id" value="<?= $items["id"]; ?>">
+                <button class="delete_button" name="delete_category-btn">Delete</button>
+              </form>
+            </td>
           </tr>
         <?        
       }

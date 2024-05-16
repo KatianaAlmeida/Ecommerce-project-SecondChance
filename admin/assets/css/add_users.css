@@ -27,7 +27,7 @@
   border: 1px solid #ccc;
 }
 .form-group button,
-.edit_btn {
+.delete_button {
   padding: 10px 20px;
   background-color: #751fff;;
   color: #fff;
