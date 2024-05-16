@@ -25,8 +25,8 @@
           </div>
         </div>
         <div class="account_management account_off">
-        <div class="sub_item "><a href="/admin/add_users.php"><span>Add User & Permission</span></a></div> 
-         <div class="sub_item "><a href="/admin/view_update_user.php"><span>Update & Delete Users</span></a></div>  
+          <div class="sub_item "><a href="/admin/add_users.php"><span>Add User & Permission</span></a></div> 
+          <div class="sub_item "><a href="/admin/view_update_user.php"><span>Update & Delete Users</span></a></div>  
         </div>
       </div>
       <!-- customer management -->
@@ -45,27 +45,13 @@
       </div>
     </div>
     <div class="items_management">
-      <!-- category-->
-      <div onclick="showItems('category', 'category', '3');">
-        <div class="title">
-          <div><img width="24" height="24" src="https://img.icons8.com/external-outline-black-m-oki-orlando/32/external-product-category-supply-chain-management-outline-outline-black-m-oki-orlando.png" alt="external-product-category-supply-chain-management-outline-outline-black-m-oki-orlando"/></div>
-          <div>
-            <span>Category</span>
-            <span class="js-arrow-3"><img class="arrow" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
-          </div>
-        </div>
-        <div class="category_management category_off">
-          <div class="sub_item "><a href="/admin/add_category.php"><span>Add category</span></a></div>
-          <div class="sub_item "><a href="/admin/list_category.php"><span>Category List</span></a></div>
-        </div>
-      </div>
       <!-- product management -->
-      <div onclick="showItems('product', 'product', '4');">
+      <div onclick="showItems('product', 'product', '3');">
         <div class="title">
           <div><img width="24" height="24" src="https://img.icons8.com/fluency-systems-regular/48/shopping-cart--v1.png" alt="shopping-cart--v1"/></div>
           <div>
             <span>Product Management</span>
-            <span class="js-arrow-4"><img class="arrow" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
+            <span class="js-arrow-3"><img class="arrow" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
           </div>
         </div>
         <div class="product_management product_off">
@@ -74,6 +60,14 @@
           <div class="sub_item "><a href="/admin/productList.php"><span>Products List</span></a></div>
           <div class="sub_item "><a href="/admin/review.php"><span>Review</span></a></div>
         </div>
+      </div>
+      <!-- category-->
+      <div>
+        <div class="title">
+          <div><img width="24" height="24" src="https://img.icons8.com/external-outline-black-m-oki-orlando/32/external-product-category-supply-chain-management-outline-outline-black-m-oki-orlando.png" alt="external-product-category-supply-chain-management-outline-outline-black-m-oki-orlando"/></div>
+          <div>
+            <a href="/admin/category.php"><span>Product Category</span></a>
+          </div>
       </div>
       <!-- order management -->
       <div >

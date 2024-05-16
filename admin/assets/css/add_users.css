@@ -19,13 +19,15 @@
   display: block;
   margin-bottom: 5px;
 }
-.form-group input {
+.form-group input,
+.form-group textarea{
   width: 100%;
   padding: 8px;
   border-radius: 3px;
   border: 1px solid #ccc;
 }
-.form-group button {
+.form-group button,
+.edit_btn {
   padding: 10px 20px;
   background-color: #751fff;;
   color: #fff;

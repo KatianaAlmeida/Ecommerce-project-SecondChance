@@ -63,7 +63,9 @@
   background-color: #751fff;
   color: white;
 }
-
+.search_img_container{
+  cursor: pointer;
+}
 @media(min-width: 700px) and (max-width: 1280px){
   .new_user{
     display: none;
@@ -98,7 +100,6 @@
   .search_users_input{
     min-width: 120px;
   }
-
   .search_img{
     height: 20px;
   }

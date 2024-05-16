@@ -33,4 +33,29 @@
 .resettitle{
   margin-left: 145px;
   padding: 5px;
+} 
+
+/*================== phone (responsive) =================== */
+@media(min-width: 300px) and (max-width: 500px){
+  .sign_in{
+    margin-left: 0;
+    padding: 0;
+    font-size: 25px;
+  }
+  .sign_up{
+    margin-left: 40px;
+    padding: 0;
+  }
+  
+  .passwordreset{
+    margin-left: 0;
+    padding: 0;
+    font-size: 25px;
+  }
+  
+  .resettitle{
+      margin-left: 0;
+      padding: 0;
+      font-size: 25px;
+  }
 }

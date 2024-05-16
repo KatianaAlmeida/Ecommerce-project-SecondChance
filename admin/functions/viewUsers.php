@@ -2,7 +2,7 @@
 
 include('../config/dbcon.php');
 
-  $sql = "SELECT * FROM users";
+  $sql = "SELECT * FROM users WHERE role != 'customer'";
   $result =  mysqli_query($connection, $sql);
 
   if ($result) {
