@@ -19,8 +19,18 @@
   display: flex;
   justify-content: center;
 }
-
+/* ------------------ */
 .sign_in{
   margin-left: 135px;
+  padding: 5px;
+}
+
+.passwordreset{
+  margin-left: 65px;
+  padding: 5px;
+}
+
+.resettitle{
+  margin-left: 145px;
   padding: 5px;
 }
