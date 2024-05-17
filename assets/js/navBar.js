@@ -51,7 +51,7 @@ const html_Array = [`
   <a href=""><img class="cart_icon" src="https://img.icons8.com/windows/32/shopping-cart.png" alt="shopping-cart"/></a>
   `, `
   <a class="support_link" href="">About</a>
-  <a class="support_link" href="">Contact</a>
+  <a class="support_link" href="../../contact_us.php">Contact</a>
   <a class="support_link" href="">Help Center</a>
   <a class="support_link" href="">Physical Store</a>
   `, `

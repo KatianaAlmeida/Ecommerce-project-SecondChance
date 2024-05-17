@@ -16,7 +16,7 @@
         <p class="description">View product categories below</p>  
         <div class="search_users">
           <div class="search_users_container">
-            <input class="search_users_input" placeholder="Search for users" >
+            <input class="search_users_input" placeholder="Search for categories" >
             <div class="search_img_container"><img class="search_img" src="https://img.icons8.com/ios-glyphs/30/search--v1.png" alt="search--v1"/></div>
           </div>  
         </div>

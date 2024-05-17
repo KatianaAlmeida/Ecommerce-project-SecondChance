@@ -13,9 +13,9 @@ if (!is_dir($imageDirectory)) {
       <th>Category</th>
       <th>Description</th>
       <th>Status</th>
-      <th>Edit</th>
+      <th>Delete</th>
     </tr>
-  <?
+  <?php
   $sql = "SELECT * FROM categories";
   $result =  mysqli_query($connection, $sql);
 
@@ -41,11 +41,11 @@ if (!is_dir($imageDirectory)) {
       </table>
       <?
     } else {
-      $_SESSION['permission_message'] = 'No category found!';
+      $_SESSION['message'] = 'No category found!';
       header('Location: ../category.php');
     }
   } else {
-    $_SESSION['permission_message'] = 'Execution Error: '. $connection->error;
+    $_SESSION['message'] = 'Execution Error: '. $connection->error;
     header('Location: ../category.php');
   }
 

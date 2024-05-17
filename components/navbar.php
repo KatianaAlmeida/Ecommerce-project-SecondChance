@@ -13,7 +13,7 @@
     <!-- top_section -->
     <div class="nav_top_section">
       <div class="left">
-        <a href=""><img class="logo" src="assets/images/secondChance1.png" alt="logo"></a>
+        <a href="../home.php"><img class="logo" src="assets/images/secondChance1.png" alt="logo"></a>
         <a class="navbar_brand" href="#">SecondChange</a>          
       </div>
       <div class="middle js-search1">

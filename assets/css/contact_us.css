@@ -1,0 +1,21 @@
+.contactt_conatiner{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;    
+  background-color: gray;
+}
+
+.contactt_conatiner .left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: black;
+  color: white;
+}
+
+.contactt_conatiner .right{
+  background-color: white;
+}

@@ -135,10 +135,10 @@
 
 /*================== laptop (responsive) =================== */
 @media(min-width: 1281px){
-  .dashboard_container{
+  /*.dashboard_container{
     background-color: lightgoldenrodyellow;
     padding: 5px;
-  }
+  }*/
 }
 
 /*================== tablet (responsive) =================== */
@@ -146,8 +146,8 @@
   .dashboard_container{
     min-width: 50%;
 
-    background-color: lightblue;
-    padding: 5px;
+    /*background-color: lightblue;
+    padding: 5px;*/
   }
 }
 
@@ -155,8 +155,8 @@
   .dashboard_container{
     min-width: 50%;
 
-    background-color: lightblue;
-    padding: 5px;
+    /*background-color: lightblue;
+    padding: 5px;*/
   }
 }
 
@@ -168,8 +168,8 @@
   .dashboard_container{
     min-width: 100%;
 
-    background-color: lightcoral;
-    padding: 5px;
+    /*background-color: lightcoral;
+    padding: 5px;*/
   }
 
 }
