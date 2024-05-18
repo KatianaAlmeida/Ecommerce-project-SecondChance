@@ -175,6 +175,7 @@
 @media(min-width: 800px) and (max-width: 1280px){
   .logo{
     height: 100px;
+    margin-left: 15px;
     transition: all 0.5s ease;
   }
   .navbar_brand{
@@ -210,6 +211,7 @@
 @media(min-width: 360px) and (max-width: 799px){
   .logo{
     height: 100px;
+    margin-left: 15px;
     transition: all 0.5s ease;
   }
   .navbar_brand{

@@ -50,9 +50,9 @@ const html_Array = [`
   <a href=""><img class="favorite_icon" src="https://img.icons8.com/fluency-systems-filled/48/hearts.png" alt="hearts"/></a>
   <a href=""><img class="cart_icon" src="https://img.icons8.com/windows/32/shopping-cart.png" alt="shopping-cart"/></a>
   `, `
-  <a class="support_link" href="">About</a>
+  <a class="support_link" href="../../about_us.php">About</a>
   <a class="support_link" href="../../contact_us.php">Contact</a>
-  <a class="support_link" href="">Help Center</a>
+  <a class="support_link" href="../../help_center.php">Help Center</a>
   <a class="support_link" href="../../physical_store.php">Physical Store</a>
   `, `
   <a class="service_link" href="">Shop All</a>

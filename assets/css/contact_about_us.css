@@ -1,0 +1,151 @@
+/*======================== contact us =======================*/
+.contactt_conatiner{
+  display: flex;
+  flex-direction: row;
+}
+
+.contactt_conatiner .left{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: black;
+  color: white;
+}
+
+.right_to_right{
+  width: 100%;
+  padding: 50px 50px;
+
+  margin-left: -10px;
+  border: 1px solid #ccc;
+  background-color: white;
+} 
+
+.sociallinks{
+  margin: 0;
+  padding: 0;
+}
+
+.sociallinks a{
+  margin-right: 5px;
+}
+
+.user_main{
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .contactt_conatiner{
+    flex-direction: column;
+    transition: all 0.5s ease;
+  }
+  
+}
+
+@media (min-width: 1300px) {
+  .right_to_right{
+    padding: 50px 260px;
+    transition: all 0.5s ease;
+  } 
+}
+
+/*======================== about us =======================*/
+.our_vision{
+  background-image: url("../images/5Jo3op6.jpg");
+  color: white;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.our_vision button{
+  background-color: #751fff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px;
+}
+.about_us{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: justify;
+}
+.roww:after {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.column {
+  float: left;
+  width: 50%; /* Four columns */
+  box-sizing: border-box;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+.our_vision,
+.about_us,
+.roww {
+  line-height: 1.5;
+  padding: 15px 100px;
+}
+
+/*================== tablet (responsive) =================== */
+@media screen and (max-width: 1600px) {
+  .column {
+    width: 100%;
+    padding-right: 0;
+    transition: all 0.5s ease;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .our_vision,
+  .about_us,
+  .roww{
+    padding: 15px 200px;
+  }
+  .column {
+    padding-right: 0;
+  }
+}
+@media screen and (min-width: 1150px) and (max-width: 1800px){
+  .our_vision,
+  .about_us,
+  .roww{
+    padding: 15px 400px;
+  }
+  .column {
+    padding-right: 0;
+  }
+}
+@media screen and (min-width: 1800px) {
+  .our_vision,
+  .about_us,
+  .roww{
+    padding: 15px 500px;
+  }
+  .column {
+    padding-right: 0;
+  }
+}
+/*================== phone (responsive) =================== */
+@media screen and (max-width: 850px) {
+  .our_vision,
+  .about_us,
+  .roww {
+    padding: 10px 10px;
+  }
+  .column {
+    padding-right: 0 !important;
+  }
+}
