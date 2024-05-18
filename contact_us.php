@@ -4,7 +4,7 @@ session_start();
  include('components/navbar.php');
  include('components/frontbar.php');
  ?>
-  <main>
+  <main class="user_main">
     <div class="contactt_conatiner">
       <div class="left">
         <div class="form-group">
@@ -16,33 +16,37 @@ session_start();
         <div class="form-group">
           <p>123-456-7890</p>
           <p>info&#64;mysite&#46;com</p>
-          <ul>
-            <li class="social-links">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="form-group">
+          <ul class="sociallinks">
+            <li>
+              <a href="#"><i style="color: white;" class="fab fa-facebook-f"></i></a>
+              <a href="#"><i style="color: white;" class="fab fa-instagram"></i></a>
+              <a href="#"><i style="color: white;" class="fab fa-twitter"></i></a>
+              <a href="#"><i style="color: white;" class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i style="color: white;" class="fab fa-youtube"></i></a>
             </li>
           </ul>
         </div>
       </div>
-      <div class="rigth">
-        <form action="functions/permission.php" method="POST">
+      <div class="right_to_right">
+        <form action="functions/send_message.php" method="POST">
           <div class="form-group">
-            <div>
-              <label for="first_name">First Name</label>
-              <input type="text" name="first_name" required>
-            </div>
-            <div>
-              <label for="last_name">Last Name</label>
-              <input type="text" name="last_name" required>
-            </div>
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" required>
+          </div> 
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" required>
           </div> 
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" name="email" required>
           </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" required>
+          </div> 
           <div class="form-group">
             <label for="message">Message</label>
             <textarea rows="5" name="message" required></textarea>
@@ -50,10 +54,10 @@ session_start();
           <div class="form-group">
               <button type="submit" name="send-btn">Send</button>
               <?php
-                if(isset($_SESSION['permission_message'])){ ?>
-                <span class="message js-message"> <?= $_SESSION['permission_message'];?></span>
+                if(isset($_SESSION['send_message'])){ ?>
+                <span class="message js-message"> <?= $_SESSION['send_message'];?></span>
                 <?php
-                  unset($_SESSION['permission_message']);
+                  unset($_SESSION['send_message']);
                 }
               ?>
           </div>

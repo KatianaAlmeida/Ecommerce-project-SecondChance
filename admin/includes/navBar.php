@@ -11,11 +11,11 @@
   <!-- -- -->
   <div class="right_section">
     <div class="notification_Container">
-      <img class="notification" src="https://img.icons8.com/forma-light-filled/24/1A1A1A/appointment-reminders.png" alt="appointment-reminders"/>
+      <a href="/admin/review.php"><img class="notification" src="https://img.icons8.com/forma-light-filled/24/1A1A1A/appointment-reminders.png" alt="appointment-reminders"/></a>
       <div class="notificationCount">3</div>
     </div>
     <div class="messages_container">
-      <img class="messages" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/speech-bubble-with-dots.png" alt="speech-bubble-with-dots"/>
+      <a href="/admin/customer_messages.php"><img class="messages" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/speech-bubble-with-dots.png" alt="speech-bubble-with-dots"/></a>
     </div>
     <?php
     if(isset($_SESSION['auth']) && $_SESSION['auth'] == true){ 

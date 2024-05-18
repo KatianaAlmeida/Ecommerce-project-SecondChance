@@ -53,10 +53,12 @@ if(isset($_POST['login-btn'])){
     $userdata = mysqli_fetch_array($run_query);
     $user_name = $userdata['full_name'];
     $user_email = $userdata['email'];
+    $user_id = $userdata['id'];
 
     $_SESSION['auth_user'] = [
       'full_name' => $user_name,
       'email' => $user_email,
+      'id' => $user_id
     ];
     header('Location: ../home.php');
 

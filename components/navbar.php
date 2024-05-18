@@ -14,7 +14,7 @@
     <div class="nav_top_section">
       <div class="left">
         <a href="../home.php"><img class="logo" src="assets/images/secondChance1.png" alt="logo"></a>
-        <a class="navbar_brand" href="#">SecondChange</a>          
+        <a class="navbar_brand" href="../home.php">SecondChange</a>          
       </div>
       <div class="middle js-search1">
         <!-- loadHTMLItems(); -->

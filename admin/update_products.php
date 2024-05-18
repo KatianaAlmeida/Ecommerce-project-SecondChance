@@ -19,6 +19,9 @@
             <input class="search_users_input" placeholder="Search for products" >
             <div class="search_img_container"><img class="search_img" src="https://img.icons8.com/ios-glyphs/30/search--v1.png" alt="search--v1"/></div>
           </div>  
+          <div class="radio-container">
+            <button class="new_user"><a href="add_products.php">+ Add new</a></button>
+          </div>
         </div>
         <?php
           include('functions/viewProducts.php');

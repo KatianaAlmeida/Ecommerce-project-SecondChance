@@ -55,8 +55,8 @@
           </div>
         </div>
         <div class="product_management product_off">
-          <div class="sub_item "><a href="/admin/add_products.php"><span>Add Products</span></a></div>
-          <div class="sub_item "><a href="/admin/update_products.php"><span>Update Products</span></a></div>
+          <div class="sub_item "><a href="/admin/add_products.php"><span>Add & Delete</span></a></div>
+          <div class="sub_item "><a href="/admin/update_products.php"><span>View & Update</span></a></div>
           <div class="sub_item "><a href="/admin/review.php"><span>Review</span></a></div>
         </div>
       </div>

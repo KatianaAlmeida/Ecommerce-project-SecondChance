@@ -5,7 +5,7 @@ session_start();
  include('components/frontbar.php');
  ?>
   <main style="background-color: gray;">
-    content
+    Home
   </main>
 <?php
  include('components/footer.php');

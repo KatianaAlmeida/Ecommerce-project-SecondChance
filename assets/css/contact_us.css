@@ -1,13 +1,11 @@
 .contactt_conatiner{
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;    
-  background-color: gray;
 }
 
 .contactt_conatiner .left{
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -16,6 +14,39 @@
   color: white;
 }
 
-.contactt_conatiner .right{
+.right_to_right{
+  width: 100%;
+  padding: 50px 50px;
+
+  margin-left: -10px;
+  border: 1px solid #ccc;
   background-color: white;
+} 
+
+.sociallinks{
+  margin: 0;
+  padding: 0;
+}
+
+.sociallinks a{
+  margin-right: 5px;
+}
+
+.user_main{
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .contactt_conatiner{
+    flex-direction: column;
+    transition: all 0.5s ease;
+  }
+  
+}
+
+@media (min-width: 1300px) {
+  .right_to_right{
+    padding: 50px 260px;
+    transition: all 0.5s ease;
+  } 
 }
