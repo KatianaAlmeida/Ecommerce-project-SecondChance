@@ -53,7 +53,7 @@ const html_Array = [`
   <a class="support_link" href="">About</a>
   <a class="support_link" href="../../contact_us.php">Contact</a>
   <a class="support_link" href="">Help Center</a>
-  <a class="support_link" href="">Physical Store</a>
+  <a class="support_link" href="../../physical_store.php">Physical Store</a>
   `, `
   <a class="service_link" href="">Shop All</a>
   <a class="service_link" href="">Sell</a>

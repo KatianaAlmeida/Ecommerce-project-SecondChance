@@ -5,7 +5,7 @@
         <div class="footer-col">
           <h4>Store Location</h4>
           <ul>
-            <li><a href="#">500 Terry Francine Street San Francisco, CA 94158</a></li>
+            <li><a href="#">53 Main Rd, Claremont, Cape Town, 7700, CA 94158</a></li>
             <li><a href="#">info&#64;mysite&#46;com</a></li>
             <li><a href="#">123-456-7890</a></li>
             <li class="social-links">

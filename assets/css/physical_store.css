@@ -1,0 +1,44 @@
+.physical_store_container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} 
+.physical_store_map{
+  width: 100%;
+  margin: 20px 0;
+}
+.store_info{
+  display: flex;
+  flex-direction: row;
+}
+.store_info .left,
+.store_info .middle,
+.store_info .right{
+  display: flex;
+  flex-direction: column;
+  width: 33.3%;
+}
+.opening_hous{
+  margin-left: 20px;
+}
+
+#map {
+  height: 400px; /* Set the height of the map */
+  width: 100%; /* Set the width of the map */
+}
+
+@media (max-width: 700px) {
+  .store_info{
+    flex-direction: column;
+    transition: all 0.5s ease;
+  }
+  .store_info .left,
+  .store_info .middle,
+  .store_info .right{
+    width: 100%;
+    padding: 0 10px;
+    margin-left: 15px;
+  }
+}

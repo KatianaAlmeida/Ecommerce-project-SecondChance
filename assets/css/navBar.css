@@ -149,6 +149,8 @@
   align-items: center;
   justify-content: center;
   height: 90px;
+  box-shadow: inset -1px -10px 9px -10px rgba(194, 192, 192); /* Box shadow at the bottom */
+ /* -1px 1px 5px rgb(194, 192, 192)*/
 }
 
 .nav_bottom_section .services a{
