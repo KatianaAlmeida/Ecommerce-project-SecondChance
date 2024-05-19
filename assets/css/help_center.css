@@ -1,0 +1,75 @@
+.tab-container {
+  margin: 20px;
+}
+.tab-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e9e9ea;
+}
+.tab-buttons button {
+  background-color: #f1f1f1;
+  border: none;
+  outline: none;
+  padding: 15px 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex: 1 1 auto; /* Responsive behavior */
+}
+.tab-buttons button:hover {
+  background-color: #e6e6e6;
+}
+.tab-buttons button.active {
+  background-color: #eae9e9;
+  border-bottom: 3px solid #751fff;
+}
+.tab-content {
+  display: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+.contentt_container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contentt_container_text{
+  margin: 20px 40px;
+  flex: 1;
+  max-width: 930px;
+  padding: 10px 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: -1px 1px 5px rgb(194, 192, 192);
+  text-align: justify;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.greater_than{
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.enquire_title{
+  cursor: pointer;
+}
+.enquire_title:hover{
+  color: #751fff;
+  cursor: pointer;
+}
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .tab-buttons button {
+      padding: 15px; /* Reduce padding for smaller screens */
+      font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}

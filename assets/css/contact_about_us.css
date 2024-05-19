@@ -99,7 +99,9 @@
   line-height: 1.5;
   padding: 15px 100px;
 }
-
+.space{
+  padding-right: 450px;
+}
 /*================== tablet (responsive) =================== */
 @media screen and (max-width: 1600px) {
   .column {

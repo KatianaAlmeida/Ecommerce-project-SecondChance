@@ -2,7 +2,7 @@
   <header class="header">
     <div class="promotion">
       <img class="promo_image" src="https://img.icons8.com/ios/50/FFFFFF/gift--v1.png" alt="gift--v1"/>
-      <p>Get 20% off yor first order&#46;&#160;<a href="">Subscribe</a></p>
+      <p>Get 20% off yor first order&#46;&#160;<a href="../register.php">Subscribe</a></p>
     </div>
     <div class="support js-support1">
       <!-- loadHTMLItems(); -->
@@ -33,7 +33,7 @@
             <a class="dropdown-item"  href="#">Account detail</a>
             <a class="dropdown-item" href="#">Address Book</a>
             <a class="dropdown-item"  href="#">Card Details</a>
-            <a class="dropdown-item" href="../logout.php">Logout</a>
+            <a class="dropdown-item" href="..//functions/logout.php">Logout</a>
             <!--logout-->
           </div>
         </div>

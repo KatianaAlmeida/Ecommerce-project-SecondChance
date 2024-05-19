@@ -26,7 +26,7 @@
       </div>
       <select id="pages" class="custom-dropdown" onchange="navigate();">
         <option value="" class="admin_name" disabled selected hidden><?= $user_name?></option>
-        <option value="http://localhost:3000/admin/logout.php">Logout</option>
+        <option value="http://localhost:3000/admin/functions/logout.php">Logout</option>
       </select>
     <?php
     }?>

@@ -1,5 +1,8 @@
 <?php
-  session_start();
+ session_start();
+ include('../config/dbcon.php');
+ 
+
  include('includes/header.php');
  include('includes/sideBar.php');
  ?>

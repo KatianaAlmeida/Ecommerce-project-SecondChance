@@ -30,20 +30,20 @@
         <div class="footer-col">
           <h4>Costumer Support</h4>
           <ul>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Physical Store</a></li>
+            <li><a href="../contact_us.php">Contact Us</a></li>
+            <li><a href="../help_center.php">Help Center</a></li>
+            <li><a href="../about_us.php">About Us</a></li>
+            <li><a href="../physical_store.php">Physical Store</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Policy</h4>
           <ul>
-            <li><a href="#">Shipping &#38; Returns</a></li>
-            <li><a href="#">Terms &#38; Coditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Payment Methods</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="../policy.php#Tab1">Shipping &#38; Returns</a></li>
+            <li><a href="../policy.php#Tab2">Terms &#38; Conditions</a></li>
+            <li><a href="../policy.php#Tab3">Privacy Policy</a></li>
+            <li><a href="../policy.php#Tab4">Payment Methods</a></li>
+            <li><a href="../policy.php#Tab5">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -60,5 +60,6 @@
   </footer>
   <!-- JavaScript -->
   <script src="assets/js/navBar.js"></script>
+  <script src="assets/js/help_center.js"></script>
 </body>
 </html>

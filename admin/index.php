@@ -1,7 +1,10 @@
 <?php
  session_start();
+ include('../config/dbcon.php');
  
+
  include('includes/header.php');
+ include('includes/sideBar.php');
  ?>
  <div class="login_container">
     <!-- content/page section -->

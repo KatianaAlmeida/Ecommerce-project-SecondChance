@@ -15,7 +15,7 @@
           <a class="dropdown-item"  href="#">Account detail</a>
           <a class="dropdown-item" href="#">Address Book</a>
           <a class="dropdown-item"  href="#">Card Details</a>
-          <a class="dropdown-item" href="../logout.php">Logout</a>
+          <a class="dropdown-item" href="../functions/logout.php">Logout</a>
           <!--logout-->
         </div>
       </div>
