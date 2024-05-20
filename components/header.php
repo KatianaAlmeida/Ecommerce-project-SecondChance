@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../admin/assets/css/add_users.css">
   <link rel="stylesheet" href="../admin/assets/css/login.css">
   <link rel="stylesheet" href="assets/css/contact_about_us.css">
-  <link rel="stylesheet" href="assets/css/help_center.css">
+  <link rel="stylesheet" href="assets/css/help_center-policy.css">
   <title>SecondChange Emperium</title>
 </head>
 <body>

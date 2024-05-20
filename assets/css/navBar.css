@@ -133,6 +133,7 @@
 .favorite_icon{
   width: 40px;
   height: 40px;
+  margin-left: 5px;
 }
 
 .user_icon{
