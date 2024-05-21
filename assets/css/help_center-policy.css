@@ -27,6 +27,7 @@
   padding: 25px;
   border: 1px solid #ccc;
   border-top: none;
+  line-height: 1.5;
 }
 .tab-content.active {
   display: block;

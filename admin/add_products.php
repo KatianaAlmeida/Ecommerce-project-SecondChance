@@ -84,7 +84,7 @@
           </div>
         </form>
       </div>
-      <div class="form_container table-container">
+      <div class="form_container1 table-container">
           <h2>Product List</h2>
           <p class="description">View and/or delete Products below</p>  
           <div class="search_users">
@@ -114,7 +114,7 @@
                     <td class="user_row"><img width="70px" height="70px" src="./uploads/<?= $items["image_1"];?>" alt="<?= $items["product_name"]; ?>"></td>
                     <td class="user_row"><?= $items["product_name"]; ?></td>
                     <td class="user_row"><?= $items["product_description"]; ?></td>
-                    <td class="user_row">R <?= $items["price"]; ?></td>
+                    <td class="user_row">R<?= $items["price"]; ?></td>
                     <td class="user_row"><?= $items["quantitty"]; ?></td>
                     <td class="user_row">
                       <form action="/admin/functions/everthing_products.php" method="POST">

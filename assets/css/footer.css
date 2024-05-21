@@ -76,7 +76,7 @@ ul {
   display: inline;
 }
 
-p,
+.container p,
 .payment_method{
   display: flex;
   justify-content:  center;

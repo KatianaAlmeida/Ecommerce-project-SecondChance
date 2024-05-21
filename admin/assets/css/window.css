@@ -37,7 +37,8 @@ a{
   color: black;
 }
 
-.form_container {
+.form_container,
+.form_container1 {
   margin: 50px;
   flex: 1;
   max-width: 600px;
@@ -46,6 +47,18 @@ a{
   border-radius: 5px;
   background-color: white;
   box-shadow: -1px 1px 5px rgb(194, 192, 192);
+}
+
+.form_container1 {
+  max-width: 800px;
+  overflow-x: auto;
+  max-height: 800px;
+}
+
+@media (max-width: 600px) {
+  .form_container {
+    margin: 5px;
+  }
 }
 
 input:focus{

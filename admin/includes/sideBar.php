@@ -3,7 +3,7 @@
   <section class="sideBar sideBar_off">
     <div class="top">
       <img class="logo" src="assets/images/secondChance.png" alt="logo">
-      <span>SecondChange</span>
+      <span>SecondChance</span>
     </div>
     <div class="user_management">
       <!-- dashboard Overview -->

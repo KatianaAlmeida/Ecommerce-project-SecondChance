@@ -145,6 +145,22 @@
   height: 45px;
 }
 
+.notification_Container{
+  position: relative;
+}
+
+.notificationCount{
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  padding: 3px 6px;
+  border-radius: 10px;
+
+  position: absolute;
+  top: -2px;
+  right: 0;
+}
+
 /* ===================================== bottom_section ===================================== */
 .nav_bottom_section{
   display: flex;

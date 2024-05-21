@@ -162,7 +162,7 @@ include('components/frontbar.php');
         <h2>Payment Methods</h2>
         <span>At SecondChance Emperium, we strive to provide convenient and secure payment options for our customers. Below are the payment methods we accept:</span>
 
-        <h2>1. Credit/Debit Cards</h2>
+        <h3>1. Credit/Debit Cards</h3>
         <span>We accept the following credit and debit cards:</span>
         <ul>
           <li>Visa</li>
