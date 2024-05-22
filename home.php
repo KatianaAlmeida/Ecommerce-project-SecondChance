@@ -12,6 +12,7 @@ include('config/dbcon.php');
         <p>Local & Affordable</p>
         <h1>Rediscover Quality at SecondChance Emporium</h1>
         <p>Great Savings on Quality Products</p>
+        <!--link to a specific pageor section in a page-->
         <a href="shop_all.php"><button class="home_button">Explore Now</button></a>
         </div>
       </div>
@@ -31,6 +32,7 @@ include('config/dbcon.php');
                   if ($items["status"] != "Hidden") {
                     ?>
                     <div class="each_category">
+                      <!--link to a specific pageor section in a page-->
                       <a href="#"><div class="image_container1"><img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["name"]; ?>"></div></a>
                       <a href="#"><p><?= $items["name"]; ?></p></a>
                     </div>
@@ -80,6 +82,7 @@ include('config/dbcon.php');
                       if ($items["category_id"] == 22 || $items["category_id"] == 21) {
                         ?>
                         <div class="product">
+                          <!--link to a specific pageor section in a page-->
                           <a href="#"><div class="image_container1"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
                           <a href="#"><p class="product-name"><?= $items["product_name"]; ?></p></a>
                           <p><span class="old-price">R85</span>&nbsp;&nbsp;<span class="product-price">R<?= $items["price"]; ?></span></p>
@@ -111,13 +114,16 @@ include('config/dbcon.php');
         </div>
       </div>
       <div class="best_deal_container">
-        <div class="leftt"><img src="assets/images/best_deal.jpg" alt=""></div>
-        <div class="notificationCount">Best Deals</div>
+        <div class="leftt">
+          <img src="assets/images/best_deal.jpg" alt="">
+          <div class="best_deal2">Best Deals</div>
+        </div>
         <div class="rightt">
           <p>Save up to</p>
           <p>R150</p>
           <p>on Leading Brands</p>
           <p>Terms apply</p>
+          <!--link to a specific pageor section in a page-->
           <a href="shop_all.php"><button class="home_button">Browse</button></a>
         </div>
       </div>
@@ -167,11 +173,21 @@ include('config/dbcon.php');
           <button class="slide-button" id="slide-button-next1">&gt;</button>
         </div>
         <div class="button">
+          <!--link to a specific pageor section in a page-->
           <a href="shop_all.php"><button class="home_button">Explore Details</button></a>
         </div>
       </div>
       <div class="need_help_container">
-        category
+        <div class="textt_container">
+          <div>
+            <p>Need Help? Have Any Question? Contact Us</p>
+            <p>I'm a paragraph. Click here to add your own text and edit me. Let your users get to know you.</p>
+            <a href="contact_us.php"><button class="home_button">Contact Information</button></a>
+          </div>
+        </div>
+        <div class="image_container">
+          <img src="assets/images/footer.webp" alt="">
+        </div>
       </div>      
     </div>
   </main>
