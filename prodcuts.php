@@ -4,29 +4,47 @@ include('config/dbcon.php');
  include('components/header.php');
  include('components/navbar.php');
  include('components/frontbar.php');
+
+ if(isset($_GET['category'])){
+
+ $category_name = $_GET['category'];
+ $category_query =  "SELECT * FROM categories WHERE name = '$category_name' LIMIT 1";
+ $result = mysqli_query($connection, $category_query);
+
  ?>
   <main class="shop_all_page">
-    <div>
-      <h1>Search Results</h1>
-    </div>
+    <?php
+    if ($result && mysqli_num_rows($result) > 0) {
+      $category = mysqli_fetch_assoc($result);
+      $category_id = $category["id"];
+      ?>
+      <div>
+        <h1><?= $category["name"]; ?></h1>
+      </div>
+      <?php
+      }else {
+        ?>
+        <div>
+          <h1>No Products in this Category!</h1>
+        </div>
+        <?php
+      }
+    ?>
     <div class="shop_all_container">
-      <div class="shop_category">
-        <p>Category</p>
+      <div class="browse_by">
+        <h3>Browse by</h3>
         <div class="shop_category_container">
           <?php
-            $sql = "SELECT categories.id, categories.name, categories.status, COUNT(products.id) as product_count 
-                    FROM categories 
-                    LEFT JOIN products ON categories.id = products.category_id 
-                    GROUP BY categories.id, categories.name";
+            $sql = "SELECT * FROM categories";
             $result =  mysqli_query($connection, $sql);
             if ($result) {
               if (mysqli_num_rows($result) > 0) {
                 foreach ($result as $items) {
                   if ($items["status"] != "Hidden") {
+                    $isActive = $items["name"] === $category_name ? 'active-category' : '';
                     ?>
                     <div class="checkbox-container">
-                      <input type="checkbox" name="categories[]" value="<?= $items["id"]; ?>" id="category_<?= $items["id"]; ?>" class="styled-checkbox">
-                      <label for="category_<?= $items["id"]; ?>"><?= $items["name"]; ?> (<?= $items["product_count"]; ?>)</label>
+                      <a href="prodcuts.php?category=<?= $items["name"]; ?>" class="<?= $isActive; ?>"><span><?= $items["name"]; ?></span></a>
                     </div>
                     <?php
                   }
@@ -45,7 +63,7 @@ include('config/dbcon.php');
       <div class="shop_products">
         <div class="product-containerr" id="product-container">
           <?php
-            $sql = "SELECT * FROM products";
+            $sql = "SELECT * FROM products WHERE category_id = '$category_id'";
             $result = mysqli_query($connection, $sql);
 
             if ($result) {
@@ -95,6 +113,9 @@ include('config/dbcon.php');
       </div>
     </div>
   </main>
-<?php
+ <?php
+ } else{
+  echo "Something went wrong!";
+ }
  include('components/footer.php');
 ?>

@@ -1,5 +1,10 @@
 <?php
   session_start();
+  include('../config/dbcon.php');
+
+  if(!isset($_SESSION['auth'])){
+   header('Location: /admin/index.php');
+  };
  include('includes/header.php');
  include('includes/sideBar.php');
  ?>

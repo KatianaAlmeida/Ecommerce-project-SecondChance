@@ -21,8 +21,10 @@ include('config/dbcon.php');
                   if ($items["status"] != "Hidden") {
                     ?>
                     <div class="each_category">
-                      <div class="image_container"><img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["name"]; ?>"></div>
-                      <p><?= $items["name"]; ?></p>
+                      <a href="prodcuts.php?category=<?= $items["name"]; ?>">
+                        <div class="image_container"><img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["name"]; ?>"></div>
+                        <p><?= $items["name"]; ?></p>
+                      </a>
                     </div>
                     <?php
                   }

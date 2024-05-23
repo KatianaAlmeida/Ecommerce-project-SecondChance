@@ -12,7 +12,6 @@ include('config/dbcon.php');
         <p>Local & Affordable</p>
         <h1>Rediscover Quality at SecondChance Emporium</h1>
         <p>Great Savings on Quality Products</p>
-        <!--link to a specific pageor section in a page-->
         <a href="shop_all.php"><button class="home_button">Explore Now</button></a>
         </div>
       </div>
@@ -32,9 +31,10 @@ include('config/dbcon.php');
                   if ($items["status"] != "Hidden") {
                     ?>
                     <div class="each_category">
-                      <!--link to a specific pageor section in a page-->
-                      <a href="#"><div class="image_container1"><img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["name"]; ?>"></div></a>
-                      <a href="#"><p><?= $items["name"]; ?></p></a>
+                      <a href="prodcuts.php?category=<?= $items["name"]; ?>">
+                        <div class="image_container1"><img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["name"]; ?>"></div>
+                        <p><?= $items["name"]; ?></p>
+                      </a>
                     </div>
                     <?php
                     $count++;
@@ -82,10 +82,12 @@ include('config/dbcon.php');
                       if ($items["category_id"] == 22 || $items["category_id"] == 21) {
                         ?>
                         <div class="product">
-                          <!--link to a specific pageor section in a page-->
-                          <a href="#"><div class="image_container1"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
-                          <a href="#"><p class="product-name"><?= $items["product_name"]; ?></p></a>
-                          <p><span class="old-price">R85</span>&nbsp;&nbsp;<span class="product-price">R<?= $items["price"]; ?></span></p>
+                          <!--link to a specific product page-->
+                          <a href="">
+                            <div class="image_container1"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
+                            <p class="product-name"><?= $items["product_name"]; ?></p>
+                          </a>
+                          <p><span class="old-price">R305</span>&nbsp;&nbsp;<span class="product-price">R<?= $items["price"]; ?></span></p>
                         </div>
                         <?php
                       }
@@ -110,7 +112,7 @@ include('config/dbcon.php');
           <button class="slide-button" id="slide-button-next">&gt;</button>
         </div>
         <div class="button">
-          <a href="shop_all.php"><button class="home_button">See More</button></a>
+          <a href="prodcuts.php?category=Best Sellers"><button class="home_button">See More</button></a>
         </div>
       </div>
       <div class="best_deal_container">
@@ -123,8 +125,7 @@ include('config/dbcon.php');
           <p>R150</p>
           <p>on Leading Brands</p>
           <p>Terms apply</p>
-          <!--link to a specific pageor section in a page-->
-          <a href="shop_all.php"><button class="home_button">Browse</button></a>
+          <a href="prodcuts.php?category=Best Deals"><button class="home_button">Browse</button></a>
         </div>
       </div>
       <div class="explore_more_container">
@@ -145,6 +146,7 @@ include('config/dbcon.php');
                     foreach ($result as $items) {
                       if ($items["category_id"] == 16 || $items["category_id"] == 19) {
                         ?>
+                        <!--link to a specific product page-->
                         <div class="product">
                           <a href="#"><div class="image_container1"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
                           <a href="#"><p class="product-name"><?= $items["product_name"]; ?></p></a>
@@ -173,7 +175,6 @@ include('config/dbcon.php');
           <button class="slide-button" id="slide-button-next1">&gt;</button>
         </div>
         <div class="button">
-          <!--link to a specific pageor section in a page-->
           <a href="shop_all.php"><button class="home_button">Explore Details</button></a>
         </div>
       </div>

@@ -1,0 +1,156 @@
+.shop_all_page{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.shop_all_page h1{
+  text-align: center;
+  font-size: 50px;
+}
+
+/*========================= left section =========================*/
+.shop_all_container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.shop_category{
+  width: 15%;
+  height: 100%;
+  padding-left: 25px;
+  font-weight: bold;
+}
+
+.checkbox-container {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.styled-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  appearance: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  position: relative;
+}
+
+.styled-checkbox:checked {
+  background-color: white;
+}
+
+.styled-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:#751fff;
+  font-size: 18px;
+}
+
+label {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+/*--------------------*/
+.browse_by{
+  width: 15%;
+  height: 100%;
+  padding-left: 25px;
+}
+.browse_by a{
+  text-decoration: none;
+  margin: 2px 0;
+}
+.active-category {
+  color: #751fff;
+  font-weight: bold;
+}
+/*--------------------*/
+/*========================= right section =========================*/
+.shop_products {
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.product-containerr {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product-containerr .productt {
+  flex: 0 0 16%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productt a {
+  text-decoration: none;
+}
+
+.image_container2 img {
+  width: 100%;
+  height: auto;
+}
+
+.product-name1 {
+  font-size: 16px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.add-to-cart {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.add-to-cart:hover {
+  background-color: rgb(62, 62, 62);
+}
+
+.pagination {
+  text-align: center;
+  margin: 0;
+  margin-top: 40px;
+}
+
+.pagination button {
+  background-color: #751fff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 0 20px;
+  font-size: 16px;
+}
+
+.pagination button:disabled {
+  background-color: #e9e9ea;
+  cursor: not-allowed;
+  color: black;
+}
+
+.pagination span {
+  font-size: 18px;
+}

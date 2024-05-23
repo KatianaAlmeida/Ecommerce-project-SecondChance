@@ -29,7 +29,7 @@ if(isset($_POST['register-btn'])){
       if($insert_query_run && $createUserSql_run){
         $_SESSION['regis'] = true;
         $_SESSION['message'] = 'Registered Successfully!';
-        header('Location: ../register.php');
+        header('Location: ../login.php');
       }else{
         $_SESSION['message'] = 'Something went wrong!';
         header('Location: ../register.php');
