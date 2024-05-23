@@ -7,6 +7,11 @@
   text-align: center;
   font-size: 50px;
 }
+.shop_all_container h3{
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
 
 /*========================= left section =========================*/
 .shop_all_container{
@@ -20,9 +25,12 @@
   padding-left: 25px;
   font-weight: bold;
 }
+.shop_category a{
+  text-decoration: none;
+}
 
 .checkbox-container {
-  margin: 5px 0;
+  margin: 7px 0;
   display: flex;
   align-items: center;
 }
@@ -30,29 +38,14 @@
 .styled-checkbox {
   width: 18px;
   height: 18px;
-  cursor: pointer;
-  appearance: none;
-  border: 1px solid black;
-  border-radius: 5px;
+  display: none;
   position: relative;
 }
 
 .styled-checkbox:checked {
   background-color: white;
 }
-
-.styled-checkbox:checked::after {
-  content: '✓';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color:#751fff;
-  font-size: 18px;
-}
-
 label {
-  margin-left: 10px;
   font-size: 16px;
 }
 
@@ -136,7 +129,7 @@ label {
   margin-top: 40px;
 }
 
-.pagination button {
+.pagination a {
   background-color: #751fff;
   color: white;
   border: none;
@@ -146,10 +139,14 @@ label {
   font-size: 16px;
 }
 
-.pagination button:disabled {
+.pagination .disabled_button {
   background-color: #e9e9ea;
   cursor: not-allowed;
   color: black;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 20px;
+  font-size: 16px;
 }
 
 .pagination span {
@@ -169,6 +166,7 @@ label {
 .arrowDown{
   rotate: -30deg;
 }
+
 /*================== laptop (responsive) =================== */
 @media (min-width: 954px) and (max-width: 1518px){
   .shop_category,

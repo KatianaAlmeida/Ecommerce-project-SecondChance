@@ -17,8 +17,10 @@ function loadHTMLItems(property1, property2, html){
 }
 
 const html_Array = [`
-  <input class="search_bar" type="search" placeholder="Search for products, category..." aria-label="Search">
-  <button class="search_button" type="submit"><img class="search_icon" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/search--v1.png" alt="search--v1"/></button>
+  <form class="search_product_form" action="../../shop_all.php" method="post">
+    <input class="search_bar" type="search" name="search_box" maxlength="100" placeholder="Search for products, category..." aria-label="Search">
+    <button class="search_button" type="submit" name="search_btnn"><img class="search_icon" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/search--v1.png" alt="search--v1"/></button>
+  </form>
   `, `
   <?php
   if(isset($_SESSION['auth']) && $_SESSION['auth'] == true){ 
