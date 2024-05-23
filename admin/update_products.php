@@ -17,7 +17,7 @@
   ?>
     <!-- content/page section -->
     <main class="content">
-      <div class="form_container table-container">
+      <div class="form_container1 table-container">
         <h2>Product List</h2>
         <p class="description">View and/or delete Products below</p>  
         <div class="search_users">

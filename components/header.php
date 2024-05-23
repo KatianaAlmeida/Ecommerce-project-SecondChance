@@ -1,11 +1,3 @@
-<?/*
-  session_start();
-  include('config/dbcon.php');
-
-  if(!isset($_SESSION['auth'])){
-    header('Location: admin_login.php');
-  };*/
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +23,7 @@
   <link rel="stylesheet" href="assets/css/home.css">
   <link rel="stylesheet" href="assets/css/shop_all.css">
   <link rel="stylesheet" href="assets/css/sell.css">
+  <link rel="stylesheet" href="assets/css/each_product_view.css">
   <title>SecondChance Emperium</title>
 </head>
 <body>

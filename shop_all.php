@@ -101,8 +101,10 @@ include('config/dbcon.php');
                   foreach ($result3 as $items) {
                     ?>
                     <div class="productt">
-                      <a href="#"><div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
-                      <a href="#"><p class="product-name1"><?= $items["product_name"]; ?></p></a>
+                      <a href="each_product_view.php?product=<?= $items["incremented_name"];?>&page_name=shop_all">
+                        <div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
+                        <p class="product-name1"><?= $items["product_name"]; ?></p>
+                      </a>
                       <span class="product-price1">R<?= $items["price"]; ?>.00</span>
                       <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to Cart</button></a>
                     </div>
@@ -122,8 +124,10 @@ include('config/dbcon.php');
                 foreach ($result as $items) {
                   ?>
                   <div class="productt">
-                    <a href="#"><div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
-                    <a href="#"><p class="product-name1"><?= $items["product_name"]; ?></p></a>
+                    <a href="each_product_view.php?product=<?= $items["incremented_name"];?>&page_name=shop_all">
+                      <div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
+                      <p class="product-name1"><?= $items["product_name"]; ?></p>
+                    </a>
                     <span class="product-price1">R<?= $items["price"]; ?>.00</span>
                     <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to Cart</button></a>
                   </div>
@@ -237,8 +241,10 @@ include('config/dbcon.php');
                 foreach ($result as $items) {
                   ?>
                   <div class="productt">
-                    <a href="#"><div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
-                    <a href="#"><p class="product-name1"><?= $items["product_name"]; ?></p></a>
+                    <a href="each_product_view.php?product=<?= $items["incremented_name"];?>&page_name=shop_all">
+                      <div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
+                      <p class="product-name1"><?= $items["product_name"]; ?></p>
+                    </a>
                     <span class="product-price1">R<?= $items["price"]; ?>.00</span>
                     <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to Cart</button></a>
                   </div>

@@ -83,7 +83,7 @@ include('config/dbcon.php');
                         ?>
                         <div class="product">
                           <!--link to a specific product page-->
-                          <a href="">
+                          <a href="each_product_view.php?product=<?= $items["incremented_name"]; ?>">
                             <div class="image_container1"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
                             <p class="product-name"><?= $items["product_name"]; ?></p>
                           </a>
@@ -148,8 +148,10 @@ include('config/dbcon.php');
                         ?>
                         <!--link to a specific product page-->
                         <div class="product">
-                          <a href="#"><div class="image_container1"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
-                          <a href="#"><p class="product-name"><?= $items["product_name"]; ?></p></a>
+                          <a href="each_product_view.php?product=<?= $items["incremented_name"]; ?>">
+                            <div class="image_container1"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
+                            <p class="product-name"><?= $items["product_name"]; ?></p>
+                          </a>
                           <p><span class="old-price">R85</span>&nbsp;&nbsp;<span class="product-price">R<?= $items["price"]; ?></span></p>
                         </div>
                         <?php
