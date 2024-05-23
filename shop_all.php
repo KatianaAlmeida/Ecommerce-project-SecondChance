@@ -103,7 +103,7 @@ include('config/dbcon.php');
                     <div class="productt">
                       <a href="#"><div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
                       <a href="#"><p class="product-name1"><?= $items["product_name"]; ?></p></a>
-                      <span cla2ss="product-price1">R<?= $items["price"]; ?>.00</span>
+                      <span class="product-price1">R<?= $items["price"]; ?>.00</span>
                       <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to Cart</button></a>
                     </div>
                     <?php
@@ -157,6 +157,7 @@ include('config/dbcon.php');
         <?php  
     }else{
       ?>
+      <!-- DID NOT use the search box start-->
       <div>
         <h1>Search Results</h1>
       </div>
@@ -203,7 +204,6 @@ include('config/dbcon.php');
           </div>
           <a href="prodcuts.php?category=Computers" ><h3>Browser</h3></a>
         </div>
-        <!-- DID NOT use the search box start-->
         <?php
           // Define the number of products per page
           $products_per_page = 10;
