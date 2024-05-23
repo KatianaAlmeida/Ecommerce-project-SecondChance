@@ -10,8 +10,12 @@ include('config/dbcon.php');
       <h1>Search Results</h1>
     </div>
     <div class="shop_all_container">
+      
       <div class="shop_category">
-        <p>Category</p>
+        <p class="category_title" onclick="showItems('category_title', 'shop_category', '5');">
+          Category&nbsp;&nbsp;&nbsp;
+          <span class="js-arrow-5"><img class="arrow" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
+        </p>
         <div class="shop_category_container">
           <?php
             $sql = "SELECT categories.id, categories.name, categories.status, COUNT(products.id) as product_count 
@@ -32,12 +36,18 @@ include('config/dbcon.php');
                   }
                 }
               } else {
-                $_SESSION['message'] = 'No category found!';
-                header('Location: ../add_products.php');
+                ?>
+                <div class="each_category">
+                  <p>No Products Available!</p>
+                </div>
+                <?php
               }
             } else {
-              $_SESSION['message'] = 'Execution Error: '. $connection->error;
-              header('Location: ../add_products.php');
+              ?>
+              <div class="each_category">
+                <p>Execution Error: <?= $connection->error; ?></p>
+              </div>
+              <?php
             }
           ?>
         </div>
@@ -52,9 +62,6 @@ include('config/dbcon.php');
               if (mysqli_num_rows($result) > 0) {
                 $count = 0;
                 foreach ($result as $items) {
-                  if ($count % 5 == 0) {
-                    echo '<div class="product-row" style="display:none;">';
-                  }
                   ?>
                   <div class="productt">
                     <a href="#"><div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
@@ -63,13 +70,6 @@ include('config/dbcon.php');
                     <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to Cart</button></a>
                   </div>
                   <?php
-                  $count++;
-                  if ($count % 5 == 0) {
-                    echo '</div>';
-                  }
-                }
-                if ($count % 5 != 0) {
-                  echo '</div>'; // Close the last row if it's not a full row
                 }
               } else {
                 ?>

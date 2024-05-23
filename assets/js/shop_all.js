@@ -31,3 +31,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updatePagination();
 });
+
+/*===============================*/
+function showItems(item, container, number){
+  const subtItemsElement = document.querySelector(`.category_title`); 
+  const subtItemsElement_Container = document.querySelector(`.shop_category_container`); 
+  const arrowIcon_Container = document.querySelector(`.js-arrow-5`);
+
+  if(subtItemsElement_Container.style.display === 'none'){
+      subtItemsElement_Container.style.display = 'block';
+
+      const html = `
+      <img class="arrow arrowUp" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
+      `;
+      arrowIcon_Container.innerHTML = html;
+  } else{
+      subtItemsElement_Container.style.display = 'none';
+
+      const html = `
+      <img class="arrow arrowDown" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
+      `;
+      arrowIcon_Container.innerHTML = html;
+  }
+}
+
+window.addEventListener('resize', function() {
+  //console.log(window.innerWidth);
+  const subtItemsElement_Container = document.querySelector(`.shop_category_container`); 
+  const arrowIcon_Container = document.querySelector(`.js-arrow-5`);
+  if(788 > window.innerWidth){
+        subtItemsElement_Container.style.display = 'none';
+        const html = `
+        <img class="arrow arrowDown" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
+        `;
+        arrowIcon_Container.innerHTML = html;
+    } else{
+        subtItemsElement_Container.style.display = 'block';
+  
+        const html = `
+        <img class="arrow arrowUp" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
+        `;
+        arrowIcon_Container.innerHTML = html;
+    }
+});

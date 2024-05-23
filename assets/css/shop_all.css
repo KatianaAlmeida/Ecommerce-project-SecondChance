@@ -58,7 +58,7 @@ label {
 
 /*--------------------*/
 .browse_by{
-  width: 15%;
+  width: 10%;
   height: 100%;
   padding-left: 25px;
 }
@@ -73,7 +73,7 @@ label {
 /*--------------------*/
 /*========================= right section =========================*/
 .shop_products {
-  width: 85%;
+  width: 90%;
   height: 100%;
   margin: 0 auto;
 }
@@ -82,7 +82,7 @@ label {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 0 0;
 }
 
 .product-row {
@@ -92,12 +92,13 @@ label {
 }
 
 .product-containerr .productt {
-  flex: 0 0 16%;
+  flex: 0 0 20%;
   box-sizing: border-box;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0 25px;
 }
 
 .productt a {
@@ -153,4 +154,72 @@ label {
 
 .pagination span {
   font-size: 18px;
+}
+
+.arrow{
+  width: 10px;
+  height: 10px;
+  rotate: -30deg;
+}
+
+.arrowUp{
+  rotate: 30deg;
+}
+
+.arrowDown{
+  rotate: -30deg;
+}
+/*================== laptop (responsive) =================== */
+@media (min-width: 954px) and (max-width: 1518px){
+  .shop_category,
+  .browse_by{
+    width: 20%;
+    transition: all 0.4s ease;
+  }
+  .shop_products {
+    width: 80%;
+    transition: all 0.4s ease;
+  }
+  .product-containerr .productt {
+    flex: 0 0 25%;
+    padding: 0 8px;
+    transition: all 0.4s ease;
+  }
+}
+/*================== tablet (responsive) =================== */
+@media (min-width: 789px) and (max-width: 955px){
+  .shop_category,
+  .browse_by{
+    width: 28%;
+    transition: all 0.4s ease;
+  }
+  .shop_products {
+    width: 72%;
+    transition: all 0.4s ease;
+  }
+  .product-containerr .productt {
+    flex: 0 0 33.3%;
+    padding: 0 8px;
+    transition: all 0.4s ease;
+  }
+}
+/*================== phone (responsive) =================== */
+@media screen and (max-width: 788px) {
+  .shop_all_container{
+    flex-direction: column;
+  }
+  .shop_category,
+  .browse_by{
+    width: 100%;
+    transition: all 0.4s ease;
+  }
+  .shop_products {
+    width: 100%;
+    transition: all 0.4s ease;
+  }
+  .product-containerr .productt {
+    flex: 0 0 50%;
+    padding: 0 5px;
+    transition: all 0.4s ease;
+  }
 }

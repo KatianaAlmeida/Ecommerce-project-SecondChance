@@ -32,7 +32,10 @@ include('config/dbcon.php');
     ?>
     <div class="shop_all_container">
       <div class="browse_by">
-        <h3>Browse by</h3>
+        <h3 class="category_title" onclick="showItems('category_title', 'shop_category', '5');">
+        Browse by&nbsp;&nbsp;&nbsp;
+          <span class="js-arrow-5"><img class="arrow" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
+        </h3>
         <div class="shop_category_container">
           <?php
             $sql = "SELECT * FROM categories";
@@ -70,9 +73,6 @@ include('config/dbcon.php');
               if (mysqli_num_rows($result) > 0) {
                 $count = 0;
                 foreach ($result as $items) {
-                  if ($count % 5 == 0) {
-                    echo '<div class="product-row" style="display:none;">';
-                  }
                   ?>
                   <div class="productt">
                     <a href="#"><div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div></a>
@@ -81,13 +81,6 @@ include('config/dbcon.php');
                     <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to Cart</button></a>
                   </div>
                   <?php
-                  $count++;
-                  if ($count % 5 == 0) {
-                    echo '</div>';
-                  }
-                }
-                if ($count % 5 != 0) {
-                  echo '</div>'; // Close the last row if it's not a full row
                 }
               } else {
                 ?>
