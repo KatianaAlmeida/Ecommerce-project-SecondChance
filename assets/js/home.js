@@ -9,19 +9,20 @@ function changeBackground() {
   index = (index + 1) % images.length;
   document.getElementById('slideContainer').style.backgroundImage = `url('${images[index]}')`;
 }
-
 setInterval(changeBackground, 5000);
+
 //-------------------------------------------
 function initializeSlider(containerId, buttonNextId, buttonPrevId) {
   const container = document.getElementById(containerId);
   const buttonNext = document.getElementById(buttonNextId);
   const buttonPrev = document.getElementById(buttonPrevId);
-
+  
   let currentSlide = 0;
   const products = container.querySelectorAll('.product');
   const productWidth = products[0].offsetWidth + 20; // Adjust based on margin/padding
 
   buttonNext.addEventListener('click', () => {
+    console.log("next");
       if ((currentSlide + 1) * productWidth < container.scrollWidth) {
           currentSlide++;
           container.style.transform = `translateX(-${currentSlide * productWidth}px)`;

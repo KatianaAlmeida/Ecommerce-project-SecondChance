@@ -32,7 +32,7 @@ include('config/dbcon.php');
     ?>
     <div class="shop_all_container">
       <div class="browse_by">
-        <h3 class="category_title" onclick="showItems('category_title', 'shop_category', '5');">
+        <h3 class="category_title" onclick="showItems();">
           Browse by&nbsp;&nbsp;&nbsp;
           <span class="js-arrow-5"><img class="arrow" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/play.png" alt="play"/></span>
         </h3>
@@ -80,7 +80,19 @@ include('config/dbcon.php');
                       <div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
                       <p class="product-name1"><?= $items["product_name"]; ?></p>
                     </a>
-                    <span class="product-price1">R<?= $items["price"]; ?>.00</span>
+                    <span>
+                      <?php
+                      if($items["quantitty"] != 0){
+                        ?>
+                        <span class="product-price1">R<?= $items["price"]; ?>.00</span>
+                        <?php
+                      }else{
+                        ?>
+                        <span class="old-price">Out of Stock</span>
+                        <?php
+                      }
+                      ?>
+                    </span>
                     <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to cart</button></a>
                   </div>
                   <?php

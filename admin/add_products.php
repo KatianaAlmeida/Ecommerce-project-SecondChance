@@ -57,11 +57,11 @@
           <div class="form-grop2">
             <div>
               <label for="price">Price</label>
-              <input type="text" name="price" required>
+              <input type="text" name="price" min="1" required>
             </div>
             <div>
               <label for="quantity">Quantity</label>
-              <input type="number" name="quantity" required>
+              <input type="number" name="quantity" min="0" required>
             </div>
           </div> 
           <div class="form-group">

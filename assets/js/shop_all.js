@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /*===============================*/
-function showItems(item, container, number){
+function showItems(){
   const subtItemsElement = document.querySelector(`.category_title`); 
   const subtItemsElement_Container = document.querySelector(`.shop_category_container`); 
   const arrowIcon_Container = document.querySelector(`.js-arrow-5`);

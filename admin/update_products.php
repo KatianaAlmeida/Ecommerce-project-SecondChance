@@ -96,11 +96,11 @@
           <div class="form-grop2">
             <div>
               <label for="price">Price</label>
-              <input type="text" name="price">
+              <input type="text" name="price" min="1">
             </div>
             <div>
               <label for="quantity">Quantity</label>
-              <input type="number" name="quantity">
+              <input type="number" name="quantity" min="0">
             </div>
           </div> 
           <div class="form-group">

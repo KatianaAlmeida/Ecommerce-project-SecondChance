@@ -87,7 +87,19 @@ include('config/dbcon.php');
                             <div class="image_container1"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
                             <p class="product-name"><?= $items["product_name"]; ?></p>
                           </a>
-                          <p><span class="old-price">R305</span>&nbsp;&nbsp;<span class="product-price">R<?= $items["price"]; ?></span></p>
+                          <p>
+                            <?php
+                            if($items["quantitty"] != 0){
+                              ?>
+                              <span class="old-price">R305</span>&nbsp;&nbsp;<span class="product-price">R<?= $items["price"]; ?></span>
+                              <?php
+                            }else{
+                              ?>
+                              <span class="old-price">Out of Stock</span>
+                              <?php
+                            }
+                            ?>
+                          </p>
                         </div>
                         <?php
                       }

@@ -1,35 +1,37 @@
-<?php
-session_start();
-include('config/dbcon.php');
- include('components/header.php');
- include('components/navbar.php');
- include('components/frontbar.php');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
- if(isset($_GET['product'])){
-  $product_number = $_GET['product'];
-  $product_query =  "SELECT * FROM products WHERE incremented_name = '$product_number' LIMIT 1";
-  $result = mysqli_query($connection, $product_query)
- ?>
-  <main class="product_page_container">
-    <div class="product_page">
-      <div class="product_navigation">
-        
-        <p>Home / Wearable Tech / Safay GEN 2 256GB VR headset With Touch Controllers</p>
-      </div>
-      <div class="product_details">
-        <p>product_details</p>
-      </div>
-      <div class="product_reviews">
-        <p>product_reviews</p>
-      </div>
-      <div class="product_recomendation">
-        <p>product_recomendation</p>
-      </div>
-    </div>
-  </main>
-<?php
-} else{
-  echo "Something went wrong!";
- }
- include('components/footer.php');
-?>
+<div id="description_laptop"></div>
+<div id="description_phone"></div>
+
+<script>
+  // Embedding PHP variable into JavaScript
+  const productDescription = `<?= addslashes($product["product_description"]); ?>`;
+  window.addEventListener('resize', function() {
+    const content = `<p>${productDescription}</p>`;
+    const description_laptop = document.querySelector('#description_laptop');
+    const description_phone = document.querySelector('#description_phone');
+    
+    if (description_laptop && description_phone) { // Check if elements exist
+      if (window.innerWidth < 788) { // Mobile view
+        description_laptop.innerHTML = 'a';
+        description_phone.innerHTML = content;
+      } else { // Desktop view
+        description_phone.innerHTML = 'a';
+        description_laptop.innerHTML = content;
+      }
+    }
+  });
+
+  // Initial call to handle the content display based on current window size
+  window.dispatchEvent(new Event('resize'));
+</script>
+
+</body>
+</html>

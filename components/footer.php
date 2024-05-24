@@ -63,5 +63,6 @@
   <script src="assets/js/help_center.js"></script>
   <script src="assets/js/home.js"></script>
   <script src="assets/js/shop_all.js"></script>
+  <script src="assets/js/each_product.js"></script>
 </body>
 </html>
