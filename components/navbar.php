@@ -50,7 +50,7 @@
         }?>
           <a href=""><img class="favorite_icon" src="https://img.icons8.com/fluency-systems-filled/48/hearts.png" alt="hearts"/></a>
           <div class="notification_Container">
-            <a href=""><img class="cart_icon" src="https://img.icons8.com/windows/32/shopping-cart.png" alt="shopping-cart"/></a>
+            <a href="../cart_page.php"><img class="cart_icon" src="https://img.icons8.com/windows/32/shopping-cart.png" alt="shopping-cart"/></a>
             <div class="notificationCount">3</div>
           </div>
         <!-- -------------------------- -->

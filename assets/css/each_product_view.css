@@ -78,7 +78,7 @@
   flex-direction: row;
   align-items: center;
 }
-.cart_wish_container button,
+.cart_wish_container input,
 .no_stock_container button{
   border: none;
   background-color: #751fff;
@@ -92,7 +92,7 @@
   background-color: gray;
   margin: 15px 0;
 }
-.cart_wish_container button:hover{
+.cart_wish_container input:hover{
   background-color: #8c49f9;
 }
 .cart_wish_container img,
@@ -102,7 +102,7 @@
   margin-left: 5px;
   cursor: pointer;
 }
-.buy_container button{
+.buy_container input{
   border: none;
   background-color: black;
   color: white;
@@ -140,7 +140,6 @@
   display: flex;
 }
 .product_info_container hr{
-  background-color: lightblue;
   margin: 5px 0;
 }
 

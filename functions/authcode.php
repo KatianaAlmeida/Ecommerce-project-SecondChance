@@ -54,7 +54,7 @@ if(isset($_POST['login-btn'])){
     $user_name = $userdata['full_name'];
     $user_email = $userdata['email'];
     $user_id = $userdata['id'];
-
+    
     $_SESSION['auth_user'] = [
       'full_name' => $user_name,
       'email' => $user_email,

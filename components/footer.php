@@ -64,5 +64,38 @@
   <script src="assets/js/home.js"></script>
   <script src="assets/js/shop_all.js"></script>
   <script src="assets/js/each_product.js"></script>
+  <!-- Function to display alert if there's a message -->
+  <script>
+    function showAlert(message) {
+      if (message) {
+        alert(message);
+      }
+    }
+  </script>
+  <script>
+    var gt = 0;
+    var iprice = document.getElementsByClassName('iprice');
+    var iquantity = document.getElementsByClassName('iquantity');
+    var itotal = document.getElementsByClassName('itotal'); // each product total
+    var gtotal = document.getElementById('gtotal');// final total
+    var quantity;
+
+    function subTotal(){
+      gt=0;
+      for(i = 0; i < iprice.length; i++){
+        itotal[i].innerHTML = (iprice[i].value) * (iquantity[i].value);
+        gt = gt + (iprice[i].value) * (iquantity[i].value);
+      }
+      gtotal.innerHTML = gt;
+    }
+  </script>
+  <!-- Check if the session cart_add_message is set -->
+  <?php
+    if (isset($_SESSION['cart_add_message'])) {
+      $message = $_SESSION['cart_add_message'];
+      unset($_SESSION['cart_add_message']); // Unset the session message after use
+      echo "<script>showAlert('$message');</script>";
+    }
+  ?>
 </body>
 </html>

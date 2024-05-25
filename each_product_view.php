@@ -1,6 +1,6 @@
 <?php
-session_start();
-include('config/dbcon.php');
+ session_start();
+ include('config/dbcon.php');
  include('components/header.php');
  include('components/navbar.php');
  include('components/frontbar.php');
@@ -57,31 +57,38 @@ include('config/dbcon.php');
           <div class="product_price_container">
             <p>R<?= $product["price"]; ?></p>
           </div>
-          <div class="quantity_container">
-            <label for="quantity">Quantity</label>
-            <input type="number" value="1" name="quantity" id="quantity" min="1">
-          </div>
-          <?php
-          /* cart_wish_container and no_stock_container*/
-          if($product["quantitty"] != 0){
-            ?>
-            <div class="cart_wish_container">
-              <button>Add to Cart</button>
-              <img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2"/>
-            </div>
-            <div class="buy_container">
-              <button>Buy Now</button>
-            </div> 
-            <?php
-          }else{
-            ?>
-            <div class="no_stock_container">
-              <button>Out of Stock</button>
-              <img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2"/>
+          <!-- Product {quantity, cart, wishList, buyNow and no_stock}-->
+          <form action="functions/handle_cart.php" method="post">
+            <!-- product quantity-->
+            <div class="quantity_container">
+              <label for="quantity">Quantity</label>
+              <input type="number" value="1" name="quantity" id="quantity" min="1">
             </div>
             <?php
-          }
-          ?>  
+            /* cart, wishList, buyNow and no_stock_container*/
+            if($product["quantitty"] != 0){
+              ?>
+              <div class="cart_wish_container">
+                <input type="hidden"  name="product_id" value="<?=$product["id"];?>">
+                <input type="hidden"  name="SKU" value="<?=$product_number;?>">
+                <input class="add_product_button-js" type="submit"  value="Add to Cart" name="add_to_cart-btn"></input>
+                <img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2"/>
+              </div>
+              <div class="buy_container">
+                <input type="submit" value="Buy Now" name="buy_now-btn"></input>
+              </div> 
+              <?php
+            /* no_stock_container*/
+            }else{
+              ?>
+              <div class="no_stock_container">
+                <button disabled>Out of Stock</button>
+                <img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2"/>
+              </div>
+              <?php
+            }
+            ?>
+          </form>  
           <div class="product_info_container">
             <div class="info_dropdown"><span>Product Info</span><span class="sign sign1-js">+</span></div>
             <div class="info_content_off">
@@ -170,11 +177,11 @@ include('config/dbcon.php');
       </div>
     </main>
     <?php
-    }else {
-        echo "Something went wrong!";
-    }
-} else{
-  echo "Something went wrong!";
- }
+  }else {
+    echo "Something went wrong!";
+  }
+ } else{
+    echo "Something went wrong!";
+  }
  include('components/footer.php');
 ?>

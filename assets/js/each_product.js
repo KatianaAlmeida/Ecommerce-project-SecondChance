@@ -26,3 +26,4 @@ descr_dropdown.addEventListener('click', function() {
     sign.innerHTML = '+';
   }
 });
+
