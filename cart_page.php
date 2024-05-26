@@ -40,24 +40,19 @@ include('config/dbcon.php');
                     <div class="prod_qty_container">
                       <form id="numberForm" action="functions/handle_cart.php" method="post">
                         <input type="hidden" class="iprice"  name="price" value="<?=$items["price"];?>">
-                        <input onchange="subTotal();" class="iquantity" type="number" id="numberInput" value="<?= $items["product_qty"]; ?>" name="update_cart_btn" min="1">
+                        <input type="hidden"  name="product_id" value="<?= $items["product_id"]; ?>">
+                        <input onchange="subTotal();" class="iquantity" type="number" id="numberInput" value="<?= $items["product_qty"]; ?>" name="product_qty" min="0">
+                        <button type="submit" name="update_cart_btn">Update</button>
                       </form>
                       <span class="product-name1">R<span class="itotal"><?= $items["price"]; ?></span></span>
                     </div>
                   </div>
-                  <div class="close_btn_container">
-                  <p class="product-name1"><img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="delete-sign--v1"/></p>
-                  </div>
+                  <form class="close_btn_container" action="functions/handle_cart.php" method="post">
+                    <input type="hidden"  name="product_id" value="<?= $items["product_id"]; ?>">
+                    <button type="submit" name="delete_prod_btn" class="product-name1"><img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="delete-sign--v1"/></button>
+                  </form>
                 </div>
                 <hr>
-                <?php
-                /*
-                <div class="productt">
-                  <p class="product-name1"><?= $items["cart_id"]; ?></p>
-                  <p class="product-name1"><?= $items["product_id"]; ?></p>
-                </div>
-                */
-                ?>
                 <?php
               }
               ?>
@@ -70,37 +65,35 @@ include('config/dbcon.php');
                   <p>Subtotal</p>
                   <p>R<span id="gtotal"><?= $initial_amout; ?></span></p>
                 </div>
+                <?php
+                $deliver = 0;
+                $total = $initial_amout;
+
+                if ($initial_amout < 500) {
+                  $deliver = $initial_amout * 0.15;
+                  $total += $deliver;
+                }
+                ?>
                 <div class="delivery">
                   <p>Delivery</p>
                   <p>
-                    <?php
-                    $deliver = 0;
-                    $total = $initial_amout + $deliver;
-                    if($initial_amout > 500){
-                      $deliver = 0;
-                      ?>
-                      <span>FREE</span>
-                      <?php
-                    }else{
-                      $deliver = $initial_amout * 0.15;
-                      ?>
-                      <span>R<?= $deliver; ?></span>
-                      <?php
-                    }
-                    ?>
+                    <span><span id="deliver"><?= ($deliver > 0) ? number_format($deliver, 2) : 'FREE'; ?></span></span>
                   </p>
                 </div>
                 <hr> 
                 <div class="final_price">
                   <p>Total</p>
-                  <p>R<?= $total; ?></p>
+                  <p>R<span id="total"><?= number_format($total, 2); ?></span></p>
                 </div>
                 <div class="cart_wish_container">
                   <input type="hidden"  name="product_id" value="<?=$product["id"];?>">
                   <input type="hidden"  name="SKU" value="<?=$product_number;?>">
                   <input class="add_product_button-js" type="submit"  value="Checkout" name="add_to_cart-btn"></input>
                 </div>
-                <span>Secure Checkout</span>
+                <div class="secure_checkout">
+                  <img src="https://img.icons8.com/ios-glyphs/30/lock--v1.png" alt="lock--v1"/>
+                  <p>Secure Checkout</p>
+                </div>
               </div>  
             </div>
             <?php
@@ -131,7 +124,7 @@ include('config/dbcon.php');
           <div class="empty_cart">
             <p>My cart</p>
             <div class="cart_container">
-              <p>Cart is empty</p>
+              <p>Cart is empty (<a href="login.php">Click here to Login</a>)</p>
               <a href="shop_all.php">Continue Browsing</a>
             </div>
           </div>

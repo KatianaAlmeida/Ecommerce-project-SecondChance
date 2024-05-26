@@ -72,21 +72,31 @@
       }
     }
   </script>
+    <!-- Function to update the prodcut quantity, delivery fee and the total amout -->
   <script>
     var gt = 0;
     var iprice = document.getElementsByClassName('iprice');
     var iquantity = document.getElementsByClassName('iquantity');
     var itotal = document.getElementsByClassName('itotal'); // each product total
-    var gtotal = document.getElementById('gtotal');// final total
-    var quantity;
+    var gtotal = document.getElementById('gtotal'); // initial total
+    var deliver = document.getElementById('deliver'); // delivery amount
+    var total = document.getElementById('total'); // final total
 
-    function subTotal(){
-      gt=0;
-      for(i = 0; i < iprice.length; i++){
+    function subTotal() {
+      gt = 0;
+      for (var i = 0; i < iprice.length; i++) {
         itotal[i].innerHTML = (iprice[i].value) * (iquantity[i].value);
-        gt = gt + (iprice[i].value) * (iquantity[i].value);
+        gt += (iprice[i].value) * (iquantity[i].value);
       }
       gtotal.innerHTML = gt;
+      if (gt > 500) {
+        deliver.innerHTML = 'FREE';
+        total.innerHTML = gt;
+      } else {
+        var deliveryCharge = gt * 0.15;
+        deliver.innerHTML = deliveryCharge.toFixed(2);
+        total.innerHTML = (gt + deliveryCharge).toFixed(2);
+      }
     }
   </script>
   <!-- Check if the session cart_add_message is set -->

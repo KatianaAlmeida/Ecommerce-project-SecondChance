@@ -1,3 +1,27 @@
+  <!-- count how many prodcuts there is in the cart -->
+<?php
+  include('config/dbcon.php');
+
+  $cart_count = 0;
+  // Check if the user is authenticated
+  if (isset($_SESSION['auth'])) {
+    $user_id = $_SESSION['auth_user']['id'];
+
+    // Query to get the count of items in the user's cart
+    $sql = "SELECT SUM(product_qty) as cart_count FROM carts WHERE user_id = '$user_id'";
+    $result = mysqli_query($connection, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_assoc($result);
+      $cart_count = $row['cart_count'];
+      if($cart_count == ''){
+        $cart_count = 0;
+      }
+    }
+  }else {
+    $cart_count = 0;
+  }
+?>
   <!-- header -->
   <header class="header">
     <div class="promotion">
@@ -51,7 +75,7 @@
           <a href=""><img class="favorite_icon" src="https://img.icons8.com/fluency-systems-filled/48/hearts.png" alt="hearts"/></a>
           <div class="notification_Container">
             <a href="../cart_page.php"><img class="cart_icon" src="https://img.icons8.com/windows/32/shopping-cart.png" alt="shopping-cart"/></a>
-            <div class="notificationCount">3</div>
+            <div class="notificationCount"><?= $cart_count; ?></div>
           </div>
         <!-- -------------------------- -->
       </div>
