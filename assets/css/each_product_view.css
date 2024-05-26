@@ -132,15 +132,241 @@
   line-height: 1.5;
 }
 .info_content_off,
-.descr_content_off{
+.review_off,
+.review_off_1,
+.no_review_off,
+.descr_content_off,
+.update_off{
   display: none;
 }
+
+.open_close{
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown_content_off{
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2000;
+  top: 25px;
+  right: 0;
+}
+
+.dropdown_content_off .dropdown-item{
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  width: 100%;
+  background-color: white;
+  border: none;
+}
+
+.dropdown_content_off .dropdown-item:hover{
+  background-color: #f1f1f1;
+  color: #751fff;
+}
+
 .info_content_on,
-.descr_content_on{
+.review_on,
+.review_on_1,
+.no_review_on,
+.descr_content_on,
+.dropdown_content_on,
+.update_on{
   display: flex;
 }
 .product_info_container hr{
   margin: 5px 0;
+}
+
+/*----------------------------*/
+.no_review{
+  border-top: 1px solid rgb(192, 192, 192);
+  border-bottom: 1px solid rgb(192, 192, 192);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background-color: white;
+  margin: 25px 0;
+}
+
+.no_review p:nth-child(1){
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.no_review button{
+  padding: 10px;
+  background-color: #751fff;
+  border: 1px solid #751fff;
+  color: white;
+  cursor: pointer;
+}
+
+.no_review button:hover{
+  background-color: white;
+  color: black;
+}
+
+.product_review_form {
+  border-top: 1px solid rgb(192, 192, 192);
+  border-bottom: 1px solid rgb(192, 192, 192);
+  width: 100%;
+  margin: 25px 0;
+  flex-direction: column;
+}
+
+.form_group {
+  margin-bottom: 15px;
+}
+
+.form_group label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.form_group input[type="text"],
+.form_group textarea,
+.form_group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.form_group input[type="file"] {
+  margin-top: 10px;
+}
+
+.form_actions {
+  margin: 20px 0;
+  text-align: right;
+}
+
+.form_actions button,
+.write_review {
+  border: 1px solid #751fff;
+  background-color: #751fff;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.form_actions .cancel_review {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #751fff;
+  color: #751fff;
+  cursor: pointer;
+}
+
+/**/
+.file-input-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: S#333;
+  cursor: pointer;
+}
+
+.file-icon {
+  font-size: 18px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+/**/
+
+.product_reviews_container,
+.review_list_header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.review_list_container,
+.review_rating_container{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items:baseline;
+  justify-content:baseline;
+}
+
+.review_rating_container h3{
+  margin: 5px 0;
+}
+
+.review_list_container{
+  margin-right: 20px;
+}
+
+.review_list{
+  width: 100%;
+}
+
+.review_list_header p{
+  padding: 0;
+  margin: 0;
+}
+.review_list_header img{
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+.helpful{
+  display: flex;
+  flex-direction: row;
+}
+
+.helpful .space{
+  padding: 0;
+  margin-right: 10px;
+}
+
+.review_list{
+  border-bottom: 1px solid rgb(192, 192, 192);
+  margin-bottom: 15px;
+  padding: 10px 0;
+}
+
+.review_list .image_container img{
+  width: 75px;
+  height: 75px;
 }
 
 /*================== laptop (responsive) =================== */
@@ -170,7 +396,8 @@
     flex-direction: column;
     transition: all 0.4s ease;
   }
-  .product_details1{
+  .product_details1,
+  .product_review_form{
     width: 100%;
     padding: 0 40px;
     transition: all 0.4s ease;
