@@ -1,0 +1,245 @@
+.checkout_page_container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #e9e9ea;
+  padding: 10px 400px; /* make it responsive */
+}
+
+.product_details{
+  background-color: #e9e9ea;
+}
+
+.checkout_details1{
+  width: 65%; /* make it responsive */
+  padding: 20px;
+  background-color: white;
+}
+
+.message_address{
+  margin-top: 0;
+}
+.insert_address_info form{
+  width: 100%;
+}
+.delivery_method,
+.delivery_address,
+.insert_address_info{
+  border-bottom: 1px solid rgb(192, 192, 192);
+}
+.delivery_address .address1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.delivery_address,
+.insert_address_info{
+  padding-bottom: 15px;
+}
+.card_options img{
+  width: 8%;
+  height: 8%;
+  margin: 0;
+  margin-top: 10px;
+}
+.checkout_details2{
+  width: 35%; /* make it responsive */
+  margin-left: 30px;
+  padding: 10px;
+  background-color: white;
+}
+
+.order_summary{
+  max-height: 200px;
+  overflow-y:scroll;
+}
+
+.middle_container1{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.name_container1 p{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 250px;
+  min-width: 5%;
+  padding: 5px;
+}
+
+.prod_qty_container label{
+  font-size: 13px;
+  color: gray;
+  padding: 0 5px;
+}
+.quantity{
+  max-width: 40px;
+}
+
+.new_address{
+  padding: 10px;
+  border: none;
+  background-color: white;
+  border: 2px solid #751fff;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.each_address button{
+  padding: 5px 0;
+  width: 30%;
+  border: none;
+  background-color: #e9e9ea;
+  cursor: pointer;
+  border-radius: 17px;
+}
+
+.each_address p{
+  margin: 0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.each_address .name_number{
+  font-weight: lighter;
+  font-size: 14px;
+  margin: 5px 0;
+  color: gray;
+}
+.radio_container {
+  margin-bottom: 10px; /* Adjust spacing between containers as needed */
+}
+
+.radio_input {
+  display: none; /* Hide the default radio button */
+}
+
+.radio_label {
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* Make the entire label clickable */
+}
+.name_close_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.each_address {
+  border: 1px solid #ccc; /* Add border to container */
+  padding: 10px;
+  border-radius: 3px; 
+  width: 100%;
+}
+
+.radio_input:checked + .radio_label .each_address {
+  background-color: #eee8f7; /* Change background when radio button is checked */
+}
+
+@media (min-width: 1201px) and (max-width: 1608px){
+  .checkout_page_container{
+    padding: 10px 180px;
+    transition: all 0.4s ease;
+  }
+}
+
+/*================== phone (responsive) =================== */
+@media (min-width: 990px) and (max-width: 1200px) {
+  .checkout_page_container{
+    padding: 10px 50px;
+    transition: all 0.4s ease;
+    /*background-color: lightcoral;*/
+  }
+  .img_container .product_img img{
+    width: 100%;
+  }
+  .product_in_checkout{
+    justify-content: left;
+  }
+  .name_container1 p{
+    white-space: nowrap;
+    overflow:visible;
+    width: 340px;
+  }
+  .checkout_details1{
+    width: 100%; 
+  }
+}
+
+@media (min-width: 820px) and (max-width: 989px) {
+  .checkout_page_container{
+    padding: 10px 200px; 
+    transition: all 0.4s ease;
+  }
+  .img_container .product_img img{
+    width: 80%;
+  }
+  .name_container1 p{
+    white-space: nowrap;
+    overflow:visible;
+    width: 440px;
+  }
+  .checkout_details1{
+    width: 100%; 
+  } 
+  .checkout_details2{
+    width: 100%;
+    margin-left: 0;
+    margin-top: 30px;
+  } 
+}
+
+@media (min-width: 570px) and (max-width: 819px) {
+  .checkout_page_container{
+    padding: 10px 100px; 
+    transition: all 0.4s ease;
+  }
+  .img_container .product_img img{
+    width: 80%;
+  }
+  .name_container1 p{
+    white-space: nowrap;
+    overflow:visible;
+    width: 440px;
+  }
+  .checkout_details1{
+    width: 100%; 
+  }
+  .checkout_details2{
+    width: 100%;
+    margin-left: 0;
+    margin-top: 30px;
+  } 
+}
+
+@media screen and (max-width: 569px){
+  .checkout_page_container{
+    padding: 10px 10px; 
+    transition: all 0.4s ease;
+  }
+  .img_container .product_img img{
+    width: 80%;
+  }
+  .name_container1 p{
+    white-space: nowrap;
+    overflow:visible;
+    width: 440px;
+  }
+  .checkout_details1{
+    width: 100%; 
+  }
+  .checkout_details2{
+    width: 100%;
+  } 
+  .checkout_details2{
+    width: 100%;
+    margin-left: 0;
+    margin-top: 30px;
+  } 
+}
+

@@ -64,6 +64,7 @@
   <script src="assets/js/home.js"></script>
   <script src="assets/js/shop_all.js"></script>
   <script src="assets/js/each_product.js"></script>
+  <script src="assets/js/checkout.js"></script>
   <!-- Function to display alert if there's a message -->
   <script>
     function showAlert(message) {

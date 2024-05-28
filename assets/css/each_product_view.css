@@ -79,6 +79,7 @@
   align-items: center;
 }
 .cart_wish_container input,
+.cart_wish_container a,
 .no_stock_container button{
   border: none;
   background-color: #751fff;
@@ -120,8 +121,10 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .info_dropdown span,
+.info_dropdown a,
 .descr_dropdown span{
   font-size: 16px;
   margin: 5px 0;
@@ -136,7 +139,9 @@
 .review_off_1,
 .no_review_off,
 .descr_content_off,
-.update_off{
+.update_off,
+.insert_address_off,
+.delivery_address_off{
   display: none;
 }
 
@@ -178,8 +183,12 @@
 .no_review_on,
 .descr_content_on,
 .dropdown_content_on,
-.update_on{
+.update_on,
+.insert_address_on{
   display: flex;
+}
+.delivery_address_on{
+  display: block;
 }
 .product_info_container hr{
   margin: 5px 0;

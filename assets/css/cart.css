@@ -12,10 +12,13 @@
 .product_in_cart_details1{
   width: 75%; /* make it responsive */
   padding: 10px;
+  background-color: white;
 }
 .product_in_cart_details2{
   width: 25%; /* make it responsive */
   padding-left: 40px;
+  padding: 10px;
+  background-color: white;
 }
 
 .empty_cart{
@@ -44,11 +47,19 @@
   align-items: center;
 }
 
-.product_in_cart .img_container{
+.product_in_checkout{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.product_in_cart .img_container,
+.product_in_checkout .img_container{
   min-width: 25%;
 }
 
-.product_in_cart .img_container img{
+.product_in_cart .img_container img,
+.product_in_checkout .img_container img{
   width: 100%;
   max-width: 300px;
   height: 100%;
@@ -72,7 +83,8 @@
   margin: 0 5px;
 }
 
-.product_in_cart .name_container p{
+.product_in_cart .name_container p,
+.product_in_checkout .name_container p{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -80,20 +92,23 @@
   min-width: 25%;
   padding: 5px;
 }
-.product_in_cart .prod_qty_container{
+.product_in_cart .prod_qty_container,
+.product_in_checkout .prod_qty_container{
   min-width: 80px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-.product_in_cart .prod_qty_container input{
+.product_in_cart .prod_qty_container input,
+.product_in_checkout .prod_qty_container input{
   padding: 5px;
   width: 50%;
   border: 1px solid rgb(192, 192, 192);
 }
 
-.product_in_cart .prod_qty_container button{
+.product_in_cart .prod_qty_container button,
+.product_in_checkout .prod_qty_container button{
   padding: 5px;
   border: 1px solid rgb(192, 192, 192);
   background-color: white;
@@ -105,7 +120,21 @@
   padding: 0;
   margin: 0;
 }
+.name_close_container .close_btn_container button{
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
 .product_in_cart .close_btn_container img{
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  min-width: 8%;
+  cursor: pointer;
+}
+
+.name_close_container .close_btn_container img{
   padding: 5px;
   width: 30px;
   height: 30px;
@@ -134,6 +163,17 @@
 }
 .secure_checkout p{
   font-size: 12px;
+}
+
+.checkout{
+  border: none;
+  background-color: #751fff;
+  color: white;
+  width: 100%;
+  margin: 0;
+  height: 35px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 @media (min-width: 990px) and (max-width: 1350px) {

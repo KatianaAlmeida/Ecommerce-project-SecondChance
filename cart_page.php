@@ -44,7 +44,7 @@ include('config/dbcon.php');
                         <input onchange="subTotal();" class="iquantity" type="number" id="numberInput" value="<?= $items["product_qty"]; ?>" name="product_qty" min="0">
                         <button type="submit" name="update_cart_btn">Update</button>
                       </form>
-                      <span class="product-name1">R<span class="itotal"><?= $items["price"]; ?></span></span>
+                      <span class="product-name1">R<span class="itotal"><?= $items["price"] * $items["product_qty"]; ?></span></span>
                     </div>
                   </div>
                   <form class="close_btn_container" action="functions/handle_cart.php" method="post">
@@ -86,9 +86,7 @@ include('config/dbcon.php');
                   <p>R<span id="total"><?= number_format($total, 2); ?></span></p>
                 </div>
                 <div class="cart_wish_container">
-                  <input type="hidden"  name="product_id" value="<?=$product["id"];?>">
-                  <input type="hidden"  name="SKU" value="<?=$product_number;?>">
-                  <input class="add_product_button-js" type="submit"  value="Checkout" name="add_to_cart-btn"></input>
+                  <a href="checkout.php"><input class="add_product_button-js" type="submit"  value="Checkout" name="add_to_cart-btn"></a>
                 </div>
                 <div class="secure_checkout">
                   <img src="https://img.icons8.com/ios-glyphs/30/lock--v1.png" alt="lock--v1"/>

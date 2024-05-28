@@ -53,8 +53,8 @@
           <img class="user_icon" src="https://img.icons8.com/material-sharp/24/user-male-circle.png" alt="user-male-circle"/>
           <span class="sign_up_in"><?= $user_name?></span>
           <div class="dropdown-content2">
+            <a class="dropdown-item"  href="#">My Account</a>
             <a class="dropdown-item" href="#">Order History</a>
-            <a class="dropdown-item"  href="#">Account detail</a>
             <a class="dropdown-item" href="#">Address Book</a>
             <a class="dropdown-item"  href="#">Card Details</a>
             <a class="dropdown-item" href="..//functions/logout.php">Logout</a>
