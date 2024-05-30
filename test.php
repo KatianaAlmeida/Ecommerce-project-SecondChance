@@ -1,64 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .file-input-container {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.file-input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.file-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-}
-
-.file-icon {
-  font-size: 24px;
-  margin-right: 5px;
-}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        .styled-table th, .styled-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        .styled-table th {
+            background-color: #f2f2f2;
+            border-bottom: 2px solid #ddd;
+        }
+        .styled-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        .expand-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-<div class="file-input-container">
-  <input type="file" id="file-input" class="file-input" multiple>
-  <label for="file-input" class="file-label">
-    <span class="file-icon">+</span>
-    <span class="file-text">Add File</span>
-  </label>
-</div>
-<script>
-  const fileInput = document.getElementById('file-input');
-const fileLabel = document.querySelector('.file-label');
-
-fileInput.addEventListener('change', () => {
-  const files = fileInput.files;
-  if (files.length > 0) {
-    fileLabel.querySelector('.file-text').textContent = `${files.length} File(s) Selected`;
-  } else {
-    fileLabel.querySelector('.file-text').textContent = 'Add File';
-  }
-});
-</script>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Order Number</th>
+                <th>Status</th>
+                <th>Price</th>
+                <th>Order Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2024-05-29</td>
+                <td>secondchange1799</td>
+                <td></td>
+                <td>850</td>
+                <td><button class="expand-button">Expand</button></td>
+            </tr>
+            <tr>
+                <td>2024-05-30</td>
+                <td>secondchange9541</td>
+                <td></td>
+                <td>500</td>
+                <td><button class="expand-button">Expand</button></td>
+            </tr>
+            <tr>
+                <td>2024-05-30</td>
+                <td>secondchange7553665842b7ab75d</td>
+                <td></td>
+                <td>230</td>
+                <td><button class="expand-button">Expand</button></td>
+            </tr>
+            <tr>
+                <td>2024-05-30</td>
+                <td>secondchange7261665845c7b54b0</td>
+                <td></td>
+                <td>115</td>
+                <td><button class="expand-button">Expand</button></td>
+            </tr>
+            <tr>
+                <td>2024-05-30</td>
+                <td>secondchange8100665846125b0a9</td>
+                <td></td>
+                <td>98</td>
+                <td><button class="expand-button">Expand</button></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

@@ -42,7 +42,7 @@
         }
         ?>
       </div>
-      <div class="product_details">
+      <div class="product_details" style="background-color: white;">
         <div class="product_details1">
           <div class="product_image_container">
             <img src="admin/uploads/<?= $product["image_1"]; ?>" alt="<?= $product["image_1"]; ?>">

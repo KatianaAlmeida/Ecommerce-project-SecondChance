@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="assets/css/each_product_view.css">
   <link rel="stylesheet" href="assets/css/cart.css">
   <link rel="stylesheet" href="assets/css/checkout.css">
+  <link rel="stylesheet" href="assets/css/customer_info.css">
   <title>SecondChance Emperium</title>
 </head>
 <body>

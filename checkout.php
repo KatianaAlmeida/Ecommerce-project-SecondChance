@@ -1,9 +1,12 @@
 <?php
-session_start();
-include('config/dbcon.php');
- include('components/header.php');
- include('components/navbar.php');
- include('components/frontbar.php');
+  session_start();
+  include('config/dbcon.php');
+  if(!isset($_SESSION['auth'])){
+    header('Location: login.php');
+  };
+  include('components/header.php');
+  include('components/navbar.php');
+  include('components/frontbar.php');
  ?>
   <main class="checkout_page_container">
     <div class="product_details background horiz_ruler">
@@ -66,6 +69,7 @@ include('config/dbcon.php');
                                 <p class="name_number"><?= $items["address_type"]; ?></p>
                                 <form class="close_btn_container" action="functions/place_order.php" method="post">
                                   <input type="hidden"  name="address_id" value="<?= $items["id"]; ?>">
+                                  <input type="hidden"  name="page" value="checkout_page">
                                   <button type="submit" name="delete_address_btn" class="product-name1"><img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="delete-sign--v1"/></button>
                                 </form>
                               </div>
@@ -143,6 +147,7 @@ include('config/dbcon.php');
                     <input type="text" name="postal_code" required>
                   </div> 
                   <div class="form-group">
+                    <input type="hidden"  name="page" value="checkout_page">
                     <button type="submit" name="save_address_btn">Save Address</button>
                   </div>
                 </form>
@@ -258,7 +263,9 @@ include('config/dbcon.php');
                 <input type="hidden"  name="delivery_type_h" value="delivery_type" id="delivery_type_hidden">
                 <input type="hidden"  name="choosen_address_h" value="choosen_address" id="choosen_address_hidden">
                 <input type="hidden"  name="choosen_payment_h" value="choosen_payment" id="choosen_payment_hidden">
-                <input class="add_product_button-js" type="submit"  value="Checkout" name="make_checkout_btn">
+                <input type="hidden"  name="delivery" value="<?= $deliver; ?>">
+                <input type="hidden"  name="payment_id" value="">
+                <input class="add_product_button-js" type="submit"  value="Order" name="make_checkout_btn">
               </form>
               <div class="secure_checkout">
                 <img src="https://img.icons8.com/ios-glyphs/30/lock--v1.png" alt="lock--v1"/>

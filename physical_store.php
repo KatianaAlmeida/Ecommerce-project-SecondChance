@@ -1,4 +1,6 @@
 <?php
+session_start();
+include('config/dbcon.php');
  include('components/header.php');
  include('components/navbar.php');
  include('components/frontbar.php');

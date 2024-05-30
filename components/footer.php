@@ -20,7 +20,7 @@
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="#">Shop All</a></li>
+            <li><a href="../shop_all.php">Shop All</a></li>
             <li><a href="#">Sell</a></li>
             <li><a href="#">Trade-ins</a></li>
             <li><a href="#">Repair</a></li>
@@ -65,6 +65,7 @@
   <script src="assets/js/shop_all.js"></script>
   <script src="assets/js/each_product.js"></script>
   <script src="assets/js/checkout.js"></script>
+  <script src="assets/js/customer_info.js"></script>
   <!-- Function to display alert if there's a message -->
   <script>
     function showAlert(message) {
