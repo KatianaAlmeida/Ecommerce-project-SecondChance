@@ -15,3 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.getElementById('add_card').addEventListener('submit', function(event) {
+  const ageInput = document.getElementById('card_number');
+  if (isNaN(ageInput.value) || ageInput.value.trim() === '') {
+      alert('Please enter a valid number.');
+      event.preventDefault();
+  }
+  const expiry_year = document.getElementById('expiry_year');
+  if (isNaN(expiry_year.value) || expiry_year.value.trim() === '') {
+      alert('Please enter a valid number.');
+      event.preventDefault();
+  }
+});

@@ -158,7 +158,7 @@
                 </div>
                 <div class="address_info">
                   <div class="radio_container">
-                    <input type="radio" id="card" value="Credit and Debit Card" name="choosen_payment" class="radio_input" required>
+                    <input type="radio" onclick="toggleMessage()" id="card" value="Credit and Debit Card" name="choosen_payment" class="radio_input" required>
                     <label for="card" class="radio_label">
                       <div class="each_address">
                         <p>Credit & Debit Card</p>
@@ -169,8 +169,107 @@
                       </div>
                     </label>
                   </div>
+                  <div id="display_card_info">
+                    <div class="delivery_address">
+                      <div class="address1">
+                      <div class="customer_info_title">
+                        <p>Card Details</p>
+                      </div>
+                        <button onclick="insert_form1();" class="new_address new_address1">New Card</button>
+                      </div>
+                      <div class="address_info">
+                        <?php
+                        $card_sql = "SELECT * FROM card_details WHERE user_id = '$user_id'";
+                        $card_sql_run =  mysqli_query($connection, $card_sql);
+                        if ($card_sql_run) {
+                          if (mysqli_num_rows($card_sql_run) > 0) {
+                            $count = 0;
+                            foreach ($card_sql_run as $items) {
+                              $count++; 
+                              $last_4_digits = substr($items["card_number"], -4);
+                              ?>
+                              <div class="radio_container">
+                                <input type="radio" id="user_address<?= $count; ?>" value="<?= $items["id"]; ?>" name="choosen_address" class="radio_input" required>
+                                <label for="user_address<?= $count; ?>" class="radio_label">
+                                  <div class="each_address">
+                                    <div class="name_close_container">
+                                      <p class="name_number">Card Ending with <?=  $last_4_digits; ?></p>
+                                      <form class="close_btn_container" action="functions/place_order.php" method="post">
+                                        <input type="hidden"  name="card_id" value="<?= $items["id"]; ?>">
+                                        <input type="hidden"  name="page" value="checkout_page">
+                                        <button type="submit" name="delete_card_btn" class="product-name1"><img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="delete-sign--v1"/></button>
+                                      </form>
+                                    </div>
+                                    <p><?= $items["name_on_card"]; ?></p>
+                                    <p>Visa ****<?= $last_4_digits; ?></p>
+                                    <p>Expires <?= $items["expiry_month"]; ?>, <?= $items["expiry_year"]; ?></p>
+                                  </div>
+                                </label>
+                              </div>
+                              <?php
+                            }
+                          }
+                        } else {
+                          $_SESSION['adress_added'] = 'Execution Error: '. $connection->error;
+                          header('Location: ../adress_added.php');
+                        }
+                        ?>
+                      </div>
+                    </div>
+                    <div class="insert_address_info insert_address1_off">
+                      <form id="add_card" enctype="multipart/form-data" action="functions/place_order.php" method="POST">
+                        <p>Add Card Details</p>  
+                        <div class="form-group">
+                          <label for="name_on_card">Name on Card</label>
+                          <input type="text" name="name_on_card" required>
+                        </div>    
+                        <div class="form-group">
+                          <label for="card_number">Card Number</label>
+                          <input type="number" id="card_number" name="card_number" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="name">Expiry Month</label>
+                          <select name="expiry_month" class="categotySelect" required>
+                            <option disabled selected hidden>Select Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                          </select>
+                        </div>  
+                        <div class="form-group">
+                          <label for="expiry_year">Expiry Year</label>
+                          <input type="number" id="expiry_year" name="expiry_year" required>
+                        </div> 
+                        <div class="form-group">
+                          <label for="cvv">CVV</label>
+                          <input type="text" name="cvv" required>
+                        </div> 
+                        <div class="form-group">
+                          <input type="hidden"  name="page" value="checkout_page">
+                          <button type="submit" name="save_card_btn">Save Card</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <?php
+                        if(isset($_SESSION['card_added'])){ 
+                          ?>
+                          <p class="message_address"> <?= $_SESSION['card_added'];?></p>
+                          <?php
+                          unset($_SESSION['card_added']);
+                        }
+                      ?>
                   <div class="radio_container">
-                    <input type="radio" id="paypal" value="Paypal" name="choosen_payment" class="radio_input">
+                    <input type="radio" onclick="toggleMessage()" id="paypal" value="Paypal" name="choosen_payment" class="radio_input">
                     <label for="paypal" class="radio_label">
                       <div class="each_address">
                         <p>Paypal</p>
@@ -181,7 +280,7 @@
                     </label>
                   </div>
                   <div class="radio_container">
-                    <input type="radio" id="cash" value="Cash" name="choosen_payment" class="radio_input">
+                    <input type="radio" onclick="toggleMessage()" id="cash" value="Cash" name="choosen_payment" class="radio_input">
                     <label for="cash" class="radio_label">
                       <div class="each_address">
                         <p>Cash</p>

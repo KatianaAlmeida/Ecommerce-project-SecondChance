@@ -11,6 +11,19 @@ function insert_form(){
   }
 }
 
+function insert_form1(){
+  const insert_address = document.querySelector('.insert_address1_off'); 
+  const new_address = document.querySelector('.new_address1'); 
+  if(!insert_address.classList.contains('insert_address1_on')){
+    insert_address.classList.add('insert_address1_on');
+    new_address.innerHTML = 'Hide';
+
+  } else{
+    insert_address.classList.remove('insert_address1_on');
+    new_address.innerHTML = 'New Address';
+  }
+}
+
 function open_address(){
   const delivery_address_off = document.querySelector('.delivery_address_off'); 
   if(!delivery_address_off.classList.contains('delivery_address_on')){
@@ -78,3 +91,14 @@ choosen_payment.forEach(button => {
     deliveryTypeHidden.value = selectedValue;
   });
 });
+
+function toggleMessage() {
+  const showRadio = document.querySelector('input[name="choosen_payment"][value="Credit and Debit Card"]');
+  const messageDiv = document.getElementById('display_card_info');
+  
+  if (showRadio.checked) {
+      messageDiv.style.display = 'block';
+  } else {
+      messageDiv.style.display = 'none';
+  }
+}

@@ -141,6 +141,10 @@
   background-color: #eee8f7; /* Change background when radio button is checked */
 }
 
+#display_card_info{
+  display: none;
+}
+
 @media (min-width: 1201px) and (max-width: 1608px){
   .checkout_page_container{
     padding: 10px 180px;

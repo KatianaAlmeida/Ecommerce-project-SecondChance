@@ -103,8 +103,6 @@ if(isset($_POST['update_user_info_btn'])){
   $confirmed_password = mysqli_real_escape_string($connection, $_POST['confirmed_password']);
   $user_id = mysqli_real_escape_string($connection, $_POST['user_id']);
 
-
-
   if(($password != null || $password != '') && ($confirmed_password != null || $confirmed_password != '')){
     if($password == $confirmed_password){
       $sql_detail = "UPDATE users SET username = '$username', full_name = '$full_name', email = '$email', password = '$password' WHERE id = '$user_id'";
