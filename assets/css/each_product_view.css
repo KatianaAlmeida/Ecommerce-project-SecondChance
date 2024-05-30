@@ -378,6 +378,11 @@
   height: 75px;
 }
 
+.whishlist{
+  background-color: transparent;
+  border: none;
+}
+
 /*================== laptop (responsive) =================== */
 @media (min-width: 1201px) and (max-width: 1608px){
   .product_page_container{

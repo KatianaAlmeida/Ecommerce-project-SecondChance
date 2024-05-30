@@ -59,7 +59,7 @@
             <p>R<?= $product["price"]; ?></p>
           </div>
           <!-- Product {quantity, cart, wishList, buyNow and no_stock}-->
-          <form action="functions/handle_cart.php" method="post">
+          <form action="functions/handle_whish_list.php" method="post">
             <!-- product quantity-->
             <div class="quantity_container">
               <label for="quantity">Quantity</label>
@@ -70,10 +70,10 @@
             if($product["quantitty"] != 0){
               ?>
               <div class="cart_wish_container">
+                <input class="add_product_button-js" type="submit"  value="Add to Cart" name="add_to_cart-btn"></input>
                 <input type="hidden"  name="product_id" value="<?=$product["id"];?>">
                 <input type="hidden"  name="SKU" value="<?=$product_number;?>">
-                <input class="add_product_button-js" type="submit"  value="Add to Cart" name="add_to_cart-btn"></input>
-                <img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2"/>
+                <button type="submit" class="whishlist" name="add_whish_btn"><img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2"/></button>
               </div>
               <div class="buy_container">
                 <input type="submit" value="Buy Now" name="buy_now-btn"></input>

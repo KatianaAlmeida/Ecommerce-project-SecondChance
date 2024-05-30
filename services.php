@@ -1,17 +1,19 @@
 <?php
-session_start();
-include('config/dbcon.php');
- include('components/header.php');
- include('components/navbar.php');
- include('components/frontbar.php');
+  session_start();
+  include('config/dbcon.php');
+  if(!isset($_SESSION['auth'])){
+    header('Location: login.php');
+  };
+  include('components/header.php');
+  include('components/navbar.php');
+  include('components/frontbar.php');
  ?>
   <main class="user_main">
-    <div class="physical_store_container">
-      <div class="our_vision">
-        <h1>Services Offered</h1>
-        <p>Welcome to our Help Page! Here you will find answers to common questions and guidance on using our website. Explore the sections below to learn about account setup, browsing products, making purchases, tracking orders, and managing your account settings. If you need further assistance, please contact our support team via email or through our FAQ section.</p>
-      </div>
+    <div class="customer_info_container">
       <div class="tab-container">
+        <div class="customer_info">
+          <h1>Services Offered</h1>
+        </div>
         <div class="tab-buttons">
             <button class="tab-link active" onclick="openTab(event, 'service_page1')">Sell</button>
             <button class="tab-link" onclick="openTab(event, 'service_page2')">Trade-Ins</button>
@@ -38,8 +40,7 @@ include('config/dbcon.php');
             <P>Hello There</P>
           </div>
         </div>
-
-    </div>
+      </div>
     </div>
   </main>
 <?php

@@ -23,6 +23,7 @@
           <button class="tab-link" onclick="openTab(event, 'cust_page2')">Order History</button>
           <button class="tab-link" onclick="openTab(event, 'cust_page3')">Address Book</button>
           <button class="tab-link" onclick="openTab(event, 'cust_page4')">Card Details</button>
+          <button class="tab-link" onclick="openTab(event, 'cust_page5')">Whish List</button>
         </div>
         <div id="cust_page1" class="tab-content active">
           <div class="contentt_container">
@@ -504,6 +505,11 @@
                 </div>
               </form>
             </div>
+          </div>
+        </div>
+        <div id="cust_page5" class="tab-content">
+          <div class="contentt_container">
+            <p>Hello There</p>
           </div>
         </div>
       </div>
