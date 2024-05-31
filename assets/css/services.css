@@ -1,0 +1,131 @@
+.sell_serivice_container h2{
+  margin: 0;
+}
+.section p {
+  margin: 10px 0;
+}
+.pricing {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.fee-estimator {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+}
+.fee-estimator h3 {
+  margin-top: 0;
+}
+
+.tools_needed,
+.Start_selling_online{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+.Start_selling_online{
+  justify-content:flex-start;
+}
+.tools_needed .section {
+  width: 23.5%;
+  padding: 5px;
+  box-shadow: -1px 1px 5px rgb(194, 192, 192);
+}
+
+.Start_selling_online .section2 img{
+  width: 50%;
+}
+.tools_needed .section .img_container img{
+  width: 100%;
+}
+
+.Start_selling_online{
+  text-align: center;
+  padding: 10px;
+  box-shadow: -1px 1px 5px rgb(194, 192, 192);
+}
+
+.Start_selling_online .section2 {
+  width: 15%;
+  padding: 5px;
+}
+
+@media screen and (max-width: 1415px){
+  .tools_needed .section {
+    width: 32%;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+  }
+  .Start_selling_online .section2 {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 1017px){
+  .tools_needed .section {
+    width: 48%;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+  }
+  .Start_selling_online{
+    justify-content:center;
+  }
+  .Start_selling_online .section2 {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .tools_needed .section {
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+  }
+  .Start_selling_online{
+    justify-content:center;
+  }
+  .Start_selling_online .section2 {
+    width: 60%;
+  }
+}
+
+/*=================== trade-in service ======================*/
+.hero {
+  background: #8c8a8a;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.hero p {
+  font-size: 1.2em;
+}
+
+.content {
+  padding: 10px 0;
+  display: flex;
+  text-align: left;
+}
+
+.content h3 {
+  margin-bottom: 20px;
+}
+
+.content p, .content ul, .content ol {
+  margin-bottom: 20px;
+}
+
+.content ul, .content ol {
+  padding-left: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .content ul li {
+      display: block;
+      margin: 5px 0;
+  }
+}

@@ -6,7 +6,7 @@
           <h4>Store Location</h4>
           <ul>
             <li><a href="#">53 Main Rd, Claremont, Cape Town, 7700, CA 94158</a></li>
-            <li><a href="#">info&#64;mysite&#46;com</a></li>
+            <li><a href="#">info&#64;secondchance&#46;com</a></li>
             <li><a href="#">123-456-7890</a></li>
             <li class="social-links">
               <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -56,7 +56,7 @@
         <a href=""><img class="payment_method_icon" src="assets/images/payFast.png" alt=""></a>
       </div>
     </div>
-    <div class="copyRight">&#169; SecondChange Emperium Online (Pty) Ltd&#46;</div>
+    <div class="copyRight">&#169; 2024 Second Chance Emperioum. All rights reserved.</div>
   </footer>
   <!-- JavaScript -->
   <script src="assets/js/navBar.js"></script>
