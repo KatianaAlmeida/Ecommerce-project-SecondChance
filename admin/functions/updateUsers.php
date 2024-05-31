@@ -127,4 +127,14 @@ if(isset($_POST['delete-btn'])){
   }
 }
 
+if(isset($_POST['customer_id_btn'])){
+  $customer_id = mysqli_real_escape_string($connection, $_POST['customer_id']);
+  $full_name = mysqli_real_escape_string($connection, $_POST['full_name']);
+
+  $_SESSION['getID_message'] = 'You are viewing '.$full_name.' orders. Customer: {'.$customer_id.'}';
+  $_SESSION['name'] = $full_name;
+  $_SESSION['id'] = $customer_id;
+  header('Location: ../customer_details.php');
+}
+
 ?>

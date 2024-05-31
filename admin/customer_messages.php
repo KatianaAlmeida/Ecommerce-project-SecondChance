@@ -56,11 +56,11 @@
                     </form>
                   </td>
                 </tr>
-              <?        
+              <?php        
             }
             ?>
         </table>
-            <?
+            <?php
           } else {
             $_SESSION['message'] = 'No category found!';
             header('Location: ../category.php');

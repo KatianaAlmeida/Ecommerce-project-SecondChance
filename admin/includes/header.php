@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/admin/assets/css/add_users.css">
   <link rel="stylesheet" href="/admin/assets/css/view_update_user.css">
   <link rel="stylesheet" href="/admin/assets/css/login.css">
+  <link rel="stylesheet" href="../../assets/css/customer_info.css">
   <title>SecondChance Admin</title>
 </head>
 <body>
