@@ -38,7 +38,7 @@ include('config/dbcon.php');
                       <p class="product-name1"><?= $items["product_name"]; ?></p>
                     </div>
                     <div class="prod_qty_container">
-                      <form id="numberForm" action="functions/handle_cart.php" method="post">
+                      <form class="input_btn_container" id="numberForm" action="functions/handle_cart.php" method="post">
                         <input type="hidden" class="iprice"  name="price" value="<?=$items["price"];?>">
                         <input type="hidden"  name="product_id" value="<?= $items["product_id"]; ?>">
                         <input onchange="subTotal();" class="iquantity" type="number" id="numberInput" value="<?= $items["product_qty"]; ?>" name="product_qty" min="0">

@@ -99,27 +99,7 @@ include('config/dbcon.php');
                 $result3 = mysqli_query($connection, $sql3);
                 if($result3){
                   foreach ($result3 as $items) {
-                    ?>
-                    <div class="productt">
-                      <a href="each_product_view.php?product=<?= $items["incremented_name"];?>&page_name=shop_all">
-                        <div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
-                        <p class="product-name1"><?= $items["product_name"]; ?></p>
-                      </a>
-                      <?php
-                      if($items["quantitty"] != 0){
-                        ?>
-                        <span class="product-price1">R<?= $items["price"]; ?>.00</span>
-                        <?php
-                      }else{
-                        ?>
-                        <span class="old-price">Out of Stock</span>
-                        <?php
-                      }
-                      ?>
-                    </span>
-                      <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to Cart</button></a>
-                    </div>
-                    <?php
+                    include 'functions/product_template.php'; // -- 1
                   }                 
                 }else {
                   ?>
@@ -133,27 +113,7 @@ include('config/dbcon.php');
               }else if (mysqli_num_rows($result) > 0) {
                 // -- result box used start {search prodcuts} --
                 foreach ($result as $items) {
-                  ?>
-                  <div class="productt">
-                    <a href="each_product_view.php?product=<?= $items["incremented_name"];?>&page_name=shop_all">
-                      <div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
-                      <p class="product-name1"><?= $items["product_name"]; ?></p>
-                    </a>
-                    <?php
-                      if($items["quantitty"] != 0){
-                        ?>
-                        <span class="product-price1">R<?= $items["price"]; ?>.00</span>
-                        <?php
-                      }else{
-                        ?>
-                        <span class="old-price">Out of Stock</span>
-                        <?php
-                      }
-                      ?>
-                    </span>
-                    <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to Cart</button></a>
-                  </div>
-                  <?php
+                  include 'functions/product_template.php'; // -- 2
                 }
                 unset($_POST['search_btnn']);
                 unset($_POST['search_box']);
@@ -261,27 +221,7 @@ include('config/dbcon.php');
             if ($result) {
               if (mysqli_num_rows($result) > 0) {
                 foreach ($result as $items) {
-                  ?>
-                  <div class="productt">
-                    <a href="each_product_view.php?product=<?= $items["incremented_name"];?>&page_name=shop_all">
-                      <div class="image_container2"><img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>"></div>
-                      <p class="product-name1"><?= $items["product_name"]; ?></p>
-                    </a>
-                    <?php
-                      if($items["quantitty"] != 0){
-                        ?>
-                        <span class="product-price1">R<?= $items["price"]; ?>.00</span>
-                        <?php
-                      }else{
-                        ?>
-                        <span class="old-price">Out of Stock</span>
-                        <?php
-                      }
-                      ?>
-                    </span>
-                    <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to Cart</button></a>
-                  </div>
-                  <?php
+                  include 'functions/product_template.php'; // -- 3
                 }
               } else {
                 ?>

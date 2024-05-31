@@ -21,10 +21,10 @@
           <h4>Services</h4>
           <ul>
             <li><a href="../shop_all.php">Shop All</a></li>
-            <li><a href="#">Sell</a></li>
-            <li><a href="#">Trade-ins</a></li>
-            <li><a href="#">Repair</a></li>
-            <li><a href="#">Layaway</a></li>
+            <li><a href="../../services.php#service_page1">Sell</a></li>
+            <li><a href="../../services.php#service_page2">Trade-ins</a></li>
+            <li><a href="../../services.php#service_page3">Repair</a></li>
+            <li><a href="../../services.php#service_page4">Layaway</a></li>
           </ul>
         </div>
         <div class="footer-col">

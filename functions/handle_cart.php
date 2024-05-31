@@ -4,9 +4,20 @@ session_start();
 include('../config/dbcon.php');
 
 /* ====================== Cart ======================= */
+function move_to($page, $SKU, $connection) {
+  if($page == 'shop_all'){
+    header('Location: ../shop_all.php');
+  } else if($page == 'category_search'){
+    $category_name = mysqli_real_escape_string($connection, $_POST['category_name']);
+    header('Location: ../prodcuts.php?category='.$category_name.'');
+  }else{
+    header('Location: ../each_product_view.php?product='.$SKU.'');
+  }
+}
 
 if(isset($_POST['add_to_cart-btn'])){
   $SKU = mysqli_real_escape_string($connection, $_POST['SKU']);
+  $page = mysqli_real_escape_string($connection, $_POST['page']);
   if(isset($_SESSION['auth'])){
     $quantity = mysqli_real_escape_string($connection, $_POST['quantity']);
     $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
@@ -19,7 +30,7 @@ if(isset($_POST['add_to_cart-btn'])){
 
     if ($check_existing_cart_run && mysqli_num_rows($check_existing_cart_run) > 0) {
       $_SESSION['cart_add_message'] = 'Product alredy in Cart!';
-      header('Location: ../each_product_view.php?product='.$SKU.'');
+      move_to($page, $SKU, $connection);
 
     }else{
       $sql = "INSERT INTO carts (user_id,	product_id,	product_qty) VALUES('$user_id', '$product_id', '$quantity')";
@@ -27,15 +38,15 @@ if(isset($_POST['add_to_cart-btn'])){
   
       if($insert_query_run){
         $_SESSION['cart_add_message'] = 'Product Added Sucessfully!';
-        header('Location: ../each_product_view.php?product='.$SKU.'');
+        move_to($page, $SKU, $connection);
       }else{
         $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
-        header('Location: ../each_product_view.php?product='.$SKU.'');
+        move_to($page, $SKU, $connection);
       }
     }
   }else{
     $_SESSION['cart_add_message'] = 'Login to continue!';
-    header('Location: ../each_product_view.php?product='.$SKU.'');
+    move_to($page, $SKU, $connection);
   }
 }
 

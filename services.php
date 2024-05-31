@@ -1,9 +1,6 @@
 <?php
   session_start();
   include('config/dbcon.php');
-  if(!isset($_SESSION['auth'])){
-    header('Location: login.php');
-  };
   include('components/header.php');
   include('components/navbar.php');
   include('components/frontbar.php');
