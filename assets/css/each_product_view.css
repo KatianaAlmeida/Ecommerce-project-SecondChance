@@ -80,7 +80,7 @@
 }
 .cart_wish_container input,
 .cart_wish_container a,
-.no_stock_container button{
+.disabled_btn{
   border: none;
   background-color: #751fff;
   color: white;
@@ -89,7 +89,7 @@
   border-radius: 20px;
   cursor: pointer;
 }
-.no_stock_container button{
+.disabled_btn{
   background-color: gray;
   margin: 15px 0;
 }

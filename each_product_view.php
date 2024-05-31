@@ -59,7 +59,7 @@
             <p>R<?= $product["price"]; ?></p>
           </div>
           <!-- Product {quantity, cart, wishList, buyNow and no_stock}-->
-          <form action="functions/handle_whish_list.php" method="post">
+          <form action="functions/handle_cart.php" method="post">
             <!-- product quantity-->
             <div class="quantity_container">
               <label for="quantity">Quantity</label>
@@ -70,9 +70,9 @@
             if($product["quantitty"] != 0){
               ?>
               <div class="cart_wish_container">
-                <input class="add_product_button-js" type="submit"  value="Add to Cart" name="add_to_cart-btn"></input>
                 <input type="hidden"  name="product_id" value="<?=$product["id"];?>">
                 <input type="hidden"  name="SKU" value="<?=$product_number;?>">
+                <input class="add_product_button-js" type="submit"  value="Add to Cart" name="add_to_cart-btn"></input>
                 <button type="submit" class="whishlist" name="add_whish_btn"><img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2"/></button>
               </div>
               <div class="buy_container">
@@ -83,8 +83,10 @@
             }else{
               ?>
               <div class="no_stock_container">
-                <button disabled>Out of Stock</button>
-                <img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2"/>
+                <button class="disabled_btn" disabled>Out of Stock</button>
+                  <input type="hidden"  name="product_id" value="<?=$product["id"];?>">
+                  <input type="hidden"  name="SKU" value="<?=$product_number;?>">
+                  <button type="submit" class="whishlist" name="add_whish_btn"><img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2"/></button>
               </div>
               <?php
             }
@@ -136,22 +138,24 @@
                     <div class="review_list_header">
                       <p><b><?= $items["user_name"]; ?> - <?= date('Y-m-d', strtotime($items["created_at"])); ?></b></p>
                       <?php
-                      if($_SESSION['auth_user']['username'] ==  $items["user_name"]){
-                        ?>
-                        <div class="open_close">
-                          <img src="https://img.icons8.com/ios-filled/50/menu-2.png" alt="menu-2"/>
-                          <div class="dropdown_content_off">
-                            <button class="dropdown-item open_edit">Edit</button>
-                            <hr>
-                            <form action="functions/handle_review.php" method="post">
-                              <input type="hidden"  name="SKU" value="<?=$product_number;?>">
-                              <input type="hidden"  name="product_id" value="<?=$product["id"];?>">
-                              <button type="submit" class="dropdown-item" name="delete_btn" href="#">Delete</button>
-                            </form>
+                      if(isset($_SESSION['auth_user'])){
+                        if($_SESSION['auth_user']['username'] ==  $items["user_name"]){
+                          ?>
+                          <div class="open_close">
+                            <img src="https://img.icons8.com/ios-filled/50/menu-2.png" alt="menu-2"/>
+                            <div class="dropdown_content_off">
+                              <button class="dropdown-item open_edit">Edit</button>
+                              <hr>
+                              <form action="functions/handle_review.php" method="post">
+                                <input type="hidden"  name="SKU" value="<?=$product_number;?>">
+                                <input type="hidden"  name="product_id" value="<?=$product["id"];?>">
+                                <button type="submit" class="dropdown-item" name="delete_btn" href="#">Delete</button>
+                              </form>
+                            </div>
                           </div>
-                        </div>
-                        <?php
-                      }
+                          <?php
+                        }
+                      }                      
                       ?>
                     </div>
                     <p>

@@ -23,7 +23,7 @@
           <button class="tab-link" onclick="openTab(event, 'cust_page2')">Order History</button>
           <button class="tab-link" onclick="openTab(event, 'cust_page3')">Address Book</button>
           <button class="tab-link" onclick="openTab(event, 'cust_page4')">Card Details</button>
-          <button class="tab-link" onclick="openTab(event, 'cust_page5')">Whish List</button>
+          <button class="tab-link" onclick="openTab(event, 'cust_page5')">Wishlist List</button>
         </div>
         <div id="cust_page1" class="tab-content active">
           <div class="contentt_container">
@@ -292,10 +292,10 @@
           <div class="contentt_container">
             <div class="delivery_address">
               <div class="address1">
-              <div class="customer_info_title">
-              <h3>My Addresses</h3>
-              <span>Add and manage the addresses you use often.</span>
-            </div>
+                <div class="customer_info_title">
+                  <h3>My Addresses</h3>
+                  <span>Add and manage the addresses you use often.</span>
+                </div>
                 <button onclick="insert_form();" class="new_address">New Address</button>
               </div>
               <div class="address_info">
@@ -508,8 +508,77 @@
           </div>
         </div>
         <div id="cust_page5" class="tab-content">
-          <div class="contentt_container">
-            <p>Hello There</p>
+          <div class="contentt_container horiz_ruler">
+            <div class="customer_info_title">
+              <h3>My Wishlist</h3>
+              <span>View favorite products you&#39;ve saved to your wishlist.</span>
+            </div>
+            <hr>
+            <div class="product-containerr" id="product-container">
+          <?php
+            $wishlist_query = "SELECT 
+                    p.image_1,
+                    p.product_name,
+                    p.price,
+                    p.quantitty,
+                    w.id
+                    FROM wishlist w
+                    JOIN products p ON w.product_id = p.id
+                    WHERE w.user_id = '$user_id';";
+            $wishlist_query_run = mysqli_query($connection, $wishlist_query);
+
+            if ($wishlist_query_run) {
+              if (mysqli_num_rows($wishlist_query_run) > 0) {
+                foreach ($wishlist_query_run as $items) {
+                  ?>
+                  <div class="productt">
+                    <a href="each_product_view.php?product=<?= $items["incremented_name"];?>&page_name=prodcuts&category=Computers">
+                      <div class="image_container2 stay_on_top_container">
+                        <img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>">
+                        <div class="name_close_container">
+                          <form class="close_btn_container some_shadow stay_on_top" action="functions/handle_cart.php" method="post">
+                            <input type="hidden"  name="wishlist_id" value="<?= $items["id"]; ?>">
+                            <button type="submit" name="delete_wishlist_btn" class="product-name1"><img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="delete-sign--v1"/></button>
+                          </form>
+                        </div>
+                      </div>
+                      <p class="product-name1"><?= $items["product_name"]; ?></p>
+                    </a>
+                    <span>
+                      <?php
+                      if($items["quantitty"] != 0){
+                        ?>
+                        <span class="product-price1">R<?= $items["price"]; ?>.00</span>
+                        <a href="#"><button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Add to cart</button></a>
+                        <?php
+                      }else{
+                        ?>
+                        <span class="old-price">Out of Stock</span>
+                        <button class="add-to-cart" data-product-id="<?= $items["id"]; ?>">Maybe Next Time</button>
+                        <?php
+                      }
+                      ?>
+                    </span>
+                    
+                  </div>
+                  <?php
+                }
+              } else {
+                ?>
+                <div class="each_category">
+                  <p>No Products Available!</p>
+                </div>
+                <?php
+              }
+            } else {
+              ?>
+              <div class="each_category">
+                <p>Something Went Wrong! Sorry About that.</p>
+              </div>
+              <?php
+            }
+          ?>
+        </div>
           </div>
         </div>
       </div>
