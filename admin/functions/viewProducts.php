@@ -12,7 +12,6 @@ if (!is_dir($imageDirectory)) {
   <tr>
     <th>Image 1</th>
     <th>Name</th>
-    <th>Description</th>
     <th>Price</th>
     <th>Quantity</th>
     <th>Get the ID</th>
@@ -28,7 +27,6 @@ if (!is_dir($imageDirectory)) {
         <tr>
           <td class="user_row"><img width="70px" height="70px" src="./uploads/<?= $items["image_1"];?>" alt="<?= $items["product_name"]; ?>"></td>
           <td class="user_row"><?= $items["product_name"]; ?></td>
-          <td class="user_row"><?= $items["product_description"]; ?></td>
           <td class="user_row">R <?= $items["price"]; ?></td>
           <td class="user_row"><?= $items["quantitty"]; ?></td>
           <td class="user_row">
@@ -39,11 +37,11 @@ if (!is_dir($imageDirectory)) {
             </form>
           </td>
         </tr>
-      <?        
+      <?php        
     }
     ?>
 </table>
-    <?
+    <?php
   } else {
     $_SESSION['message'] = 'No category found!';
     header('Location: ../category.php');

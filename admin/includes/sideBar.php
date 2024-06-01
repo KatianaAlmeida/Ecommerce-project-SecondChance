@@ -77,12 +77,12 @@
           </div>
         </div>
       </div>
-      <!-- analytics management -->
+      <!-- inventory management -->
       <div>
         <div class="title">
           <div><img width="24" height="24" src="https://img.icons8.com/forma-regular/24/000000/performance-macbook.png" alt="performance-macbook"/></div>
           <div>
-          <a href="/admin/analytics.php"><span>Analytics</span></a>
+          <a href="/admin/inventory.php"><span>Inventory</span></a>
           </div>
         </div>
       </div>

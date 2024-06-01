@@ -273,5 +273,17 @@ if(isset($_POST['update_status_btn'])){
     header('Location: ../orders.php');
   }
 }
+
+if(isset($_POST['update_stock_level_btn'])){
+  $low_level = mysqli_real_escape_string($connection, $_POST['low_level']);
+  $medium_level = mysqli_real_escape_string($connection, $_POST['medium_level']);
+  $good_level = mysqli_real_escape_string($connection, $_POST['good_level']);
+
+  $_SESSION['stock_message'] = 'Set the stock level!';
+  $_SESSION['low_level'] = $low_level;
+  $_SESSION['medium_level'] = $medium_level;
+  $_SESSION['good_level'] = $good_level;
+  header('Location: ../inventory.php');
+}
  
 ?>
