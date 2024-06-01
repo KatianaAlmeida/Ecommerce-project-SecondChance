@@ -18,8 +18,8 @@
       <a href="/admin/customer_messages.php"><img class="messages" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/speech-bubble-with-dots.png" alt="speech-bubble-with-dots"/></a>
     </div>
     <?php
-    if(isset($_SESSION['auth']) && $_SESSION['auth'] == true){ 
-      $user_name = $_SESSION['auth_user']['full_name'];
+    if(isset($_SESSION['auth_admin']) && $_SESSION['auth_admin'] == true){ 
+      $user_name = $_SESSION['auth_user_admin']['full_name'];
     ?>
       <div class="user_container">
         <img class="user" src="https://img.icons8.com/ink/48/person-female.png" alt="person-female"/>

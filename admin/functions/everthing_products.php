@@ -62,12 +62,12 @@ if(isset($_POST['product_id-btn'])){
   $product_name = mysqli_real_escape_string($connection, $_POST['product_name']);
 
   $_SESSION['getID_message'] = 'You are updating product number '.$product_id.' {'.$product_name.'}';
-  $_SESSION['name'] = $product_name;
+  $_SESSION['product_id'] = $product_id;
   header('Location: ../update_products.php');
 }
 
 if(isset($_POST['update-btn'])){
-  $product_name = mysqli_real_escape_string($connection, $_POST['product_name']);
+  $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
   $category_id = mysqli_real_escape_string($connection, $_POST['category_id']);
   $name = mysqli_real_escape_string($connection, $_POST['name']);
   $description = mysqli_real_escape_string($connection, $_POST['description']);
@@ -83,15 +83,11 @@ if(isset($_POST['update-btn'])){
   $image3 = $_FILES['image3']['name'];
   
   // SQL to retrieve id based on username
-  $sql = "SELECT id FROM products WHERE product_name = '$product_name'";
+  $sql = "SELECT * FROM products WHERE id = '$product_id'";
   $result =  mysqli_query($connection, $sql);
 
   if ($result) {
     if ($result->num_rows > 0) {
-      // Fetch the product ID
-      $row = $result->fetch_assoc();
-      $product_id = $row['id'];
-
       if(($category_id == null || $category_id == '') && ($name == null || $name == '') && ($description == null || $description == '') && ($price == null || $price == '')&& ($quantity == null || $quantity == '')&& ($image1 == null || $image1 == '')&& ($image2 == null || $image2 == '')&& ($image3 == null || $image3 == '')){
         $_SESSION['update_message'] = 'Field is empty!';
         header('Location: ../update_products.php');
@@ -224,4 +220,58 @@ if(isset($_POST['update-btn'])){
     header('Location: ../update_products.php');
   }
 }
+
+if(isset($_POST['delete_products_review_btn'])){
+  $review_id = mysqli_real_escape_string($connection, $_POST['review_id']);
+
+  $sql = "DELETE FROM reviews WHERE id='$review_id'";
+  $result =  mysqli_query($connection, $sql);
+
+  if ($result) {
+    $_SESSION['delete_message'] = 'Product Review Deleted Sucessfully';
+    header('Location: ../review.php');
+  }else{
+    $_SESSION['delete_message'] = 'Someting Went Wrong'.$connection->error;
+    header('Location: ../review.php');
+  }
+}
+
+if(isset($_POST['set_tracking_no_btn'])){
+  $tracking_no = mysqli_real_escape_string($connection, $_POST['tracking_no']);
+  $customer_id = mysqli_real_escape_string($connection, $_POST['customer_id']);
+  $order_id = mysqli_real_escape_string($connection, $_POST['id']);
+  
+  $_SESSION['tracking_order'] = 'You are updating the status of order number ';
+  $_SESSION['tracking_no'] = $tracking_no;
+  $_SESSION['customer_id'] = $customer_id;
+  header('Location: ../orders.php');
+}
+
+if(isset($_POST['update_status_btn'])){
+  $tracking_no = mysqli_real_escape_string($connection, $_POST['tracking_no']);
+  $customer_id = mysqli_real_escape_string($connection, $_POST['customer_id']);
+  $new_status = mysqli_real_escape_string($connection, $_POST['new_status']);
+
+  $check_existing_order = "SELECT * FROM orders WHERE userd_id = '$customer_id' AND tracking_no = '$tracking_no'";
+  $check_existing_order_run = mysqli_query($connection, $check_existing_order);
+
+  if ($check_existing_order_run && mysqli_num_rows($check_existing_order_run) > 0) {
+    // Update
+    $sql = "UPDATE orders SET status = '$new_status' WHERE tracking_no = '$tracking_no' AND userd_id = '$customer_id'";;
+    $update_query_run = mysqli_query($connection, $sql);
+
+    if($update_query_run){
+      $_SESSION['delete_message'] = 'Order Status Updated Sucessfully!';
+      header('Location: ../orders.php');
+    }else{
+      $_SESSION['delete_message'] = 'Error 1: '.$connection->error;
+      header('Location: ../orders.php');
+    }
+    
+  }else{
+    $_SESSION['delete_message'] = 'Error 2: '.$connection->error;
+    header('Location: ../orders.php');
+  }
+}
+ 
 ?>

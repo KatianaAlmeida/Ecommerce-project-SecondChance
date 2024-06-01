@@ -38,7 +38,8 @@ a{
 }
 
 .form_container,
-.form_container1 {
+.form_container1,
+.form_container2 {
   margin: 50px;
   flex: 1;
   max-width: 600px;
@@ -55,9 +56,20 @@ a{
   max-height: 800px;
 }
 
+.form_container2 {
+  max-width: 1200px;
+  overflow-x: auto;
+  max-height: 800px;
+}
+
 @media (max-width: 600px) {
   .form_container {
     margin: 5px;
+  }
+  .form_container,
+  .form_container1,
+  .form_container2 {
+    margin: 30px 0;
   }
 }
 

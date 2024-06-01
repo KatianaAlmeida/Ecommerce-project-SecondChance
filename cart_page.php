@@ -10,7 +10,7 @@ include('config/dbcon.php');
       <?php
       if(isset($_SESSION['auth'])){
         $user_id = $_SESSION['auth_user']['id'];
-        $sql = "SELECT c.id as cart_id, c.product_qty, p.id as product_id, p.product_name, p.image_1, p.price 
+        $sql = "SELECT c.id as cart_id, c.product_qty, p.id as product_id, p.product_name, p.image_1, p.price, p.quantitty 
                 FROM carts c, products p 
                 WHERE c.product_id = p.id AND c.user_id = '$user_id' 
                 ORDER BY c.id DEsC;";
@@ -42,6 +42,7 @@ include('config/dbcon.php');
                         <input type="hidden" class="iprice"  name="price" value="<?=$items["price"];?>">
                         <input type="hidden"  name="product_id" value="<?= $items["product_id"]; ?>">
                         <input onchange="subTotal();" class="iquantity" type="number" id="numberInput" value="<?= $items["product_qty"]; ?>" name="product_qty" min="0">
+                        <input type="hidden" name="stock_qty" value="<?= $items["quantitty"]; ?>">
                         <button type="submit" name="update_cart_btn">Update</button>
                       </form>
                       <span class="product-name1">R<span class="itotal"><?= $items["price"] * $items["product_qty"]; ?></span></span>

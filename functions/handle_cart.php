@@ -19,7 +19,8 @@ if(isset($_POST['add_to_cart-btn'])){
   $SKU = mysqli_real_escape_string($connection, $_POST['SKU']);
   $page = mysqli_real_escape_string($connection, $_POST['page']);
   if(isset($_SESSION['auth'])){
-    $quantity = mysqli_real_escape_string($connection, $_POST['quantity']);
+    $new_qty = mysqli_real_escape_string($connection, $_POST['quantity']);
+    $current_qty = mysqli_real_escape_string($connection, $_POST['stock_qty']);
     $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
@@ -33,14 +34,19 @@ if(isset($_POST['add_to_cart-btn'])){
       move_to($page, $SKU, $connection);
 
     }else{
-      $sql = "INSERT INTO carts (user_id,	product_id,	product_qty) VALUES('$user_id', '$product_id', '$quantity')";
-      $insert_query_run = mysqli_query($connection, $sql);
-  
-      if($insert_query_run){
-        $_SESSION['cart_add_message'] = 'Product Added Sucessfully!';
-        move_to($page, $SKU, $connection);
+      if(($current_qty - $new_qty) >= 0){
+        $sql = "INSERT INTO carts (user_id,	product_id,	product_qty) VALUES('$user_id', '$product_id', '$new_qty')";
+        $insert_query_run = mysqli_query($connection, $sql);
+    
+        if($insert_query_run){
+          $_SESSION['cart_add_message'] = 'Product Added Sucessfully!';
+          move_to($page, $SKU, $connection);
+        }else{
+          $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+          move_to($page, $SKU, $connection);
+        }
       }else{
-        $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+        $_SESSION['cart_add_message'] = 'Only '.$current_qty.' items left!';
         move_to($page, $SKU, $connection);
       }
     }
@@ -53,6 +59,7 @@ if(isset($_POST['add_to_cart-btn'])){
 if(isset($_POST['update_cart_btn'])){
   if(isset($_SESSION['auth'])){
     $product_qty = mysqli_real_escape_string($connection, $_POST['product_qty']);
+    $stock_qty = mysqli_real_escape_string($connection, $_POST['stock_qty']);
     $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
@@ -62,15 +69,20 @@ if(isset($_POST['update_cart_btn'])){
 
     if ($check_existing_cart_run && mysqli_num_rows($check_existing_cart_run) > 0) {
       if($product_qty != 0){
-        // Update
-        $sql = "UPDATE carts SET product_qty = '$product_qty' WHERE product_id = '$product_id' AND user_id = '$user_id'";;
-        $update_query_run = mysqli_query($connection, $sql);
+        if(($stock_qty - $product_qty) >= 0){
+          // Update
+          $sql = "UPDATE carts SET product_qty = '$product_qty' WHERE product_id = '$product_id' AND user_id = '$user_id'";;
+          $update_query_run = mysqli_query($connection, $sql);
 
-        if($update_query_run){
-          $_SESSION['cart_add_message'] = 'Product Updated Sucessfully!';
-          header('Location: ../cart_page.php');
+          if($update_query_run){
+            $_SESSION['cart_add_message'] = 'Product Updated Sucessfully!';
+            header('Location: ../cart_page.php');
+          }else{
+            $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+            header('Location: ../cart_page.php');
+          }
         }else{
-          $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+          $_SESSION['cart_add_message'] = 'Only '.$stock_qty.' items left!';
           header('Location: ../cart_page.php');
         }
       }else{

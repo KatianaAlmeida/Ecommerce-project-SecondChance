@@ -43,7 +43,7 @@ if(isset($_POST['register-btn'])){
 
 if(isset($_POST['login-btn'])){
 
-  if(isset($_SESSION['auth'])){ 
+  if(isset($_SESSION['auth_admin'])){ 
     header('Location: ../dashboard.php');
    }else{
     $email = mysqli_real_escape_string($connection, $_POST['email']);
@@ -53,12 +53,12 @@ if(isset($_POST['login-btn'])){
     $run_query = mysqli_query($connection, $login_query);
   
     if($run_query->num_rows > 0){
-      $_SESSION['auth'] = true;
+      $_SESSION['auth_admin'] = true;
       $userdata = mysqli_fetch_array($run_query);
       $user_name = $userdata['full_name'];
       $user_email = $userdata['email'];
   
-      $_SESSION['auth_user'] = [
+      $_SESSION['auth_user_admin'] = [
         'full_name' => $user_name,
         'email' => $user_email
       ];

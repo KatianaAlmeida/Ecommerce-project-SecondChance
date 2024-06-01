@@ -2,7 +2,7 @@
   session_start();
   include('../config/dbcon.php');
 
-  if(!isset($_SESSION['auth'])){
+  if(!isset($_SESSION['auth_admin'])){
    header('Location: /admin/index.php');
   };
   
@@ -49,7 +49,7 @@
           <div class="form-group">
             <?php
             if(isset($_SESSION['getID_message'])){ ?>
-            <input type="hidden" name="product_name" value="<?= $_SESSION['name'];?>">
+            <input type="hidden" name="product_id" value="<?= $_SESSION['product_id'];?>">
             <span class="message"> <?= $_SESSION['getID_message'];?></span>
             <?php
               unset($_SESSION['getID_message']);

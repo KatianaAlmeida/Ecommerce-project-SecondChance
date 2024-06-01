@@ -2,7 +2,7 @@
 session_start();
 include('../config/dbcon.php');
 
-if (!isset($_SESSION['auth'])) {
+if (!isset($_SESSION['auth_admin'])) {
   header('Location: /admin/index.php');
   exit();
 }
@@ -18,8 +18,8 @@ include('includes/sideBar.php');
   ?>
   <!-- content/page section -->
   <main class="content">
-    <div class="form_container1">
-      <h2>Registered Users</h2>
+    <div class="form_container" style="overflow-x: auto;">
+      <h2>Customers & Visitors</h2>
       <p class="description">View customer and visitor details</p>
       <div class="search_users">
         <div class="search_users_container">
@@ -101,49 +101,54 @@ include('includes/sideBar.php');
       </div>
       <div class="contentt_container">
         <?php
-        $user_id = '';
         if (isset($_SESSION['id'])) {
           $user_id = $_SESSION['id'];
-        }
-        $sql = "SELECT * FROM orders WHERE userd_id = '$user_id'";
-        $result = mysqli_query($connection, $sql);
-
-        if ($result) {
-          if (mysqli_num_rows($result) > 0) {
-            ?>
-            <table class="styled_table1">
-              <tr>
-                <th>Date</th>
-                <th>Order Number</th>
-                <th>Status</th>
-                <th>Price</th>
-                <th>Mode</th>
-              </tr>
-              <?php
-              foreach ($result as $items) {
-                $tracking_no = $items["tracking_no"];
-                $total_price = $items["total_price"];
-                ?>
+          $sql = "SELECT * FROM orders WHERE userd_id = '$user_id'";
+          $result = mysqli_query($connection, $sql);
+  
+          if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+              ?>
+              <table class="styled_table1">
                 <tr>
-                  <td class="user_row"><?= date('Y-m-d', strtotime($items["created_at"])); ?></td>
-                  <td class="user_row">#<?= $tracking_no; ?></td>
-                  <td class="user_row"><?= $items["status"]; ?></td>
-                  <td class="user_row">R<?= $total_price; ?></td>
-                  <td class="user_row"><?= $items["delivery_mode"]; ?></td>
+                  <th>Date</th>
+                  <th>Order Number</th>
+                  <th>Status</th>
+                  <th>Price</th>
+                  <th>Mode</th>
                 </tr>
                 <?php
-              }
+                foreach ($result as $items) {
+                  $tracking_no = $items["tracking_no"];
+                  $total_price = $items["total_price"];
+                  ?>
+                  <tr>
+                    <td class="user_row"><?= date('Y-m-d', strtotime($items["created_at"])); ?></td>
+                    <td class="user_row">#<?= $tracking_no; ?></td>
+                    <td class="user_row"><?= $items["status"]; ?></td>
+                    <td class="user_row">R<?= $total_price; ?></td>
+                    <td class="user_row"><?= $items["delivery_mode"]; ?></td>
+                  </tr>
+                  <?php
+                }
+                ?>
+              </table>
+              <?php
+            } else {
               ?>
-            </table>
-            <?php
+              <p class="message_order">No orders found!</p>
+              <?php
+            }
           } else {
             ?>
-            <p class="message_order">No orders found!</p>
+            <p class="message_order">Execution Error: <?= $connection->error; ?></p>
             <?php
           }
-        } else {
+          unset($_SESSION['name']);
+          unset($_SESSION['id']);
+        }else{
           ?>
-          <p class="message_order">Execution Error: <?= $connection->error; ?></p>
+          <p class="message_order">Which users order do you wish to view?</p>
           <?php
         }
         ?>

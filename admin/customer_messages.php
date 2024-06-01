@@ -2,7 +2,7 @@
  session_start();
  include('../config/dbcon.php');
 
- if(!isset($_SESSION['auth'])){
+ if(!isset($_SESSION['auth_admin'])){
   header('Location: /admin/index.php');
  };
  
