@@ -498,7 +498,7 @@
                 </div> 
                 <div class="form-group">
                   <label for="cvv">CVV</label>
-                  <input type="text" name="cvv" required>
+                  <input type="number" name="cvv" required>
                 </div> 
                 <div class="form-group">
                   <button type="submit" name="save_card_btn">Save Card</button>

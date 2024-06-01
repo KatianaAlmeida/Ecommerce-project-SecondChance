@@ -144,7 +144,7 @@
                   </div> 
                   <div class="form-group">
                     <label for="postal_code">Postal Code</label>
-                    <input type="text" name="postal_code" required>
+                    <input type="number" name="postal_code" required>
                   </div> 
                   <div class="form-group">
                     <input type="hidden"  name="page" value="checkout_page">
@@ -251,7 +251,7 @@
                         </div> 
                         <div class="form-group">
                           <label for="cvv">CVV</label>
-                          <input type="text" name="cvv" required>
+                          <input type="number" name="cvv" required>
                         </div> 
                         <div class="form-group">
                           <input type="hidden"  name="page" value="checkout_page">

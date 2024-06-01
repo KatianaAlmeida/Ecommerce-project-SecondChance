@@ -90,17 +90,17 @@
             <input type="text" name="name">
           </div>  
           <div class="form-group">
-            <label for="">Description</label>
+            <label for="description">Description</label>
             <textarea rows="4" name="description"></textarea>
           </div>
           <div class="form-grop2">
             <div>
               <label for="price">Price</label>
-              <input type="text" name="price" min="1">
+              <input type="number" name="price" min="1">
             </div>
             <div>
               <label for="quantity">Quantity</label>
-              <input type="number" name="quantity" min="0">
+              <input type="number" name="quantity" min="1">
             </div>
           </div> 
           <div class="form-group">

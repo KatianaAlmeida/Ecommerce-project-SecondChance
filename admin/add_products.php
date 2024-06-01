@@ -57,7 +57,7 @@
           <div class="form-grop2">
             <div>
               <label for="price">Price</label>
-              <input type="text" name="price" min="1" required>
+              <input type="number" name="price" min="1" required>
             </div>
             <div>
               <label for="quantity">Quantity</label>
