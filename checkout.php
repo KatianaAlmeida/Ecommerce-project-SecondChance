@@ -51,7 +51,7 @@
                   <p>Delivery Address</p> 
                   <button onclick="insert_form();" class="new_address">New Address</button>
                 </div>
-                <div class="address_info">
+                <!----><div class="address_info">
                   <?php
                   $address_sql = "SELECT * FROM address_book WHERE user_id = '$user_id'";
                   $address_sql_run =  mysqli_query($connection, $address_sql);
@@ -90,7 +90,7 @@
                   ?>
                 </div>
               </div>
-              <div class="insert_address_info insert_address_off">
+              <!----><div class="insert_address_info insert_address_off">
                 <form enctype="multipart/form-data" action="functions/place_order.php" method="POST">
                   <p>Add New Address</p>
                   <div class="form-group">
@@ -172,12 +172,12 @@
                   <div id="display_card_info">
                     <div class="delivery_address">
                       <div class="address1">
-                      <div class="customer_info_title">
+                        <div class="customer_info_title">
                         <p>Card Details</p>
                       </div>
                         <button onclick="insert_form1();" class="new_address new_address1">New Card</button>
                       </div>
-                      <div class="address_info">
+                      <!----><div class="address_info">
                         <?php
                         $card_sql = "SELECT * FROM card_details WHERE user_id = '$user_id'";
                         $card_sql_run =  mysqli_query($connection, $card_sql);
@@ -216,7 +216,7 @@
                         ?>
                       </div>
                     </div>
-                    <div class="insert_address_info insert_address1_off">
+                    <!----><div class="insert_address_info insert_address1_off">
                       <form id="add_card" enctype="multipart/form-data" action="functions/place_order.php" method="POST">
                         <p>Add Card Details</p>  
                         <div class="form-group">

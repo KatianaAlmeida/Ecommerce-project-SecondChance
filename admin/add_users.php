@@ -106,6 +106,17 @@
           </div>
         </div>
         <div class="form-group">
+          <p>Select product</p>
+          <div class="radio-container">
+            <input type="radio" id="selectAllowed" value="allow" name="permission_to_select" class="radio-input">
+            <label for="selectAllowed" class="radio-label">Allow</label>
+          </div>
+          <div class="radio-container">
+            <input type="radio" id="selectDenied" value="deny" name="permission_to_select" class="radio-input">
+            <label for="selectDenied" class="radio-label">Deny</label>
+          </div>
+        </div>
+        <div class="form-group">
             <button type="submit" name="save-btn">Save</button>
             <?php
               if(isset($_SESSION['permission_message'])){ ?>

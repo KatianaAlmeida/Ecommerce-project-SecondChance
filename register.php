@@ -8,7 +8,7 @@ session_start();
     <div class="close_register"><a href="home.php"><img src="https://img.icons8.com/ios/50/close-window--v1.png" alt="close-window--v1"/></a></div>
     <h1 class="sign_up">Sign Up</h1>
     <p class="description">Fill in the information below to add a new account</p>
-    <form id="user-details" action="functions/authcode.php" method="POST">
+    <form id="user-details" action="functions/authcode.php" method="POST" onsubmit="return validateForm()">
       <div class="form-group">
           <label for="fullName">Full Name</label>
           <input type="text" id="fullName" name="fullName" required>
@@ -38,6 +38,8 @@ session_start();
               unset($_SESSION['message']);
             }
           ?>
+          <span id="emailError"></span>
+          <span id="passwordError"></span>
       </div>
 
       <div class="form-group">

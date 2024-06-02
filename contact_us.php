@@ -30,7 +30,7 @@ session_start();
         </div>
       </div>
       <div class="right_to_right">
-        <form action="functions/send_message.php" method="POST">
+        <form name="form_1" action="functions/send_message.php" method="POST">
           <div class="form-group">
             <label for="first_name">First Name</label>
             <input type="text" name="first_name" required>
@@ -41,7 +41,7 @@ session_start();
           </div> 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" required>
+            <input id="email" type="email" name="email" required>
           </div>
           <div class="form-group">
             <label for="subject">Subject</label>
@@ -52,7 +52,7 @@ session_start();
             <textarea rows="5" name="message" required></textarea>
           </div>
           <div class="form-group">
-              <button type="submit" name="send-btn">Send</button>
+              <button type="submit" onclick="validateForm(1)" name="send-btn">Send</button>
               <?php
                 if(isset($_SESSION['send_message'])){ ?>
                 <span class="message js-message"> <?= $_SESSION['send_message'];?></span>
@@ -60,6 +60,7 @@ session_start();
                   unset($_SESSION['send_message']);
                 }
               ?>
+              <span id="emailError"></span>
           </div>
         </form>
       </div>

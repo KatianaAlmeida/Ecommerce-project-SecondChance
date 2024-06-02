@@ -4,29 +4,36 @@ session_start();
 include('../config/dbcon.php');
 
 if(isset($_POST['register-btn'])){
-  $fullName = mysqli_real_escape_string($connection, $_POST['fullName']);
-  $username = mysqli_real_escape_string($connection, $_POST['username']);
-  $email = mysqli_real_escape_string($connection, $_POST['email']);
   $password = mysqli_real_escape_string($connection, $_POST['password']);
   $confirmed_password = mysqli_real_escape_string($connection, $_POST['confirm-password']);
   
   // check if email alredy registered
-  $check_email = "SELECT email FROM users WHERE email='$email'";
-  $check_query_run = mysqli_query($connection, $check_email);
+  $check_email = $connection->prepare("SELECT email FROM users WHERE email= ? ");
+  $check_email->bind_param("s", $email);
+
+  $email = $_POST['email'];
+  $role = 'customer';
+  $check_email->execute();
+  $check_query_run = $check_email->get_result();
 
   if($check_query_run->num_rows > 0){
     $_SESSION['message'] = 'Email alredy registered!';
     header('Location: ../register.php');
   }else{
     if($password == $confirmed_password){
-      // create user
-      $createUserSql = "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'";
-      $createUserSql_run = mysqli_query($connection, $createUserSql);
       // insert user data
-      $insert_query = "INSERT INTO users (username, full_name, email, password, role) VALUES ('$username', '$fullName', '$email', '$password', 'customer')";
-      $insert_query_run = mysqli_query($connection, $insert_query);
+      $insert_query = $connection->prepare("INSERT INTO users (username, full_name, email, password, role) 
+      VALUES (?, ?, ?, ?, ?)");
+
+      if (!$insert_query) {
+        die("Prepare failed: " . $connection->error);
+      }
+      $insert_query->bind_param("sssss", $username, $fullName, $email, $password, $role);
+      $username = $_POST['username'];
+      $fullName = $_POST['fullName'];
+      $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
   
-      if($insert_query_run && $createUserSql_run){
+      if($insert_query->execute()){
         $_SESSION['regis'] = true;
         $_SESSION['message'] = 'Registered Successfully!';
         header('Location: ../login.php');
@@ -41,32 +48,49 @@ if(isset($_POST['register-btn'])){
   }
 }
 
-if(isset($_POST['login-btn'])){
-  $email = mysqli_real_escape_string($connection, $_POST['email']);
-  $password = mysqli_real_escape_string($connection, $_POST['password']);
+if (isset($_POST['login-btn'])) {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
 
-  $login_query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-  $run_query = mysqli_query($connection, $login_query);
+  // Prepare the statement to retrieve the stored hash and other user data
+  $stmt = $connection->prepare("SELECT id, full_name, email, username, password FROM users WHERE email = ?");
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
-  if($run_query->num_rows > 0){
-    $_SESSION['auth'] = true;
-    $userdata = mysqli_fetch_array($run_query);
-    $user_name = $userdata['full_name'];
-    $user_email = $userdata['email'];
-    $user_id = $userdata['id'];
-    $username = $userdata['username'];
-    
-    $_SESSION['auth_user'] = [
-      'full_name' => $user_name,
-      'email' => $user_email,
-      'id' => $user_id,
-      'username' => $username
-    ];
-    header('Location: ../home.php');
+  if ($result->num_rows > 0) {
+      $userdata = $result->fetch_assoc();
+      $hashed_password = $userdata['password'];
 
-  } else{
-    $_SESSION['message'] = 'Invalid Credentials!';
-    header('Location: ../login.php');
+      if (password_verify($password, $hashed_password)) {
+          $_SESSION['auth'] = true;
+          $_SESSION['auth_user'] = [
+              'full_name' => $userdata['full_name'],
+              'email' => $userdata['email'],
+              'id' => $userdata['id'],
+              'username' => $userdata['username']
+          ];
+          header('Location: ../home.php');
+      } else if ($password == $hashed_password) {
+        // for accounts created before the hash code
+        $_SESSION['auth'] = true;
+          $_SESSION['auth_user'] = [
+              'full_name' => $userdata['full_name'],
+              'email' => $userdata['email'],
+              'id' => $userdata['id'],
+              'username' => $userdata['username']
+          ];
+          header('Location: ../home.php');
+
+      }else {
+          $_SESSION['message'] = 'Invalid Password!';
+          header('Location: ../login.php');
+      }
+  } else {
+      $_SESSION['message'] = 'Invalid Credentials!';
+      header('Location: ../login.php');
   }
+
+  $stmt->close();
 }
 ?>

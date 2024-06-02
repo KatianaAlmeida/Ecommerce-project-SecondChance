@@ -66,6 +66,8 @@
   <script src="assets/js/each_product.js"></script>
   <script src="assets/js/checkout.js"></script>
   <script src="assets/js/customer_info.js"></script>
+  <script src="assets/js/validate_form.js"></script>
+
   <!-- Function to display alert if there's a message -->
   <script>
     function showAlert(message) {
