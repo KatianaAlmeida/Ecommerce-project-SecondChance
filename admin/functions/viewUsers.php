@@ -15,7 +15,7 @@ include('../config/dbcon.php');
           <th>Email</th>
           <th>Role</th>
         </tr>
-      <?
+      <?php
       while ($row = $result->fetch_assoc()) {
         ?>
           <tr>
@@ -24,11 +24,11 @@ include('../config/dbcon.php');
             <td class="user_row"><?= $row["email"]; ?></td>
             <td class="user_row"><?= $row["role"]; ?></td>
           </tr>
-        <?        
+        <?php        
       }
       ?>
       </table>
-      <?
+      <?php
     } else {
       $_SESSION['permission_message'] = 'No user found!';
       header('Location: ../add_users.php');

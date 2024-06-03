@@ -234,9 +234,9 @@
 }
 
 /*================== phone (responsive) =================== */
-@media(min-width: 360px) and (max-width: 799px){
+@media screen and (max-width: 799px){
   .logo{
-    height: 100px;
+    height: 60px;
     margin-left: 15px;
     transition: all 0.5s ease;
   }
@@ -261,6 +261,8 @@
     align-items: center;
   }
 
+
+  .js-support1 .support_link,
   .middle,
   .right,
   .nav_bottom_section .services{
@@ -282,7 +284,6 @@
 
     width: 43px;
     height: 43px;
-    margin-top: 30px;
     margin-right: 30px;
     transition: all 0.5s ease;
   }
@@ -291,7 +292,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    left: 300px;
+    left: 40%;
     bottom: 0;
     z-index: 900;
     background-color: #e9e9ea;
@@ -308,12 +309,12 @@
     color: black;
     font-size: 18px;
     z-index: 910;
-
   }
 
   .frontbar .frontbar_top{
     display: flex;
-    justify-content: right;
+    justify-content:right;       /*horizontally centered*/
+    align-items: center;             /*vertically centered*/
     margin-top: 50px;
   }
 
@@ -357,18 +358,4 @@
     margin: 0 10px;
   }
 
-}
-
-@media (min-width: 365px) and (max-width: 569px){
-  .frontbar{
-    left: 200px;
-    transition: all 0.09s ease;
-  }
-}
-
-@media (max-width: 500px) {
-  .frontbar{
-    left: 100px;
-    transition: all 0.09s ease;
-  }
 }

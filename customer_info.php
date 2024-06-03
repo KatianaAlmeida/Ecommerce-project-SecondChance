@@ -88,14 +88,14 @@
               <h3>My Orders</h3>
               <span>View your order history or check the status of a recent order.</span>
             </div>
-              <?php
-              $user_id = $_SESSION['auth_user']['id'];
-              $sql = "SELECT * FROM orders WHERE userd_id = '$user_id'";
-              $result =  mysqli_query($connection, $sql);
+            <?php
+            $user_id = $_SESSION['auth_user']['id'];
+            $sql = "SELECT * FROM orders WHERE userd_id = '$user_id'";
+            $result = mysqli_query($connection, $sql);
 
-              if ($result) {
+            if ($result) {
               if (mysqli_num_rows($result) > 0) {
-                ?>
+            ?>
                 <div class=""></div>
                 <table class="styled_table1">
                   <tr>
@@ -105,11 +105,11 @@
                     <th>Price</th>
                     <th>Order Details</th>
                   </tr>
-                  <?php 
-                  foreach ($result as $index => $items) { 
-                    $tracking_no = $items["tracking_no"]; 
+                  <?php
+                  foreach ($result as $index => $items) {
+                    $tracking_no = $items["tracking_no"];
                     $total_price = $items["total_price"];
-                    ?>
+                  ?>
                     <tr>
                       <td class="user_row"><?= date('Y-m-d', strtotime($items["created_at"])); ?></td>
                       <td class="user_row">#<?= $tracking_no; ?></td>
@@ -121,171 +121,113 @@
                       <td colspan="5">
                         <?php
                         $order_detail = "SELECT 
-                          p.image_1 AS image,
-                          p.product_name,
-                          p.incremented_name AS SKU,
-                          p.price,
-                          oi.qty AS product_quantity,
-                          o.delivery_fee,
-                          ab.recipient_name,
-                          ab.address_type,
-                          ab.complex_name,
-                          ab.address_street,
-                          ab.suburb,
-                          ab.town,
-                          ab.province,
-                          ab.postal_code,
-                          ab.phone_number
-                          FROM order_items oi JOIN orders o ON oi.order_id = o.id JOIN address_book ab ON o.address_id = ab.id
-                          JOIN products p ON oi.product_id = p.id
-                          WHERE o.id = oi.order_id AND o.tracking_no = '$tracking_no'";
-                          $order_detail_run =  mysqli_query($connection, $order_detail);
+                                                  p.image_1 AS image,
+                                                  p.product_name,
+                                                  p.incremented_name AS SKU,
+                                                  p.price,
+                                                  oi.qty AS product_quantity,
+                                                  o.delivery_fee,
+                                                  ab.recipient_name,
+                                                  ab.address_type,
+                                                  ab.complex_name,
+                                                  ab.address_street,
+                                                  ab.suburb,
+                                                  ab.town,
+                                                  ab.province,
+                                                  ab.postal_code,
+                                                  ab.phone_number
+                                                  FROM order_items oi 
+                                                  JOIN orders o ON oi.order_id = o.id 
+                                                  JOIN address_book ab ON o.address_id = ab.id
+                                                  JOIN products p ON oi.product_id = p.id
+                                                  WHERE o.id = oi.order_id AND o.tracking_no = '$tracking_no'";
+                        $order_detail_run = mysqli_query($connection, $order_detail);
 
-                          if ($order_detail_run && mysqli_num_rows($order_detail_run) > 0) {
+                        if ($order_detail_run && mysqli_num_rows($order_detail_run) > 0) {
+                        ?>
+                          <div class="all_products_order">
+                            <?php
+                            $subtotal = 0;
+                            foreach ($order_detail_run as $items) {
                             ?>
-                            <div class="all_products_order">
-                              <?php
-                              $subtotal = 0;
-                              foreach ($order_detail_run as $items) { 
-                                ?>
-                                <div class="div1">
-                                  <img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["image"]; ?>">
-                                  <div>
-                                    <p><?= $items["product_name"]; ?></p>
-                                    <p>SKU: <?= $items["SKU"]; ?></p>
-                                  </div>
-                                  <div><p>QTY: <?= $items["product_quantity"]; ?></p></div>
-                                  <div><p>R <?= $items["price"]; ?></p></div>
+                              <div class="div1">
+                                <img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["image"]; ?>">
+                                <div>
+                                  <p><?= $items["product_name"]; ?></p>
+                                  <p>SKU: <?= $items["SKU"]; ?></p>
                                 </div>
-                                <?php
-                                  $subtotal += $items["price"] * $items["product_quantity"];
-                                  $delivery_fee =  $items["delivery_fee"];
-                                  $address_type =  $items["address_type"];
-                                  $recipient_name =  $items["recipient_name"];
-                                  $complex_name =  $items["complex_name"];
-                                  $address_street =  $items["address_street"];
-                                  $suburb =  $items["suburb"];
-                                  $town =  $items["town"];
-                                  $postal_code =  $items["postal_code"];
-                                  $province =  $items["province"];
-                                  $phone_number =  $items["phone_number"];
-                              }
-                              ?>
-                              <div class="div2 each_address">
-                                <div class="div_1">
-                                  <h4>Shipping Information</h4>
-                                  <p class="name_number"><?= $address_type; ?></p>
-                                  <p><?= $recipient_name; ?></p>
-                                  <p><?= $complex_name; ?></p>
-                                  <p><?= $address_street; ?></p>
-                                  <p><?= $suburb; ?>, <?= $town; ?>, <?= $postal_code; ?></p>
-                                  <p><?= $province; ?></p>
-                                  <p class="name_number"><?= $phone_number; ?></p>
+                                <div>
+                                  <p>QTY: <?= $items["product_quantity"]; ?></p>
                                 </div>
-                                <div class="div_2">
-                                  <div>
-                                    <p>Subtotal</p>
-                                    <p>R<?= $subtotal; ?></p>
-                                  </div>
-                                  <div>
-                                    <p>Delivery Fee</p>
-                                    <p>R<?= $delivery_fee; ?></p>
-                                  </div>
-                                  <hr>
-                                  <div>
-                                    <p>Total</p>
-                                    <p>R<?= $total_price; ?></p>
-                                  </div>
+                                <div>
+                                  <p>R <?= $items["price"]; ?></p>
+                                </div>
+                              </div>
+                            <?php
+                              $subtotal += $items["price"] * $items["product_quantity"];
+                              $delivery_fee = $items["delivery_fee"];
+                              $address_type = $items["address_type"];
+                              $recipient_name = $items["recipient_name"];
+                              $complex_name = $items["complex_name"];
+                              $address_street = $items["address_street"];
+                              $suburb = $items["suburb"];
+                              $town = $items["town"];
+                              $postal_code = $items["postal_code"];
+                              $province = $items["province"];
+                              $phone_number = $items["phone_number"];
+                            }
+                            ?>
+                            <div class="div2 each_address">
+                              <div class="div_1">
+                                <h4>Shipping Information</h4>
+                                <p class="name_number"><?= $address_type; ?></p>
+                                <p><?= $recipient_name; ?></p>
+                                <p><?= $complex_name; ?></p>
+                                <p><?= $address_street; ?></p>
+                                <p><?= $suburb; ?>, <?= $town; ?>, <?= $postal_code; ?></p>
+                                <p><?= $province; ?></p>
+                                <p class="name_number"><?= $phone_number; ?></p>
+                              </div>
+                              <div class="div_2">
+                                <div>
+                                  <p>Subtotal</p>
+                                  <p>R<?= $subtotal; ?></p>
+                                </div>
+                                <div>
+                                  <p>Delivery Fee</p>
+                                  <p>R<?= $delivery_fee; ?></p>
+                                </div>
+                                <hr>
+                                <div>
+                                  <p>Total</p>
+                                  <p>R<?= $total_price; ?></p>
                                 </div>
                               </div>
                             </div>
-                            <?php
-                          }else {
-                            $order_detail_collect = "SELECT 
-                              p.image_1 AS image,
-                              p.product_name,
-                              p.incremented_name AS SKU,
-                              p.price,
-                              oi.qty AS product_quantity,
-                              o.delivery_fee
-                              FROM order_items oi 
-                              JOIN orders o ON oi.order_id = o.id 
-                              JOIN products p ON oi.product_id = p.id
-                              WHERE o.id = oi.order_id AND o.tracking_no = '$tracking_no'";
-                            $order_detail_collect_run =  mysqli_query($connection, $order_detail_collect);
-
-                            if ($order_detail_collect_run && mysqli_num_rows($order_detail_collect_run) > 0) {
-                              ?>
-                              <div class="all_products_order">
-                                <?php
-                                $subtotal = 0;
-                                foreach ($order_detail_collect_run as $items) { 
-                                  ?>
-                                  <div class="div1">
-                                    <img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["image"]; ?>">
-                                    <div>
-                                      <p><?= $items["product_name"]; ?></p>
-                                      <p>SKU: <?= $items["SKU"]; ?></p>
-                                    </div>
-                                    <div><p>QTY: <?= $items["product_quantity"]; ?></p></div>
-                                    <div><p>R <?= $items["price"]; ?></p></div>
-                                  </div>
-                                  <?php
-                                    $subtotal += $items["price"] * $items["product_quantity"];
-                                    $delivery_fee =  $items["delivery_fee"];
-                                }
-                                ?>
-                                <div class="div2 each_address">
-                                  <div class="div_1">
-                                    <h4>Store Location (Pick Up)</h4>
-                                    <p class="name_number">Business</p>
-                                    <p>Second Chance Emperium</p>
-                                    <p>53 Main Rd</p>
-                                    <p>Claremont, Cape Town, 7700</p>
-                                    <p>Western Cape</p>
-                                    <p class="name_number">123-456-7890</p>
-                                  </div>
-                                  <div class="div_2">
-                                    <div>
-                                      <p>Subtotal</p>
-                                      <p>R<?= $subtotal; ?></p>
-                                    </div>
-                                    <div>
-                                      <p>VAT</p>
-                                      <p>R<?= $delivery_fee; ?></p>
-                                    </div>
-                                    <hr>
-                                    <div>
-                                      <p>Total</p>
-                                      <p>R<?= $total_price; ?></p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <?php
-                            }else{
-                              ?>
-                              <p class="message_order">No products found in this order!</p>
-                              <?php
-                            }
-                          }
+                          </div>
+                        <?php
+                        } else {
+                        ?>
+                          <p class="message_order">No order details found!</p>
+                        <?php
+                        }
                         ?>
                       </td>
                     </tr>
-                    <?php 
-                  } 
-                ?>
+                  <?php
+                  }
+                  ?>
                 </table>
-                <?
+              <?php
               } else {
-                ?>
-                <p class="message_order">No orders found! <a href="shop_all.php">Go to shop</a></p>
-                <?php
+              ?>
+                <p class="message_order">No orders found!</p>
+              <?php
               }
             } else {
               ?>
-              <p class="message_order">Execution Error: <?= $connection->error;?></p>
-              <?php
+              <p class="message_order">Query failed: <?= mysqli_error($connection); ?></p>
+            <?php
             }
             ?>
           </div>

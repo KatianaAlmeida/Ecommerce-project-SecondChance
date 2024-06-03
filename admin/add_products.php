@@ -33,7 +33,7 @@
                   foreach ($result as $items) {
                     ?>
                     <option value="<?= $items["id"]; ?>"><?= $items["name"]; ?></option>
-                    <?        
+                    <?php        
                   }
                 } else {
                   $_SESSION['message'] = 'No category found!';
@@ -127,11 +127,11 @@
                       </form>
                     </td>
                   </tr>
-                <?        
+                <?php        
               }
               ?>
           </table>
-              <?
+              <?php
             } else {
               $_SESSION['delete_message'] = 'No category found!';
               header('Location: ../category.php');

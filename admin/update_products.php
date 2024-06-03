@@ -72,7 +72,7 @@
                   foreach ($result as $items) {
                     ?>
                     <option value="<?= $items["id"]; ?>"><?= $items["name"]; ?></option>
-                    <?        
+                    <?php        
                   }
                 } else {
                   $_SESSION['message'] = 'No category found!';

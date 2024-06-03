@@ -19,8 +19,8 @@ if(isset($_POST['add_to_cart-btn'])){
   $SKU = mysqli_real_escape_string($connection, $_POST['SKU']);
   $page = mysqli_real_escape_string($connection, $_POST['page']);
   if(isset($_SESSION['auth'])){
-    $new_qty = mysqli_real_escape_string($connection, $_POST['quantity']);
-    $current_qty = mysqli_real_escape_string($connection, $_POST['stock_qty']);
+    $new_qty = (int) mysqli_real_escape_string($connection, $_POST['quantity']);
+    $current_qty = (int) mysqli_real_escape_string($connection, $_POST['stock_qty']);
     $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
@@ -58,8 +58,8 @@ if(isset($_POST['add_to_cart-btn'])){
 
 if(isset($_POST['update_cart_btn'])){
   if(isset($_SESSION['auth'])){
-    $product_qty = mysqli_real_escape_string($connection, $_POST['product_qty']);
-    $stock_qty = mysqli_real_escape_string($connection, $_POST['stock_qty']);
+    $product_qty = (int) mysqli_real_escape_string($connection, $_POST['product_qty']);
+    $stock_qty = (int) mysqli_real_escape_string($connection, $_POST['stock_qty']);
     $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
