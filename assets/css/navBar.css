@@ -87,7 +87,7 @@
   margin-right: 100px;
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
 }
 
 .right a{
@@ -261,6 +261,9 @@
     align-items: center;
   }
 
+  .js-account2{
+    margin-left: -27px;
+  }
 
   .js-support1 .support_link,
   .middle,

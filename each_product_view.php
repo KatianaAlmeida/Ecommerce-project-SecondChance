@@ -73,6 +73,7 @@ if (isset($_GET['product'])) {
                   <input type="hidden" name="product_id" value="<?= $product["id"]; ?>">
                   <input type="hidden" name="stock_qty" value="<?= $product["quantitty"]; ?>">
                   <input type="hidden" name="SKU" value="<?= $product_number; ?>">
+                  <input type="hidden"  name="page" value="product_view">
                   <input class="add_product_button-js" type="submit" value="Add to Cart" name="add_to_cart-btn"></input>
                   <button type="submit" class="whishlist" name="add_whish_btn"><img src="https://img.icons8.com/pastel-glyph/64/751fff/like--v2.png" alt="like--v2" /></button>
                 </div>

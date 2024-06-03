@@ -206,5 +206,9 @@
     overflow-x: auto;
     display: flex;
   }
+  .some_shadow{
+    border: 1px solid rgb(192, 192, 192);
+    
+  }
 
 }

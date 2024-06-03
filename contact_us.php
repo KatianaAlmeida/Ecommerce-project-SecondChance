@@ -11,7 +11,7 @@ session_start();
           <h2>Get in Touch if Us</h2>
         </div>
         <div class="form-group">
-          <p>500 Terry Francine Street San Francisco, CA 94158</p>
+          <p>53 Main Rd, Claremont, Cape Town, 7700, CA 94158</p>
         </div>
         <div class="form-group">
           <p>123-456-7890</p>

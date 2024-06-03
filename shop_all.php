@@ -246,7 +246,7 @@ include('config/dbcon.php');
               <span class="disabled_button" id="prev-button" disabled>&lt; previous</span>
             <?php endif; ?>
 
-            <span id="page-info">Page <?= $page ?> of <?= $total_pages ?></span>
+            <span id="">Page <?= $page ?> of <?= $total_pages ?></span>
 
             <?php if ($page < $total_pages): ?>
               <a href="?page=<?= $page + 1 ?>" id="next-button">next &gt;</a>

@@ -26,7 +26,16 @@
   <header class="header">
     <div class="promotion">
       <img class="promo_image" src="https://img.icons8.com/ios/50/FFFFFF/gift--v1.png" alt="gift--v1"/>
-      <p>Get 20% off yor first order&#46;&#160;<a href="../register.php">Subscribe</a></p>
+      <?php
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true){ 
+        ?>
+          <p>Get 20% off yor first order&#46;&#160;<a href="../prodcuts.php?category=Best%20Sellers">Best Sales</a></p>
+        <?php
+        }else{
+          ?>
+            <p>Get 20% off yor first order&#46;&#160;<a href="../register.php">Subscribe</a></p>
+          <?php
+        }?>
     </div>
     <div class="support js-support1">
       <!-- loadHTMLItems(); -->

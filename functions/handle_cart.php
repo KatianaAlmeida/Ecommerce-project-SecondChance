@@ -10,7 +10,9 @@ function move_to($page, $SKU, $connection) {
   } else if($page == 'category_search'){
     $category_name = mysqli_real_escape_string($connection, $_POST['category_name']);
     header('Location: ../prodcuts.php?category='.$category_name.'');
-  }else{
+  } else if($page == 'customer_info'){
+    header('Location: ../customer_info.php#cust_page5');
+  }else if($page == 'product_view'){
     header('Location: ../each_product_view.php?product='.$SKU.'');
   }
 }
