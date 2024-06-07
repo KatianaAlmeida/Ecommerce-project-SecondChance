@@ -50,7 +50,7 @@ if(isset($_POST['reset-btn'])){
   $email = mysqli_real_escape_string($connection, $_POST['email']);
   
   $token = bin2hex(random_bytes(16));
-  $token_hash = hash("sha256", $token);
+  $token_hash = hash("secondchance", $token);
 
   $expiry = date("Y-m-d H:i:s", time() + 60 * 30);
 
