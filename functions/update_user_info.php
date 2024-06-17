@@ -105,7 +105,8 @@ if(isset($_POST['update_user_info_btn'])){
 
   if(($password != null || $password != '') && ($confirmed_password != null || $confirmed_password != '')){
     if($password == $confirmed_password){
-      $sql_detail = "UPDATE users SET username = '$username', full_name = '$full_name', email = '$email', password = '$password' WHERE id = '$user_id'";
+      $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
+      $sql_detail = "UPDATE users SET username = '$username', full_name = '$full_name', email = '$email', password = '$hashed_password' WHERE id = '$user_id'";
       $sql_detail_run = mysqli_query($connection, $sql_detail);
       if($sql_detail_run){
         $_SESSION['message'] = 'Profile Updated Successfully!';

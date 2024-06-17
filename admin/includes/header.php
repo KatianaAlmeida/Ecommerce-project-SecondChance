@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="/admin/assets/css/inventory.css">
   <link rel="stylesheet" href="/admin/assets/css/dashboard.css">
   <link rel="stylesheet" href="../../assets/css/customer_info.css">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+        emailjs.init("91oG0XkQ-kJ3iDOJE");
+    })();
+  </script>
   <title>SecondChance Admin</title>
 </head>
 <body>

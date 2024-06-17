@@ -28,7 +28,7 @@ if(isset($_POST['register-btn'])){
       if (!$insert_query) {
         die("Prepare failed: " . $connection->error);
       }
-      $insert_query->bind_param("sssss", $username, $fullName, $email, $password, $role);
+      $insert_query->bind_param("sssss", $username, $fullName, $email, $hashed_password, $role);
       $username = $_POST['username'];
       $fullName = $_POST['fullName'];
       $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password

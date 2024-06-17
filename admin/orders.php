@@ -26,7 +26,7 @@ include('includes/sideBar.php');
           $sql = "SELECT * FROM orders";
           $result =  mysqli_query($connection, $sql);
 
-          if ($result) {
+        if ($result) {
           if (mysqli_num_rows($result) > 0) {
             ?>
             <div class=""></div>
@@ -86,29 +86,33 @@ include('includes/sideBar.php');
                         <div class="all_products_order">
                           <?php
                           $subtotal = 0;
-                          foreach ($order_detail_run as $items) { 
-                            ?>
+                          foreach ($order_detail_run as $items) {
+                          ?>
                             <div class="div1">
                               <img src="uploads/<?= $items["image"];?>" alt="<?= $items["product_name"]; ?>">
                               <div>
                                 <p><?= $items["product_name"]; ?></p>
                                 <p>SKU: <?= $items["SKU"]; ?></p>
                               </div>
-                              <div><p>QTY: <?= $items["product_quantity"]; ?></p></div>
-                              <div><p>R <?= $items["price"]; ?></p></div>
+                              <div>
+                                <p>QTY: <?= $items["product_quantity"]; ?></p>
+                              </div>
+                              <div>
+                                <p>R <?= $items["price"]; ?></p>
+                              </div>
                             </div>
-                            <?php
-                              $subtotal += $items["price"] * $items["product_quantity"];
-                              $delivery_fee =  $items["delivery_fee"];
-                              $address_type =  $items["address_type"];
-                              $recipient_name =  $items["recipient_name"];
-                              $complex_name =  $items["complex_name"];
-                              $address_street =  $items["address_street"];
-                              $suburb =  $items["suburb"];
-                              $town =  $items["town"];
-                              $postal_code =  $items["postal_code"];
-                              $province =  $items["province"];
-                              $phone_number =  $items["phone_number"];
+                          <?php
+                            $subtotal += $items["price"] * $items["product_quantity"];
+                            $delivery_fee = $items["delivery_fee"];
+                            $address_type = $items["address_type"];
+                            $recipient_name = $items["recipient_name"];
+                            $complex_name = $items["complex_name"];
+                            $address_street = $items["address_street"];
+                            $suburb = $items["suburb"];
+                            $town = $items["town"];
+                            $postal_code = $items["postal_code"];
+                            $province = $items["province"];
+                            $phone_number = $items["phone_number"];
                           }
                           ?>
                           <div class="div2 each_address">
@@ -139,7 +143,7 @@ include('includes/sideBar.php');
                             </div>
                           </div>
                         </div>
-                        <?php
+                      <?php
                       }else {
                         $order_detail_collect = "SELECT 
                           p.image_1 AS image,
@@ -162,7 +166,7 @@ include('includes/sideBar.php');
                             foreach ($order_detail_collect_run as $items) { 
                               ?>
                               <div class="div1">
-                                <img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["image"]; ?>">
+                                <img src="uploads/<?= $items["image"];?>" alt="<?= $items["product_name"]; ?>">
                                 <div>
                                   <p><?= $items["product_name"]; ?></p>
                                   <p>SKU: <?= $items["SKU"]; ?></p>
@@ -209,7 +213,7 @@ include('includes/sideBar.php');
                           <?php
                         }
                       }
-                    ?>
+                      ?>
                   </td>
                 </tr>
                 <?php 

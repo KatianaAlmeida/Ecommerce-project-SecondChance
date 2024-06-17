@@ -83,11 +83,11 @@
       <div class="form_container">
         <h2>Message Reply</h2>
         <p class="description">Users will receive an email.</p>
-        <form enctype="multipart/form-data" action="functions/reply.php" method="POST">
+        <form  enctype="multipart/form-data" action="functions/reply.php" method="POST">
           <div class="form-group">
             <?php
             if(isset($_SESSION['reply_message'])){ ?>
-            <input type="hidden" name="email" value="<?= $_SESSION['email'];?>">
+            <input type="hidden" id="email_id" name="email" value="<?= $_SESSION['email'];?>">
             <input type="hidden" name="id" value="<?= $_SESSION['id'];?>">
             <span class="message"> <?= $_SESSION['reply_message'];?></span>
             <?php
@@ -104,7 +104,7 @@
             <textarea rows="6" name="message_reply"></textarea>
           </div>
           <div class="form-group">
-            <button type="submit" name="send_reply-btn">Send Message</button>
+            <button type="submit" onclick="sendEmail()" name="send_reply-btn">Send Message</button>
             <?php
             if(isset($_SESSION['reply_to_message'])){ ?>
             <span class="message"> <?= $_SESSION['reply_to_message'];?></span>
