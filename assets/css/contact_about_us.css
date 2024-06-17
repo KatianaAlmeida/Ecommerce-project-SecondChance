@@ -42,7 +42,9 @@
     flex-direction: column;
     transition: all 0.5s ease;
   }
-  
+  .contactt_conatiner .left{
+    margin-left: 0;
+  }
 }
 
 @media (min-width: 1300px) {

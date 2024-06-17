@@ -105,9 +105,14 @@ if(isset($_POST['delete-btn'])){
       $row = $result->fetch_assoc();
       $user_id = $row['id'];
 
+      // delete user
+      $deleteUserSql = "DROP USER '$username'@'localhost'";
+      $deleteUserSql_run = mysqli_query($connection, $deleteUserSql);
+
+      // delete user data
       $sql_delete = "DELETE FROM users WHERE id = $user_id";
       $delete_user = mysqli_query($connection, $sql_delete);
-      if($delete_user){
+      if($delete_user && $deleteUserSql_run){
         $_SESSION['update'] = 'User Deleted Successfully!';
         header('Location: ../view_update_user.php');
       }else{
