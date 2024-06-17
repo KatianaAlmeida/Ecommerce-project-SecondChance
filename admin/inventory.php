@@ -34,6 +34,7 @@ include('includes/sideBar.php');
             $medium_level = $_SESSION['medium_level'];
             $good_level = $_SESSION['good_level'] ;
           }else{
+            $_SESSION['stock_message'] = 'Set the stock level!';
             $low_level = 10;
             $medium_level = 20;
             $good_level = 30;
@@ -57,7 +58,7 @@ include('includes/sideBar.php');
             </div>
           </form>
           <?php
-            if(!isset($_SESSION['stock_message'])){ ?>
+            if(isset($_SESSION['stock_message'])){ ?>
             <p class="message"> <?= $_SESSION['stock_message'];?></p>
             <?php
             }

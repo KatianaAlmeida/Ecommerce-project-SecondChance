@@ -24,10 +24,8 @@ if (isset($_POST['register-btn'])) {
     } else {
         if ($password == $confirmed_password) {
             // create user
-            $createUserSql = "CREATE USER ?@'localhost' IDENTIFIED BY ?";
-            $createUserStmt = mysqli_prepare($connection, $createUserSql);
-            mysqli_stmt_bind_param($createUserStmt, "ss", $username, $password);
-            $createUserSql_run = mysqli_stmt_execute($createUserStmt);
+            $createUserSql = "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'";
+            $createUserSql_run = mysqli_query($connection, $createUserSql);
 
             // insert user data
             $insert_query = "INSERT INTO users (username, full_name, email, password, role) VALUES (?, ?, ?, ?, ?)";

@@ -1,3 +1,22 @@
+<?php
+  include('../config/dbcon.php');
+  $message_count = 0;
+  $sql ="SELECT COUNT(*) AS total_messages FROM message";
+  $sql_run = mysqli_query($connection, $sql);
+
+  if ($sql_run && mysqli_num_rows($sql_run) > 0) {
+    foreach ($sql_run as $items) {
+      $message_count = $items['total_messages']; 
+      if($message_count == ''){
+        $message_count = 0;
+      }      
+    }
+  }else{
+    ?>
+    <p>Error: <?= $connection->error; ?></p>
+    <?php
+  }
+?>
 <!-- navigationBar -->
 <nav class="navigation js-navigation">
   <!-- -- -->
@@ -11,11 +30,8 @@
   <!-- -- -->
   <div class="right_section">
     <div class="notification_Container">
-      <a href="/admin/review.php"><img class="notification" src="https://img.icons8.com/forma-light-filled/24/1A1A1A/appointment-reminders.png" alt="appointment-reminders"/></a>
-      <div class="notificationCount">3</div>
-    </div>
-    <div class="messages_container">
-      <a href="/admin/customer_messages.php"><img class="messages" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/speech-bubble-with-dots.png" alt="speech-bubble-with-dots"/></a>
+    <a href="/admin/customer_messages.php"><img class="messages" src="https://img.icons8.com/forma-thin-filled/24/1A1A1A/speech-bubble-with-dots.png" alt="speech-bubble-with-dots"/></a>
+      <div class="notificationCount"><?= $message_count;?></div>
     </div>
     <?php
     if(isset($_SESSION['auth_admin']) && $_SESSION['auth_admin'] == true){ 

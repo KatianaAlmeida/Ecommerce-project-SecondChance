@@ -279,7 +279,7 @@ if(isset($_POST['update_stock_level_btn'])){
   $medium_level = mysqli_real_escape_string($connection, $_POST['medium_level']);
   $good_level = mysqli_real_escape_string($connection, $_POST['good_level']);
 
-  $_SESSION['stock_message'] = 'Set the stock level!';
+  $_SESSION['stock_message'] = 'Stock level Updated!';
   $_SESSION['low_level'] = $low_level;
   $_SESSION['medium_level'] = $medium_level;
   $_SESSION['good_level'] = $good_level;

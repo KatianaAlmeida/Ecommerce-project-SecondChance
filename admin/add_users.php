@@ -45,11 +45,15 @@
             <p>User role</p>
             <div class="radio-container">
               <input type="radio" id="admin" name="role" value="admin" class="radio-input">
-              <label for="admin" class="radio-label">Admin</label>
+              <label for="admin" class="radio-label">Administrator</label>
             </div>
             <div class="radio-container">
-              <input type="radio" id="staff" name="role" value="staff" class="radio-input">
-              <label for="staff" class="radio-label">Staff</label>
+              <input type="radio" id="Support" name="role" value="Support" class="radio-input">
+              <label for="Support" class="radio-label">Customer Support</label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" id="manager" name="role" value="manager" class="radio-input">
+              <label for="manager" class="radio-label">Manager</label>
             </div>
           </div>
           <div class="form-group">

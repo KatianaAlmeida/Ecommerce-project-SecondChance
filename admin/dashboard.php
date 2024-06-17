@@ -225,28 +225,13 @@
               <img src="https://img.icons8.com/carbon-copy/80/737373/budget.png" alt="budget"/>
             </div>
           </a> 
-          <a class="dashboard_content" href="customer_messages.php">
+          <a class="dashboard_content" target="_blank" href="https://analytics.google.com/analytics/web/?authuser=0#/p444976538/reports/intelligenthome">
             <div>
-              <?php
-              $sql ="SELECT COUNT(*) AS total_messages FROM message";
-              $sql_run = mysqli_query($connection, $sql);
-
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
-                  ?>
-                    <p><?= $items["total_messages"]; ?></p>
-                    <span>Total Messages</span>
-                  <?php        
-                }
-              }else{
-                ?>
-                <p>Error: <?= $connection->error; ?></p>
-                <?php
-              }
-              ?>
+              <span>Second Chance</span>
+              <span>Google Analytics</span>
             </div>
             <div>
-              <img src="https://img.icons8.com/dotty/80/737373/imessage.png" alt="imessage"/>
+              <img src="https://img.icons8.com/dotty/80/737373/web-analystics.png" alt="web-analystics"/>
             </div>
           </a>
           <a class="dashboard_content" href="review.php">
