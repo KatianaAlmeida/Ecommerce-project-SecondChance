@@ -29,12 +29,13 @@ include('includes/sideBar.php');
         </div>
         <div class="stock_level">
           <?php
-          if(isset($_SESSION['stock_message'])){
+          if(isset($_SESSION['stock_update'])){
             $low_level = $_SESSION['low_level'];
             $medium_level = $_SESSION['medium_level'];
             $good_level = $_SESSION['good_level'] ;
+            unset($_SESSION['stock_message']);
           }else{
-            $_SESSION['stock_message'] = 'Set the stock level!';
+            $_SESSION['stock_message'] = 'Add a new stock level!';
             $low_level = 10;
             $medium_level = 20;
             $good_level = 30;
@@ -61,7 +62,10 @@ include('includes/sideBar.php');
             if(isset($_SESSION['stock_message'])){ ?>
             <p class="message"> <?= $_SESSION['stock_message'];?></p>
             <?php
-            }
+            } else if(isset($_SESSION['stock_update'])){ ?>
+              <p class="message"> <?= $_SESSION['stock_update'];?></p>
+              <?php
+              }
           ?>
         </div>
       </div>

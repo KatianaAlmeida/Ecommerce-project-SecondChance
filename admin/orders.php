@@ -51,7 +51,6 @@ include('includes/sideBar.php');
                   <td class="user_row">
                     <form action="/admin/functions/everthing_products.php" method="POST">
                       <input type="hidden" name="customer_id" value="<?= $items["userd_id"]; ?>">
-                      <input type="hidden" name="order_id" value="<?= $items["id"]; ?>">
                       <input type="hidden" name="tracking_no" value="<?= $items["tracking_no"]; ?>">
                       <button class="change_color" name="set_tracking_no_btn">update</button>
                     </form>
