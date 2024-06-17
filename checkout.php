@@ -189,8 +189,8 @@
                               $last_4_digits = substr($items["card_number"], -4);
                               ?>
                               <div class="radio_container">
-                                <input type="radio" id="user_address<?= $count; ?>" value="<?= $items["id"]; ?>" name="choosen_address" class="radio_input" required>
-                                <label for="user_address<?= $count; ?>" class="radio_label">
+                                <input type="radio" id="user_card<?= $count; ?>" value="<?= $items["id"]; ?>" name="choosen_card" class="radio_input" required>
+                                <label for="user_card<?= $count; ?>" class="radio_label">
                                   <div class="each_address">
                                     <div class="name_close_container">
                                       <p class="name_number">Card Ending with <?=  $last_4_digits; ?></p>
@@ -362,6 +362,7 @@
                 <input type="hidden"  name="delivery_type_h" value="delivery_type" id="delivery_type_hidden">
                 <input type="hidden"  name="choosen_address_h" value="choosen_address" id="choosen_address_hidden">
                 <input type="hidden"  name="choosen_payment_h" value="choosen_payment" id="choosen_payment_hidden">
+                <input type="hidden"  name="choosen_card_h" value="choosen_card" id="choosen_card_hidden">
                 <input type="hidden"  name="delivery" value="<?= $deliver; ?>">
                 <input type="hidden"  name="payment_id" value="">
                 <input class="add_product_button-js" type="submit"  value="Order" name="make_checkout_btn">

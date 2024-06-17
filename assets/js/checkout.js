@@ -74,6 +74,24 @@ choosen_address.forEach(button => {
   });
 });
 
+const choosen_card = document.getElementsByName('choosen_card');
+// Loop through each radio button to attach the event listener
+choosen_card.forEach(button => {
+  button.addEventListener('click', function() {
+    let selectedValue = '';
+
+    for (let i = 0; i < choosen_card.length; i++) {
+      if (choosen_card[i].checked) {
+        selectedValue = choosen_card[i].value;
+        break;
+      }
+    }
+    console.log(selectedValue);
+    const deliveryTypeHidden = document.getElementById('choosen_card_hidden');
+    deliveryTypeHidden.value = selectedValue;
+  });
+});
+
 const choosen_payment = document.getElementsByName('choosen_payment');
 // Loop through each radio button to attach the event listener
 choosen_payment.forEach(button => {

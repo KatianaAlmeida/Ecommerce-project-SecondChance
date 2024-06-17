@@ -324,6 +324,7 @@
                               <p class="name_number"><?= $items["address_type"]; ?></p>
                               <form class="close_btn_container" action="functions/place_order.php" method="post">
                                 <input type="hidden"  name="address_id" value="<?= $items["id"]; ?>">
+                                <input type="hidden"  name="page" value="customer_info">
                                 <button type="submit" name="delete_address_btn" class="product-name1"><img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="delete-sign--v1"/></button>
                               </form>
                             </div>
@@ -409,6 +410,7 @@
                   <input type="number" name="postal_code" required>
                 </div> 
                 <div class="form-group">
+                  <input type="hidden"  name="page" value="customer_info">
                   <button type="submit" name="save_address_btn">Save Address</button>
                 </div>
               </form>
@@ -444,6 +446,7 @@
                               <p class="name_number">Card Ending with <?=  $last_4_digits; ?></p>
                               <form class="close_btn_container" action="functions/place_order.php" method="post">
                                 <input type="hidden"  name="card_id" value="<?= $items["id"]; ?>">
+                                <input type="hidden"  name="page" value="customer_info">
                                 <button type="submit" name="delete_card_btn" class="product-name1"><img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="delete-sign--v1"/></button>
                               </form>
                             </div>
@@ -509,6 +512,7 @@
                   <input type="number" name="cvv" required>
                 </div> 
                 <div class="form-group">
+                  <input type="hidden"  name="page" value="customer_info">
                   <button type="submit" name="save_card_btn">Save Card</button>
                 </div>
               </form>
@@ -523,76 +527,76 @@
             </div>
             <hr>
             <div class="product-containerr" id="product-container">
-          <?php
-            $wishlist_query = "SELECT 
-                    p.image_1,
-                    p.product_name,
-                    p.incremented_name,
-                    p.id,
-                    p.price,
-                    p.quantitty,
-                    w.id
-                    FROM wishlist w
-                    JOIN products p ON w.product_id = p.id
-                    WHERE w.user_id = '$user_id';";
-            $wishlist_query_run = mysqli_query($connection, $wishlist_query);
+              <?php
+                $wishlist_query = "SELECT 
+                        p.image_1,
+                        p.product_name,
+                        p.incremented_name,
+                        p.id,
+                        p.price,
+                        p.quantitty,
+                        w.id
+                        FROM wishlist w
+                        JOIN products p ON w.product_id = p.id
+                        WHERE w.user_id = '$user_id';";
+                $wishlist_query_run = mysqli_query($connection, $wishlist_query);
 
-            if ($wishlist_query_run) {
-              if (mysqli_num_rows($wishlist_query_run) > 0) {
-                foreach ($wishlist_query_run as $items) {
-                  ?>
-                  <div class="productt">
-                    <a href="">
-                      <div class="image_container2 stay_on_top_container">
-                        <img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>">
-                        <div class="name_close_container">
-                          <form class="close_btn_container some_shadow stay_on_top" action="functions/handle_cart.php" method="post">
-                            <input type="hidden"  name="wishlist_id" value="<?= $items["id"]; ?>">
-                            <button type="submit" name="delete_wishlist_btn" class="product-name1"><img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="delete-sign--v1"/></button>
-                          </form>
-                        </div>
+                if ($wishlist_query_run) {
+                  if (mysqli_num_rows($wishlist_query_run) > 0) {
+                    foreach ($wishlist_query_run as $items) {
+                      ?>
+                      <div class="productt">
+                        <a href="">
+                          <div class="image_container2 stay_on_top_container">
+                            <img src="admin/uploads/<?= $items["image_1"]; ?>" alt="<?= $items["product_name"]; ?>">
+                            <div class="name_close_container">
+                              <form class="close_btn_container some_shadow stay_on_top" action="functions/handle_cart.php" method="post">
+                                <input type="hidden"  name="wishlist_id" value="<?= $items["id"]; ?>">
+                                <button type="submit" name="delete_wishlist_btn" class="product-name1"><img src="https://img.icons8.com/ios/50/delete-sign--v1.png" alt="delete-sign--v1"/></button>
+                              </form>
+                            </div>
+                          </div>
+                          <p class="product-name1"><?= $items["product_name"]; ?></p>
+                        </a>
+                        <?php
+                          if($items["quantitty"] != 0){
+                            ?>
+                            <span class="product-price1">R<?= $items["price"]; ?>.00</span>
+                            <form action="functions/handle_cart.php" method="post">
+                              <input type="hidden" value="1" name="quantity" id="quantity" min="1">
+                              <input type="hidden" name="stock_qty" value="<?= $items["quantitty"]; ?>">
+                              <input type="hidden"  name="product_id" value="<?=$items["id"];?>">
+                              <input type="hidden"  name="SKU" value="<?=$items["incremented_name"];?>">
+                              <input type="hidden"  name="page" value="customer_info">
+                              <button class="add-to-cart" type="submit" name="add_to_cart-btn" data-product-id="<?= $items["id"]; ?>">Add to Cart</button>
+                            </form>
+                            <?php
+                          }else{
+                            ?>
+                            <span class="old-price">Out of Stock</span>
+                            <button class="add-to-cart" disabled data-product-id="<?= $items["id"]; ?>">Maybe Next Time</button>
+                            <?php
+                          }
+                        ?>
                       </div>
-                      <p class="product-name1"><?= $items["product_name"]; ?></p>
-                    </a>
-                    <?php
-                      if($items["quantitty"] != 0){
-                        ?>
-                        <span class="product-price1">R<?= $items["price"]; ?>.00</span>
-                        <form action="functions/handle_cart.php" method="post">
-                          <input type="hidden" value="1" name="quantity" id="quantity" min="1">
-                          <input type="hidden" name="stock_qty" value="<?= $items["quantitty"]; ?>">
-                          <input type="hidden"  name="product_id" value="<?=$items["id"];?>">
-                          <input type="hidden"  name="SKU" value="<?=$items["incremented_name"];?>">
-                          <input type="hidden"  name="page" value="customer_info">
-                          <button class="add-to-cart" type="submit" name="add_to_cart-btn" data-product-id="<?= $items["id"]; ?>">Add to Cart</button>
-                        </form>
-                        <?php
-                      }else{
-                        ?>
-                        <span class="old-price">Out of Stock</span>
-                        <button class="add-to-cart" disabled data-product-id="<?= $items["id"]; ?>">Maybe Next Time</button>
-                        <?php
-                      }
+                      <?php
+                    }
+                  } else {
                     ?>
+                    <div class="each_category">
+                      <p>No Products Available!</p>
+                    </div>
+                    <?php
+                  }
+                } else {
+                  ?>
+                  <div class="each_category">
+                    <p>Something Went Wrong! Sorry About that.</p>
                   </div>
                   <?php
                 }
-              } else {
-                ?>
-                <div class="each_category">
-                  <p>No Products Available!</p>
-                </div>
-                <?php
-              }
-            } else {
               ?>
-              <div class="each_category">
-                <p>Something Went Wrong! Sorry About that.</p>
-              </div>
-              <?php
-            }
-          ?>
-        </div>
+            </div>
           </div>
         </div>
       </div>

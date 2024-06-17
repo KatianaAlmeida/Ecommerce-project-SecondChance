@@ -7,7 +7,7 @@ include('../config/dbcon.php');
 function move_to($page) {
   if($page == 'checkout_page'){
     header('Location: ../checkout.php');
-  }else{
+  } else if($page == 'customer_info'){
     header('Location: ../customer_info.php#cust_page3');
   }
 }
@@ -81,6 +81,7 @@ if(isset($_POST['make_checkout_btn'])){
   if(isset($_SESSION['auth'])){
     $delivery_type = mysqli_real_escape_string($connection, $_POST['delivery_type_h']);
     $choosen_address = mysqli_real_escape_string($connection, $_POST['choosen_address_h']);
+    $choosen_card = mysqli_real_escape_string($connection, $_POST['choosen_card_h']);
     $choosen_payment = mysqli_real_escape_string($connection, $_POST['choosen_payment_h']);
     $delivery = mysqli_real_escape_string($connection, $_POST['delivery']);
 
@@ -107,7 +108,7 @@ if(isset($_POST['make_checkout_btn'])){
       }
     }
     /*-------------------------------------------------------------------------------------*/
-
+    // add card_id as foreihn key (to do later)
     if($delivery_type != 'delivery_type' && $total_price != 0 && $choosen_payment != 'choosen_payment'){
       $sql = "";
       if($delivery_type == 'Delivery' && $choosen_address != 'choosen_address'){
@@ -166,7 +167,7 @@ if(isset($_POST['make_checkout_btn'])){
 function move_to1($page) {
   if($page == 'checkout_page'){
     header('Location: ../checkout.php');
-  }else{
+  } else if($page == 'customer_info'){
     header('Location: ../customer_info.php#cust_page4');
   }
 }
