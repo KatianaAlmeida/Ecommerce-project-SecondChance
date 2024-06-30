@@ -23,7 +23,7 @@ This repository contains the source code for SecondChance Imperium, an ecommerce
 
 ## Getting Started
 To get started with SecondChance Imperium, follow these steps:
-1. Visit our website: [SecondChance Imperium](https://www.secondchanceimperium.com)
+1. Visit our website: [SecondChance Imperium](https://secondchanceemperium.000webhostapp.com/home.php)
 2. Create an account: Sign up to start browsing and purchasing products.
 3. Explore our products: Use the search and category filters to find what you need.
 4. Make a purchase: Add items to your cart and proceed to checkout for a secure transaction.
