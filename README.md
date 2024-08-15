@@ -7,8 +7,8 @@ Welcome to SecondChance Imperium, your premier online platform for buying and se
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Screenshots](#screenshots)
 - [Author](#author)
+- [Screenshots](#screenshots)
 
 ## Repository Description
 This repository contains the source code for SecondChance Imperium, an ecommerce platform dedicated to buying and selling high-quality second-hand goods. It features intuitive product browsing, secure checkout, trade-ins, repairs, and layaway services, aiming to replicate and enhance the in-store shopping experience online.
@@ -55,6 +55,12 @@ To get started with SecondChance Imperium, follow these steps:
 - Select the layaway option during checkout.
 - Follow the prompts to set up your layaway plan.
 
+## Author
+
+- Portfolio Website - [Katiana de Almeida](https://katiana-de-almeida.onrender.com/)
+- Katiana Almeida - [Katianaalmeida48@gmail.com]
+- Linkdlin - [KatianaDeAlmeida](https://www.linkedin.com/in/katiana-almeida-1731ba23a/)
+
 ## Screenshots
 Here are some screenshots of the SecondChance Imperium platform:
 
@@ -72,9 +78,3 @@ Here are some screenshots of the SecondChance Imperium platform:
 
 - **Checkout**
   ![Checkout](screenshots/checkout.jpeg)
-
-## Author
-
-- Portfolio Website - [Katiana de Almeida](https://katiana-de-almeida.onrender.com/)
-- Katiana Almeida - [Katianaalmeida48@gmail.com]
-- Linkdlin - [KatianaDeAlmeida](https://www.linkedin.com/in/katiana-almeida-1731ba23a/)
