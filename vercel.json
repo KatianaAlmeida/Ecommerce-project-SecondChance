@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/home", "destination": "/home.php" }
+    { "source": "/index", "destination": "/index.php" }
   ]
 }
