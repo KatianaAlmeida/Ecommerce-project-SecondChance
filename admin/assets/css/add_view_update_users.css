@@ -1,0 +1,201 @@
+/* ------------------------------------- add users ------------------------------------- */
+.content{
+  padding: 20px;
+  position: relative;  
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+.description{
+  color: gray;
+  font-size: 13px;
+  margin-top: -15px;
+  padding-bottom: 15px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label,
+.form-grop2 label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-group input,
+.form-group textarea,
+.categotySelect{
+  width: 100%;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+.form-group .message{
+  color: #751fff;;
+}
+.form-group button,
+.delete_button {
+  padding: 10px 20px;
+  background-color: #751fff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.form-grop2{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.form-grop2 input{
+  width: 100%;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+
+}
+/*-----------------------------------*/
+.radio-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+.radio-input {
+  display: none;
+}
+.radio-label {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #e9e9ea;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.radio-input:checked + .radio-label {
+  background-color: white;
+  border: 2px solid #751fff;
+  border-radius: 3px;
+}
+
+@media(min-width: 700px) and (max-width: 900px){
+  .content{
+    flex-direction: column;
+  }
+}
+/*================== phone (responsive) =================== */
+@media(min-width: 360px) and (max-width: 699px){
+  .content{
+    flex-direction: column;
+  }
+}
+
+/* ------------------------------------- view_update users ------------------------------------- */
+.displayUser {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+.table-container {
+  overflow-x: auto;
+}
+.displayUser th, 
+.user_row {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.displayUser th {
+  background-color: #f2f2f2;
+}
+.search_users{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.search_users_container{
+  background-color: white;
+  border: 0.5px solid rgb(213, 213, 213);
+  border-radius: 3px;
+  padding: 0 10px;
+  border-radius: 5px;
+  height: 40px;
+  max-width: 350px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
+.search_users_input{
+  height: 34px;
+  min-width: 220px;
+  border: none;
+}
+
+.new_user{
+  background-color: white;
+  border: 2px solid #751fff;
+  border-radius: 3px;
+  margin-right: -10px;
+
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 20px;
+}
+.search_img{
+  margin-left: 50px;
+  height: 20px;
+}
+.new_user_checked{
+  background-color: #751fff;
+  color: white;
+}
+.search_img_container{
+  cursor: pointer;
+}
+@media(min-width: 700px) and (max-width: 1280px){
+  .new_user{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  /* Hide table headers on small screens */
+  th {
+    display: none;
+  }
+
+  /* Display table cells as block for better stacking */
+  td {
+    display: block;
+    border: none;
+  }
+
+  .new_user{
+    display: none;
+  }
+
+  /* Optional: Add some padding or margin to separate cells vertically */
+  td {
+    margin-top: 10px;
+  }
+
+  .search_users_container{
+    max-width: 190px;
+  }
+
+  .search_users_input{
+    min-width: 120px;
+  }
+  .search_img{
+    height: 20px;
+  }
+}
+
