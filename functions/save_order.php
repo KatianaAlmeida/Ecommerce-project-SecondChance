@@ -46,6 +46,7 @@ if(isset($_SESSION['auth'])){
         }
         $total_price += $delivery;
       } else{
+        $_SESSION['cart_type'] = "error";
         $_SESSION['cart_add_message'] = 'No product foud! ';
         header('Location: ../checkout.php');
       }
@@ -89,14 +90,17 @@ if(isset($_SESSION['auth'])){
         $selete_cart_query = "DELETE FROM carts WHERE user_id = '$user_id'";
         $selete_cart_query_run = mysqli_query($connection, $selete_cart_query);
 
+         $_SESSION['cart_type'] = "success";
         $_SESSION['cart_add_message'] = 'Order Placed Sucessfully!';
         header('Location: ../customer_info.php#cust_page2');
       }else{
+        $_SESSION['cart_type'] = "error";
         $_SESSION['cart_add_message'] = 'Order placement failed: '.$connection->error;
         header('Location: ../checkout.php');
       }
       
     }else{
+      $_SESSION['cart_type'] = "info";
       $_SESSION['cart_add_message'] = 'Fill in all the information needed!';
       header('Location: ../checkout.php');
     }
@@ -105,6 +109,7 @@ if(isset($_SESSION['auth'])){
   }
 
 }else{
+  $_SESSION['cart_type'] = "info";
   $_SESSION['cart_add_message'] = 'Login to continue!';
   header('Location: ../checkout.php');
 }

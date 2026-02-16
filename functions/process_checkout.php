@@ -51,6 +51,7 @@ if(isset($_POST['make_checkout_btn'])){
     header("Location: " . $checkout_session->url);
 
   }else{
+    $_SESSION['cart_type'] = "info";
     $_SESSION['cart_add_message'] = 'Login to continue!';
     header('Location: ../checkout.php');
   }

@@ -104,12 +104,28 @@
     }
   </script>
   <!-- Check if the session cart_add_message is set -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <?php
-    if (isset($_SESSION['cart_add_message'])) {
-      $message = $_SESSION['cart_add_message'];
-      unset($_SESSION['cart_add_message']); // Unset the session message after use
-      echo "<script>showAlert('$message');</script>";
-    }
+  if (isset($_SESSION['cart_add_message'])) {
+    $message = $_SESSION['cart_add_message'];
+    $type = $_SESSION['cart_type'];
+    unset($_SESSION['cart_add_message'], $_SESSION['cart_type']);
+    ?>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        Swal.fire({
+          title: "<?php echo ucfirst(addslashes($type)); ?>",
+          text: "<?php echo addslashes($message); ?>",
+          icon: "<?php echo addslashes($type); ?>",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#751fff",
+          background: "#ffffff",
+        });
+      });
+    </script>
+    <?php
+  }
   ?>
 </body>
 </html>

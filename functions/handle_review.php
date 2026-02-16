@@ -18,6 +18,7 @@ if(isset($_POST['publish_review_btn'])){
     $filename = time().'.'.$image_extention;
 
     if($review_title == '' && $review_content == ''){
+      $_SESSION['cart_type'] = "info";
       $_SESSION['cart_add_message'] = 'Cant Submit Empty Review!';
       header('Location: ../each_product_view.php?product='.$SKU.'');
     } else{
@@ -25,6 +26,7 @@ if(isset($_POST['publish_review_btn'])){
       $result = mysqli_query($connection, $product_query);
   
       if($result && mysqli_num_rows($result) > 0){
+        $_SESSION['cart_type'] = "info";
         $_SESSION['cart_add_message'] = 'There is a review on this product alredy, just update the existing one!';
         header('Location: ../each_product_view.php?product='.$SKU.'');
       }else{
@@ -33,9 +35,11 @@ if(isset($_POST['publish_review_btn'])){
     
         if($insert_query_run){
           move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
+          $_SESSION['cart_type'] = "success";
           $_SESSION['cart_add_message'] = 'Review Submited Sucessfully!';
           header('Location: ../each_product_view.php?product='.$SKU.'');
         }else{
+          $_SESSION['cart_type'] = "error";
           $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
           header('Location: ../each_product_view.php?product='.$SKU.'');
         }
@@ -43,6 +47,7 @@ if(isset($_POST['publish_review_btn'])){
     }
     
   }else{
+    $_SESSION['cart_type'] = "info";
     $_SESSION['cart_add_message'] = 'Login to continue!';
     header('Location: ../each_product_view.php?product='.$SKU.'');
   }
@@ -63,6 +68,7 @@ if(isset($_POST['update_review_btn'])){
     $filename = time().'.'.$image_extention;
 
     if($review_title == '' && $review_content == ''){
+      $_SESSION['cart_type'] = "info";
       $_SESSION['cart_add_message'] = 'Cant Submit Empty Review!';
       header('Location: ../each_product_view.php?product='.$SKU.'');
     } else{
@@ -76,19 +82,23 @@ if(isset($_POST['update_review_btn'])){
         
         if($update_query_run){
           move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
+          $_SESSION['cart_type'] = "success";
           $_SESSION['cart_add_message'] = 'Review Updated Sucessfully!';
           header('Location: ../each_product_view.php?product='.$SKU.'');
         }else{
+          $_SESSION['cart_type'] = "error";
           $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
           header('Location: ../each_product_view.php?product='.$SKU.'');
         }
       }else{
+        $_SESSION['cart_type'] = "info";
         $_SESSION['cart_add_message'] = 'There is no review on this product, add one!';
         header('Location: ../each_product_view.php?product='.$SKU.'');
       }
     }
     
   }else{
+    $_SESSION['cart_type'] = "info";
     $_SESSION['cart_add_message'] = 'Login to continue!';
     header('Location: ../each_product_view.php?product='.$SKU.'');
   }
@@ -110,17 +120,21 @@ if(isset($_POST['delete_btn'])){
       $delete_query_run = mysqli_query($connection, $sql);
 
       if($delete_query_run){
+        $_SESSION['cart_type'] = "success";
         $_SESSION['cart_add_message'] = 'Review Deleted!';
         header('Location: ../each_product_view.php?product='.$SKU.'');
       }else{
+        $_SESSION['cart_type'] = "error";
         $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
         header('Location: ../each_product_view.php?product='.$SKU.'');
       }
     }else{
+      $_SESSION['cart_type'] = "error";
       $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
       header('Location: ../each_product_view.php?product='.$SKU.'');
     }
   }else{
+    $_SESSION['cart_type'] = "info";
     $_SESSION['cart_add_message'] = 'Login to continue!';
     header('Location: ../each_product_view.php?product='.$SKU.'');
   }
