@@ -2,6 +2,9 @@
 
 session_start();
 require __DIR__ . "./../vendor/autoload.php"; // loads the necessary file automatically
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../functions/');
+$dotenv->load();
+
 include('../config/dbcon.php');
 
 if(isset($_POST['make_checkout_btn'])){
