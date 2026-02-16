@@ -6,7 +6,8 @@ include('../config/dbcon.php');
 
 
 if(isset($_SESSION['auth'])){
-  \Stripe\Stripe::setApiKey("STRIPE_SECRET");
+  \Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET']);
+
   if (!isset($_GET['session_id'])) {
       die("No session ID provided.");
   }
