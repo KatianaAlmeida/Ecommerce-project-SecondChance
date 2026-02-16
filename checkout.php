@@ -358,12 +358,13 @@
                   <p>R<span id="total"><?= number_format($total, 2); ?></span></p>
                 </div>
               </div> 
-              <form class="cart_wish_container" action="functions/place_order.php" method="post">
+              <form class="cart_wish_container" action="functions/process_checkout.php" method="post">
                 <input type="hidden"  name="delivery_type_h" value="delivery_type" id="delivery_type_hidden">
                 <input type="hidden"  name="choosen_address_h" value="choosen_address" id="choosen_address_hidden">
                 <input type="hidden"  name="choosen_payment_h" value="choosen_payment" id="choosen_payment_hidden">
                 <input type="hidden"  name="choosen_card_h" value="choosen_card" id="choosen_card_hidden">
                 <input type="hidden"  name="delivery" value="<?= $deliver; ?>">
+                <input type="hidden" name="total_price" value="<?= number_format($total, 2); ?>">
                 <input type="hidden"  name="payment_id" value="">
                 <input class="add_product_button-js" type="submit"  value="Order" name="make_checkout_btn">
               </form>
