@@ -126,12 +126,13 @@ choosen_payment.forEach(button => {
 });
 
 function toggleMessage() {
-  const showRadio = document.querySelector('input[name="choosen_payment"][value="Credit and Debit Card"]');
-  const messageDiv = document.getElementById('display_card_info');
-  
-  if (showRadio.checked) {
-      messageDiv.style.display = 'block';
-  } else {
-      messageDiv.style.display = 'none';
-  }
+const paymentRadios = document.querySelectorAll('input[name="choosen_payment"]');
+const paymentOptionHidden = document.getElementById('payment_option');
+paymentRadios.forEach(radio => {
+  radio.addEventListener('change', function() {
+    paymentOptionHidden.value = this.id; // pega o ID do radio selecionado
+    console.log("Radio selecionado:", this.id); 
+  });
+});
+
 }

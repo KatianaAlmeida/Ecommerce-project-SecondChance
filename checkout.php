@@ -274,7 +274,7 @@
                 <input type="hidden"  name="delivery_type_h" value="delivery_type" id="delivery_type_hidden">
                 <input type="hidden"  name="choosen_address_h" value="choosen_address" id="choosen_address_hidden">
                 <input type="hidden"  name="choosen_payment_h" value="choosen_payment" id="choosen_payment_hidden">
-                <input type="hidden"  name="choosen_card_h" value="choosen_card" id="choosen_card_hidden">
+                <input type="hidden" id="payment_option" name="payment_option">
                 <input type="hidden"  name="delivery" value="<?= $deliver; ?>">
                 <input type="hidden" name="total_price" value="<?= number_format($total, 2); ?>">
                 <input type="hidden"  name="payment_id" value="">

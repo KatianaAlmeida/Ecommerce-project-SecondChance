@@ -24,7 +24,6 @@ if(isset($_SESSION['auth'])){
 
     $delivery_type = $data['delivery_type'];
     $choosen_address = $data['choosen_address'];
-    //$choosen_card = $data['choosen_card'];
     $choosen_payment = $data['choosen_payment'];
     $delivery = $data['delivery'];
     $payment_id = $data['payment_id'];
