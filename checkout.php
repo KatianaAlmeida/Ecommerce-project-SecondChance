@@ -30,11 +30,11 @@
                   <div class="form-group">
                     <div class="radio-container">
                       <input type="radio" id="delivery" value="Delivery" name="delivery_type" class="delivery_type radio-input">
-                      <label for="delivery" onclick="open_address();" class="radio-label">Delivery</label>
+                      <label for="delivery" onclick="toggle_address();" class="radio-label">Delivery</label>
                     </div>
                     <div class="radio-container">
                       <input type="radio" id="collect" value="Collect" name="delivery_type" class="delivery_type radio-input">
-                      <label for="collect" onclick="close_address();" class="radio-label close_address">Collect</label>
+                      <label for="collect" onclick="toggle_collect();" class="radio-label close_address">Collect</label>
                     </div>
                   </div> 
                 </div>
@@ -89,6 +89,27 @@
                   }
                   ?>
                 </div>
+              </div>
+              <div class="delivery_address delivery_collect_off">
+                <div class="address1">
+                  <p>Collect Address</p> 
+                </div>
+                <div class="address_info">
+                  <div class="radio_container">
+                    <input type="radio"  value="Office" name="choosen_address" class="radio_input" required>
+                    <label for="user_address<?= $count; ?>" class="radio_label">
+                      <div class="each_address">
+                        <div class="name_close_container">
+                          <p class="name_number">Office</p>
+                        </div>
+                        <p>Sterling Solutions</p>
+                        <p>120 Victoria Avenue</p>
+                        <p>Green Point, Cape Town, 8005</p>
+                        <p class="name_number">Thandiwe Mokoena&nbsp;&nbsp;&nbsp;&nbsp;082 334 7789</p>
+                      </div>
+                    </label>
+                  </div>
+                </div>     
               </div>
               <!----><div class="insert_address_info insert_address_off">
                 <form enctype="multipart/form-data" action="functions/place_order.php" method="POST">

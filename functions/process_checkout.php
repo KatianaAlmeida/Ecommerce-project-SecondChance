@@ -11,7 +11,7 @@ if(isset($_POST['make_checkout_btn'])){
   if(isset($_SESSION['auth'])){
     $delivery_type = mysqli_real_escape_string($connection, $_POST['delivery_type_h']);
     $choosen_address = mysqli_real_escape_string($connection, $_POST['choosen_address_h']);
-    $choosen_card = mysqli_real_escape_string($connection, $_POST['choosen_card_h']);
+    //$choosen_card = mysqli_real_escape_string($connection, $_POST['choosen_card_h']);
     $choosen_payment = mysqli_real_escape_string($connection, $_POST['choosen_payment_h']);
     $delivery = mysqli_real_escape_string($connection, $_POST['delivery']);
     $total_price = mysqli_real_escape_string($connection, $_POST['total_price']);
@@ -21,7 +21,7 @@ if(isset($_POST['make_checkout_btn'])){
     $_SESSION['checkout_data'] = [
         'delivery_type' => $delivery_type,
         'choosen_address' => $choosen_address,
-        'choosen_card' => $choosen_card,
+        //'choosen_card' => $choosen_card,
         'choosen_payment' => $choosen_payment,
         'delivery' => $delivery,
         'payment_id' => $payment_id

@@ -141,7 +141,8 @@
 .descr_content_off,
 .update_off,
 .insert_address_off,
-.delivery_address_off{
+.delivery_address_off,
+.delivery_collect_off{
   display: none;
 }
 
@@ -187,7 +188,8 @@
 .insert_address_on{
   display: flex;
 }
-.delivery_address_on{
+.delivery_address_on,
+.delivery_collect_on{
   display: block;
 }
 .product_info_container hr{

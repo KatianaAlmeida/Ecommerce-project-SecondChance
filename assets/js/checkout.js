@@ -24,18 +24,33 @@ function insert_form1(){
   }
 }
 
-function open_address(){
-  const delivery_address_off = document.querySelector('.delivery_address_off'); 
-  if(!delivery_address_off.classList.contains('delivery_address_on')){
-    delivery_address_off.classList.add('delivery_address_on');
-  } 
+function toggle_address() {
+  const address = document.querySelector('.delivery_address_off');
+  const collect = document.querySelector('.delivery_collect_off');
+  // Se Address estiver fechado e remove delivery_collect
+  if (!address.classList.contains('delivery_address_on')) {
+    address.classList.add('delivery_address_on');
+    collect.classList.remove('delivery_collect_on');
+  } else {
+    // Se Address estiver aberto e remove delivery_address
+    address.classList.remove('delivery_address_on');
+  }
 }
-function close_address(){
-  const delivery_address_off = document.querySelector('.delivery_address_off'); 
-  if(delivery_address_off.classList.contains('delivery_address_on')){
-    delivery_address_off.classList.remove('delivery_address_on');
-  } 
+
+function toggle_collect() {
+  const collect = document.querySelector('.delivery_collect_off');
+  const address = document.querySelector('.delivery_address_off');
+
+  // Se Collect estiver fechado, abre
+  if (!collect.classList.contains('delivery_collect_on')) {
+    collect.classList.add('delivery_collect_on');
+    address.classList.remove('delivery_address_on');
+  } else {
+    // Se Collect estiver aberto
+    collect.classList.remove('delivery_collect_on');
+  }
 }
+
 
 
 const delivery_type = document.getElementsByName('delivery_type');
