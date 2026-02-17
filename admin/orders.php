@@ -182,9 +182,9 @@ include('includes/sideBar.php');
                               <div class="div_1">
                                 <h4>Store Location (Pick Up)</h4>
                                 <p class="name_number">Business</p>
-                                <p>Second Chance Emperium</p>
-                                <p>53 Main Rd</p>
-                                <p>Claremont, Cape Town, 7700</p>
+                                <p>Sterling Solutions</p>
+                                <p>120 Victoria Avenue</p>
+                                <p>Green Point, Cape Town, 8005</p>
                                 <p>Western Cape</p>
                                 <p class="name_number">123-456-7890</p>
                               </div>

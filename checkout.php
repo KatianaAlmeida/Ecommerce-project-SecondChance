@@ -99,13 +99,13 @@
                     <input type="radio"  value="Office" name="choosen_address" class="radio_input" required>
                     <label for="user_address<?= $count; ?>" class="radio_label">
                       <div class="each_address">
-                        <div class="name_close_container">
-                          <p class="name_number">Office</p>
-                        </div>
+                        <p>Store Location (Pick Up)</p>
+                        <p class="name_number">Business</p>
                         <p>Sterling Solutions</p>
                         <p>120 Victoria Avenue</p>
                         <p>Green Point, Cape Town, 8005</p>
-                        <p class="name_number">Thandiwe Mokoena&nbsp;&nbsp;&nbsp;&nbsp;082 334 7789</p>
+                        <p>Western Cape</p>
+                        <p class="name_number">Thandiwe Mokoena&nbsp;&nbsp;&nbsp;&nbsp;123-456-7890</p>
                       </div>
                     </label>
                   </div>
