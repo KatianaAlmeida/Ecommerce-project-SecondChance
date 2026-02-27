@@ -34,7 +34,7 @@ if(isset($_POST['make_checkout_btn'])){
             \Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET']);
             $checkout_session = \Stripe\Checkout\Session::create([
                 "mode" => "payment",
-                "success_url" => "http://localhost:3000/functions/save_order.php?session_id={CHECKOUT_SESSION_ID}",
+                "success_url" => "http://localhost:3000/functions/save_card_order.php?session_id={CHECKOUT_SESSION_ID}",
                 "cancel_url" => "http://localhost:3000/checkout.php",
                 "locale" => "auto",
                 "line_items" => [
