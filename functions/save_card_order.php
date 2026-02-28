@@ -21,6 +21,7 @@ if(isset($_SESSION['auth'])){
         die("Checkout session data missing.");
     }
     $data = $_SESSION['checkout_data'];
+    unset($_SESSION['checkout_data']); // Clear checkout session
     save_order_to_db($data, $connection); // functions/place_order.php
 
   }else{
