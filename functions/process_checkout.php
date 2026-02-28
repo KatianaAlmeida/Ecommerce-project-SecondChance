@@ -6,6 +6,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../functions/');
 $dotenv->load();
 
 include('../config/dbcon.php');
+include('../functions/place_order.php');
 
 if(isset($_POST['make_checkout_btn'])){
   if(isset($_SESSION['auth'])){
@@ -55,34 +56,8 @@ if(isset($_POST['make_checkout_btn'])){
 
         } else if($_POST['payment_option'] === 'paypal'){
             // ---- PAYPAL CONFIG ----
-            $clientId = $_ENV['PAYPAL_CLIENT_ID'];
-            $secret   = $_ENV['PAYPAL_SECRET'];
-            $baseUrl  = "https://api-m.sandbox.paypal.com"; // sandbox, switch to live for production
-
-            // Initialize cURL to get OAuth 2.0 token
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, "$baseUrl/v1/oauth2/token");
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                "Accept: application/json",
-                "Accept-Language: en_US"
-            ]);
-            curl_setopt($ch, CURLOPT_USERPWD, "$clientId:$secret");
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true); // enable SSL verification in production
-
-            $response = curl_exec($ch);
-            if($response === false){
-                die("Curl error (token request): " . curl_error($ch));
-            }
-            curl_close($ch);
-
-            $tokenData = json_decode($response, true);
-            if(isset($tokenData['error'])){
-                die("PayPal API error: " . $tokenData['error_description']);
-            }
-
-            $accessToken = $tokenData['access_token'];
+            $accessToken = get_paypal_access_token();
+            $baseUrl = "https://api-m.sandbox.paypal.com";
 
             // ---- CREATE PAYPAL ORDER ----
             $orderData = [
