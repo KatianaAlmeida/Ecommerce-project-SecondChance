@@ -22,10 +22,12 @@
   <!-- -- -->
   <div class="left_section">
     <img class="hamburger_button" src="https://img.icons8.com/ios-filled/50/1A1A1A/menu--v6.png" alt="menu--v6"/>
+    <!-- 
     <div class="search_container">
       <input class="search_bar" type="search" placeholder="Search" aria-label="Search">
       <button class="search_button" type="submit"><img class="search_icon" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/search--v1.png" alt="search--v1"/></button>
     </div>
+    -->
   </div>
   <!-- -- -->
   <div class="right_section">
