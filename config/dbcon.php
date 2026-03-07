@@ -8,7 +8,7 @@
 
   // Create PostgreSQL connection
   $connection = pg_connect(
-      "host=$host port=$port dbname=$database user=$username password=$password"
+      "host=$host port=$port dbname=$database user=$username password=$password sslmode=require"
   );
 
   // Check connection
