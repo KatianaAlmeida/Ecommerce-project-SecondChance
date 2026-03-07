@@ -1,17 +1,18 @@
-# Dockerfile
 FROM php:8.2-cli
+
+# Install PostgreSQL libraries
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy all files
+# Copy project files
 COPY . .
 
-# Install extensions (if needed, e.g., pgsql for Supabase)
-RUN docker-php-ext-install pdo pdo_pgsql pgsql
+# Expose Render port
+EXPOSE 10000
 
-# Expose port
-EXPOSE 5000
-
-# Start PHP built-in server
-CMD ["php", "-S", "0.0.0.0:5000", "-t", "."]
+# Start PHP server
+CMD ["sh", "-c", "php -S 0.0.0.0:$PORT"]
