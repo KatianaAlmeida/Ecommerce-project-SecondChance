@@ -164,7 +164,9 @@
 .secure_checkout p{
   font-size: 12px;
 }
-
+.iquantity{
+  min-width:54px;
+}
 .checkout{
   border: none;
   background-color: #751fff;
@@ -177,7 +179,6 @@
 }
 @media screen and (max-width: 1431px) {
   .product_in_cart .input_btn_container{
-    background-color: lightblue;
     width: 54.5px;
   }
   .product_in_cart .prod_qty_container input{
