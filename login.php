@@ -20,7 +20,7 @@
         <a href="/reset_password.php">Forgot Password?</a>
       </div>
       <div class="form-group">
-          <button type="submit" name="login-btn">Login</button>
+          <button class="login" type="submit" name="login-btn">Login</button>
           <?php
             if(isset($_SESSION['message'])){ ?>
             <span class="message"> <?= $_SESSION['message'];?></span>

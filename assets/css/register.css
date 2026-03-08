@@ -1,61 +1,111 @@
-.sign_up{
-  margin-left: 200px;
-  padding: 5px;
-}
-.close_register{
-  display: flex;
-  justify-content: right;
-  margin-top: 10px;
-}
-.close_register img{
-  height: 70px;
-  width: 70px;
-}
-.register{
-  margin-top: 20px;
-}
-
-.register_container{
+.register_container {
   display: flex;
   justify-content: center;
-}
-/* ------------------ */
-.sign_in{
-  margin-left: 135px;
-  padding: 5px;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.passwordreset{
-  margin-left: 65px;
-  padding: 5px;
+/* Card form container */
+.form_container {
+  position: relative;
+  background: #fff;
+  padding: 10px 30px;
+  width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.resettitle{
-  margin-left: 145px;
-  padding: 5px;
-} 
+/* Close button */
+.close_register {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.close_register img {
+  width: 25px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.close_register img:hover {
+  transform: scale(1.2);
+}
 
-/*================== phone (responsive) =================== */
-@media(min-width: 300px) and (max-width: 500px){
-  .sign_in{
-    margin-left: 0;
-    padding: 0;
-    font-size: 25px;
-  }
-  .sign_up{
-    margin-left: 40px;
-    padding: 0;
-  }
-  
-  .passwordreset{
-    margin-left: 0;
-    padding: 0;
-    font-size: 25px;
-  }
-  
-  .resettitle{
-      margin-left: 0;
-      padding: 0;
-      font-size: 25px;
-  }
+/* Heading */
+.sign_up,
+.sign_in {
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #333;
+  text-align: center;
+}
+.description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+.form-group input {
+  padding: 10px 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #751fff;
+  box-shadow: 0 0 5px rgba(74,144,226,0.5);
+}
+
+/* Register button */
+.register,
+.login {
+  width: 100%;
+  padding: 12px;
+  background: #751fff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.register:hover,
+.login:hover {
+  background: #5a16cc;
+}
+
+/* Messages */
+.message {
+  display: block;
+  margin-top: 10px;
+  color: #d93025;
+  font-size: 14px;
+}
+
+/* Links */
+.form-group p {
+  font-size: 14px;
+  text-align: center;
+}
+.form-group p a {
+  color: #751fff;
+  text-decoration: none;
+}
+.form-group p a:hover {
+  text-decoration: underline;
 }
