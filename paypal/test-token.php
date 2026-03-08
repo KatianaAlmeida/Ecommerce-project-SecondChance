@@ -3,16 +3,15 @@
 // Katiana: Test PayPal REST API credentials
 session_start();
 require __DIR__ . "./../vendor/autoload.php";
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../functions/');
-$dotenv->load();
+ 
 
 // Show all PHP errors
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // ---- CONFIG ----
-$clientId = $_ENV['PAYPAL_CLIENT_ID'];
-$secret   = $_ENV['PAYPAL_SECRET'];
+$clientId = getenv('PAYPAL_CLIENT_ID');
+$secret   = getenv('PAYPAL_SECRET');
 $baseUrl  = "https://api-m.sandbox.paypal.com"; // ✅ Correct REST API URL
 // ----------------
 

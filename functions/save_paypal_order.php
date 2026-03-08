@@ -1,8 +1,7 @@
 <?php
 session_start();
 require __DIR__ . "./../vendor/autoload.php";
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../functions/');
-$dotenv->load();
+ 
 include('../config/dbcon.php');
 include('../functions/place_order.php');
 

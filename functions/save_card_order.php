@@ -2,13 +2,12 @@
 
 session_start();
 require __DIR__ . "./../vendor/autoload.php";
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../functions/');
-$dotenv->load();
+ 
 include('../config/dbcon.php');
 include('../functions/place_order.php');
 
 if(isset($_SESSION['auth'])){
-  \Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET']);
+  \Stripe\Stripe::setApiKey(getenv('STRIPE_SECRET'));
 
   if (!isset($_GET['session_id'])) {
       die("No session ID provided.");

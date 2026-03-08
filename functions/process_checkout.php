@@ -2,8 +2,7 @@
 
 session_start();
 require __DIR__ . "./../vendor/autoload.php"; // loads the necessary file automatically - Stripe
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../functions/');
-$dotenv->load();
+ 
 
 include('../config/dbcon.php');
 include('../functions/place_order.php');
@@ -32,7 +31,7 @@ if(isset($_POST['make_checkout_btn'])){
         header('Location: ../checkout.php');
     }else{
         if($_POST['payment_option'] === 'card'){
-            \Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET']);
+            \Stripe\Stripe::setApiKey(getenv('STRIPE_SECRET'));
             $checkout_session = \Stripe\Checkout\Session::create([
                 "mode" => "payment",
                 "success_url" => "http://localhost:3000/functions/save_card_order.php?session_id={CHECKOUT_SESSION_ID}",

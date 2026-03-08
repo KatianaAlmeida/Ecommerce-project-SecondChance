@@ -1,9 +1,10 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require __DIR__ . "./../vendor/autoload.php";
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../functions/');
-$dotenv->load();
+ 
 include('../config/dbcon.php');
 
 /* =========================================== */
@@ -100,8 +101,12 @@ function save_order_to_db($data, $connection){
 }
 
 function get_paypal_access_token(): string {
-    $clientId = $_ENV['PAYPAL_CLIENT_ID'];
-    $secret   = $_ENV['PAYPAL_SECRET'];
+    $clientId = getenv('PAYPAL_CLIENT_ID');
+    $secret   = getenv('PAYPAL_SECRET');
+
+    if (!$clientId || !$secret) {
+        die("PayPal environment variables not set!");
+    }
     $baseUrl  = "https://api-m.sandbox.paypal.com";
 
     $ch = curl_init();
