@@ -14,9 +14,9 @@ include('config/dbcon.php');
                 FROM carts c, products p 
                 WHERE c.product_id = p.id AND c.user_id = '$user_id' 
                 ORDER BY c.id DEsC;";
-        $result =  mysqli_query($connection, $sql);
+        $result =  pg_query($connection, $sql);
         if ($result) {
-          if (mysqli_num_rows($result) > 0) {
+          if (pg_num_rows($result) > 0) {
             ?>
             <div class="product_in_cart_details1">
               <div class="info_dropdown"><span>My cart</span></div>
@@ -24,7 +24,7 @@ include('config/dbcon.php');
               <?php
               $initial_amout = 0;
               $index = 0;
-              foreach ($result as $items) {
+              while ($items = pg_fetch_assoc($result)) {
                 $initial_amout = $initial_amout + ($items["price"] * $items["product_qty"]);
                 $index = $index + 1;
                 $_SESSION['count'] = $index;

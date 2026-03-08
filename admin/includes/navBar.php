@@ -2,10 +2,10 @@
   include('../config/dbcon.php');
   $message_count = 0;
   $sql ="SELECT COUNT(*) AS total_messages FROM message";
-  $sql_run = mysqli_query($connection, $sql);
+  $sql_run = pg_query($connection, $sql);
 
-  if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-    foreach ($sql_run as $items) {
+  if ($sql_run && pg_num_rows($sql_run) > 0) {
+    while ($items = pg_fetch_assoc($sql_run)) {
       $message_count = $items['total_messages']; 
       if($message_count == ''){
         $message_count = 0;

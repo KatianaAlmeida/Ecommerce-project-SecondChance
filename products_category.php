@@ -13,11 +13,11 @@ include('config/dbcon.php');
         <div class="category">
           <?php
             $sql = "SELECT * FROM categories";
-            $result = mysqli_query($connection, $sql);
+            $result = pg_query($connection, $sql);
 
             if ($result) {
-              if (mysqli_num_rows($result) > 0) {
-                foreach ($result as $items) {
+              if (pg_num_rows($result) > 0) {
+                while ($items = pg_fetch_assoc($result)) {
                   if ($items["status"] != "Hidden") {
                     ?>
                     <div class="each_category">

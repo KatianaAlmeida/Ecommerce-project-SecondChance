@@ -17,9 +17,9 @@
                 FROM carts c, products p 
                 WHERE c.product_id = p.id AND c.user_id = '$user_id' 
                 ORDER BY c.id DEsC;";
-        $result =  mysqli_query($connection, $sql);
+        $result =  pg_query($connection, $sql);
         if ($result) {
-          if (mysqli_num_rows($result) > 0) {
+          if (pg_num_rows($result) > 0) {
             ?>
             <div class="checkout_details1">
               <div class="info_dropdown"><span>Secure Checkout</span></div>
@@ -54,11 +54,11 @@
                 <!----><div class="address_info">
                   <?php
                   $address_sql = "SELECT * FROM address_book WHERE user_id = '$user_id'";
-                  $address_sql_run =  mysqli_query($connection, $address_sql);
+                  $address_sql_run =  pg_query($connection, $address_sql);
                   if ($address_sql_run) {
-                    if (mysqli_num_rows($address_sql_run) > 0) {
+                    if (pg_num_rows($address_sql_run) > 0) {
                       $count = 0;
-                      foreach ($address_sql_run as $items) {
+                      while ($items = pg_fetch_assoc($address_sql_run)) {
                         $count++; // Increment count at the beginning of the loop
                         ?>
                         <div class="radio_container">
@@ -216,7 +216,7 @@
                   <?php
                   $initial_amout = 0;
                   $index = 0;
-                  foreach ($result as $items) {
+                  while ($items = pg_fetch_assoc($result)) {
                     $initial_amout = $initial_amout + ($items["price"] * $items["product_qty"]);
                     $index = $index + 1;
                     $_SESSION['count'] = $index;

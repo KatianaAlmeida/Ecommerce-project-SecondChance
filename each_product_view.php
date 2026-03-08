@@ -8,10 +8,10 @@ include('components/frontbar.php');
 if (isset($_GET['product'])) {
   $product_number = $_GET['product'];
   $product_query =  "SELECT * FROM products WHERE incremented_name = '$product_number' LIMIT 1";
-  $result = mysqli_query($connection, $product_query);
+  $result = pg_query($connection, $product_query);
 
-  if ($result && mysqli_num_rows($result) > 0) {
-    $product = mysqli_fetch_assoc($result);
+  if ($result && pg_num_rows($result) > 0) {
+    $product = pg_fetch_assoc($result);
     // $product["id"];
     // $product["product_name"];
     // $product["incremented_name"];
@@ -120,8 +120,8 @@ if (isset($_GET['product'])) {
         $check_reviews = "SELECT reviews.*, users.username as user_name  FROM reviews 
             JOIN users ON reviews.user_id = users.id 
             WHERE reviews.product_id = '$id'";
-        $check_reviews_run = mysqli_query($connection, $check_reviews);
-        if ($check_reviews_run && mysqli_num_rows($check_reviews_run) > 0) {
+        $check_reviews_run = pg_query($connection, $check_reviews);
+        if ($check_reviews_run && pg_num_rows($check_reviews_run) > 0) {
         ?>
           <div class="info_dropdown horiz_ruler">
             <span>Reviews</span>
@@ -132,7 +132,7 @@ if (isset($_GET['product'])) {
               <?php
               $count = 0;
               $rating = 0;
-              foreach ($check_reviews_run as $items) {
+              while ($items = pg_fetch_assoc($check_reviews_run)) {
                 $rating = $rating + $items["rating"];
                 $count++;
               ?>
@@ -361,12 +361,12 @@ if (isset($_GET['product'])) {
               <div class="product-container" id="product-container3">
                 <?php
                 $sql = "SELECT * FROM products";
-                $result = mysqli_query($connection, $sql);
+                $result = pg_query($connection, $sql);
 
                 if ($result) {
-                  if (mysqli_num_rows($result) > 0) {
+                  if (pg_num_rows($result) > 0) {
                     $count = 0;
-                    foreach ($result as $items) {
+                    while ($items = pg_fetch_assoc($result)) {
                       if ($items["category_id"] == $product["category_id"] && $items["incremented_name"] != $product["incremented_name"]) {
                 ?>
                         <div class="product">

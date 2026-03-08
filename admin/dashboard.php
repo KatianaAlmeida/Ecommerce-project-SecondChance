@@ -27,10 +27,10 @@
             <div>
               <?php
               $sql ="SELECT COUNT(*) AS total_products FROM products";
-              $sql_run = mysqli_query($connection, $sql);
+              $sql_run = pg_query($connection, $sql);
 
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
+              if ($sql_run && pg_num_rows($sql_run) > 0) {
+                while ($items = pg_fetch_assoc($sql_run)) {
                   ?>
                     <p><?= $items["total_products"]; ?></p>
                     <span>Products</span>
@@ -51,10 +51,10 @@
             <div>
               <?php
               $sql ="SELECT COUNT(*) AS total_categories FROM categories";
-              $sql_run = mysqli_query($connection, $sql);
+              $sql_run = pg_query($connection, $sql);
 
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
+              if ($sql_run && pg_num_rows($sql_run) > 0) {
+                while ($items = pg_fetch_assoc($sql_run)) {
                   ?>
                     <p><?= $items["total_categories"]; ?></p>
                     <span>Categories</span>
@@ -75,10 +75,10 @@
             <div>
               <?php
               $sql ="SELECT COUNT(*) AS completed_orders FROM orders WHERE status = 'Completed';";
-              $sql_run = mysqli_query($connection, $sql);
+              $sql_run = pg_query($connection, $sql);
 
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
+              if ($sql_run && pg_num_rows($sql_run) > 0) {
+                while ($items = pg_fetch_assoc($sql_run)) {
                   ?>
                     <p><?= $items["completed_orders"]; ?></p>
                     <span>Completed Orders</span>
@@ -99,10 +99,10 @@
             <div>
               <?php
               $sql ="SELECT COUNT(*) AS in_progress_orders FROM orders WHERE status = 'In Progress';";
-              $sql_run = mysqli_query($connection, $sql);
+              $sql_run = pg_query($connection, $sql);
 
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
+              if ($sql_run && pg_num_rows($sql_run) > 0) {
+                while ($items = pg_fetch_assoc($sql_run)) {
                   ?>
                     <p><?= $items["in_progress_orders"]; ?></p>
                     <span>In Progress Orders</span>
@@ -123,10 +123,10 @@
             <div>
               <?php
               $sql ="SELECT COUNT(*) AS shipped_orders FROM orders WHERE status = 'Shipped';";
-              $sql_run = mysqli_query($connection, $sql);
+              $sql_run = pg_query($connection, $sql);
 
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
+              if ($sql_run && pg_num_rows($sql_run) > 0) {
+                while ($items = pg_fetch_assoc($sql_run)) {
                   ?>
                     <p><?= $items["shipped_orders"]; ?></p>
                     <span>Shipped Orders</span>
@@ -147,10 +147,10 @@
             <div>
               <?php
               $sql ="SELECT COUNT(*) AS cancelled_orders FROM orders WHERE status = 'Cancelled';";
-              $sql_run = mysqli_query($connection, $sql);
+              $sql_run = pg_query($connection, $sql);
 
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
+              if ($sql_run && pg_num_rows($sql_run) > 0) {
+                while ($items = pg_fetch_assoc($sql_run)) {
                   ?>
                     <p><?= $items["cancelled_orders"]; ?></p>
                     <span>Cancelled Orders</span>
@@ -171,10 +171,10 @@
             <div>
               <?php
               $sql ="SELECT COUNT(*) AS staff FROM users WHERE role != 'customer';";
-              $sql_run = mysqli_query($connection, $sql);
+              $sql_run = pg_query($connection, $sql);
 
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
+              if ($sql_run && pg_num_rows($sql_run) > 0) {
+                while ($items = pg_fetch_assoc($sql_run)) {
                   ?>
                     <p><?= $items["staff"]; ?></p>
                     <span>Staff and Admin</span>
@@ -205,10 +205,10 @@
             <div>
               <?php
               $sql ="SELECT COUNT(*) AS customer FROM users WHERE role = 'customer';";
-              $sql_run = mysqli_query($connection, $sql);
+              $sql_run = pg_query($connection, $sql);
 
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
+              if ($sql_run && pg_num_rows($sql_run) > 0) {
+                while ($items = pg_fetch_assoc($sql_run)) {
                   ?>
                     <p><?= $items["customer"]; ?></p>
                     <span>Customer</span>
@@ -238,10 +238,10 @@
             <div>
               <?php
               $sql ="SELECT COUNT(*) AS total_reviews FROM reviews";
-              $sql_run = mysqli_query($connection, $sql);
+              $sql_run = pg_query($connection, $sql);
 
-              if ($sql_run && mysqli_num_rows($sql_run) > 0) {
-                foreach ($sql_run as $items) {
+              if ($sql_run && pg_num_rows($sql_run) > 0) {
+                while ($items = pg_fetch_assoc($sql_run)) {
                   ?>
                     <p><?= $items["total_reviews"]; ?></p>
                     <span>Total Reviews</span>

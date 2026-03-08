@@ -24,10 +24,10 @@ include('includes/sideBar.php');
       <div class="contentt_container">
           <?php
           $sql = "SELECT * FROM orders";
-          $result =  mysqli_query($connection, $sql);
+          $result =  pg_query($connection, $sql);
 
         if ($result) {
-          if (mysqli_num_rows($result) > 0) {
+          if (pg_num_rows($result) > 0) {
             ?>
             <div class=""></div>
             <table class="styled_table1">
@@ -39,7 +39,8 @@ include('includes/sideBar.php');
                 <th>Manage Status</th>
               </tr>
               <?php 
-              foreach ($result as $index => $items) { 
+              $index = 0;
+              while ($items = pg_fetch_assoc($result)) {
                 $tracking_no = $items["tracking_no"]; 
                 $total_price = $items["total_price"];
                 ?>
@@ -78,14 +79,14 @@ include('includes/sideBar.php');
                       FROM order_items oi JOIN orders o ON oi.order_id = o.id JOIN address_book ab ON o.address_id = ab.id
                       JOIN products p ON oi.product_id = p.id
                       WHERE o.id = oi.order_id AND o.tracking_no = '$tracking_no'";
-                      $order_detail_run =  mysqli_query($connection, $order_detail);
+                      $order_detail_run =  pg_query($connection, $order_detail);
 
-                      if ($order_detail_run && mysqli_num_rows($order_detail_run) > 0) {
+                      if ($order_detail_run && pg_num_rows($order_detail_run) > 0) {
                         ?>
                         <div class="all_products_order">
                           <?php
                           $subtotal = 0;
-                          foreach ($order_detail_run as $items) {
+                          while ($items = pg_fetch_assoc($order_detail_run)) {
                           ?>
                             <div class="div1">
                               <img src="uploads/<?= $items["image"];?>" alt="<?= $items["product_name"]; ?>">
@@ -155,14 +156,14 @@ include('includes/sideBar.php');
                           JOIN orders o ON oi.order_id = o.id 
                           JOIN products p ON oi.product_id = p.id
                           WHERE o.id = oi.order_id AND o.tracking_no = '$tracking_no'";
-                        $order_detail_collect_run =  mysqli_query($connection, $order_detail_collect);
+                        $order_detail_collect_run =  pg_query($connection, $order_detail_collect);
 
-                        if ($order_detail_collect_run && mysqli_num_rows($order_detail_collect_run) > 0) {
+                        if ($order_detail_collect_run && pg_num_rows($order_detail_collect_run) > 0) {
                           ?>
                           <div class="all_products_order">
                             <?php
                             $subtotal = 0;
-                            foreach ($order_detail_collect_run as $items) { 
+                            while ($items = pg_fetch_assoc($order_detail_collect_run)) {
                               ?>
                               <div class="div1">
                                 <img src="uploads/<?= $items["image"];?>" alt="<?= $items["product_name"]; ?>">
@@ -215,7 +216,8 @@ include('includes/sideBar.php');
                       ?>
                   </td>
                 </tr>
-                <?php 
+                <?php
+                $index++;
               } 
             ?>
             </table>

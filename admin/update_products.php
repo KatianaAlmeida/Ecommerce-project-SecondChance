@@ -66,10 +66,10 @@
               <option disabled selected hidden>Select Category</option>
               <?php
               $sql = "SELECT * FROM categories";
-              $result =  mysqli_query($connection, $sql);
+              $result =  pg_query($connection, $sql);
               if ($result) {
-                if (mysqli_num_rows($result) > 0) {
-                  foreach ($result as $items) {
+                if (pg_num_rows($result) > 0) {
+                  while ($items = pg_fetch_assoc($result)) {
                     ?>
                     <option value="<?= $items["id"]; ?>"><?= $items["name"]; ?></option>
                     <?php        

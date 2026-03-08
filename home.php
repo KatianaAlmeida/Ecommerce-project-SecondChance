@@ -22,12 +22,12 @@ include('config/dbcon.php');
         <div class="category1">
           <?php
             $sql = "SELECT * FROM categories";
-            $result = mysqli_query($connection, $sql);
+            $result = pg_query($connection, $sql);
 
             if ($result) {
-              if (mysqli_num_rows($result) > 0) {
+              if (pg_num_rows($result) > 0) {
                 $count = 0;
-                foreach ($result as $items) {
+                while ($items = pg_fetch_assoc($result)) {
                   if ($items["status"] != "Hidden") {
                     ?>
                     <div class="each_category">
@@ -73,12 +73,12 @@ include('config/dbcon.php');
             <div class="product-container" id="product-container">
               <?php
                 $sql = "SELECT * FROM products";
-                $result = mysqli_query($connection, $sql);
+                $result = pg_query($connection, $sql);
 
                 if ($result) {
-                  if (mysqli_num_rows($result) > 0) {
+                  if (pg_num_rows($result) > 0) {
                     $count = 0;
-                    foreach ($result as $items) {
+                    while ($items = pg_fetch_assoc($result)) {
                       if ($items["category_id"] == 22 || $items["category_id"] == 21) {
                         ?>
                         <div class="product">
@@ -150,12 +150,12 @@ include('config/dbcon.php');
             <div class="product-container" id="product-container1">
               <?php
                 $sql = "SELECT * FROM products";
-                $result = mysqli_query($connection, $sql);
+                $result = pg_query($connection, $sql);
 
                 if ($result) {
-                  if (mysqli_num_rows($result) > 0) {
+                  if (pg_num_rows($result) > 0) {
                     $count = 0;
-                    foreach ($result as $items) {
+                    while ($items = pg_fetch_assoc($result)) {
                       if ($items["category_id"] == 16 || $items["category_id"] == 19) {
                         ?>
                         <!--link to a specific product page-->

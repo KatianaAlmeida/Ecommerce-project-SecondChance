@@ -12,37 +12,35 @@ if (isset($_POST['register-btn'])) {
     $role = $_POST['role'];
 
     // check if email already registered
-    $check_email = "SELECT email FROM users WHERE email=?";
-    $check_stmt = mysqli_prepare($connection, $check_email);
-    mysqli_stmt_bind_param($check_stmt, "s", $email);
-    mysqli_stmt_execute($check_stmt);
-    $check_result = mysqli_stmt_get_result($check_stmt);
+    $check_email_sql = "SELECT email FROM users WHERE email = $1";
+    $check_result = pg_query_params($connection, $check_email_sql, [$email]);
 
-    if (mysqli_num_rows($check_result) > 0) {
+    if ($check_result && pg_num_rows($check_result) > 0) {
         $_SESSION['message'] = 'Email already registered!';
         header('Location: ../add_users.php');
+        exit();
     } else {
         if ($password == $confirmed_password) {
-            // create user
-            $createUserSql = "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'";
-            $createUserSql_run = mysqli_query($connection, $createUserSql);
 
-            // insert user data
-            $insert_query = "INSERT INTO users (username, full_name, email, password, role) VALUES (?, ?, ?, ?, ?)";
-            $insert_stmt = mysqli_prepare($connection, $insert_query);
-            mysqli_stmt_bind_param($insert_stmt, "sssss", $username, $fullName, $email, $password, $role);
-            $insert_query_run = mysqli_stmt_execute($insert_stmt);
+            // insert user data into the users table
+            $insert_query = "INSERT INTO users (username, full_name, email, password, role)
+                             VALUES ($1, $2, $3, $4, $5)";
+            $insert_query_run = pg_query_params($connection, $insert_query, [$username, $fullName, $email, $password, $role]);
 
-            if ($insert_query_run && $createUserSql_run) {
+            if ($insert_query_run) {
                 $_SESSION['message'] = 'Registered Successfully!';
                 header('Location: ../add_users.php');
+                exit();
             } else {
                 $_SESSION['message'] = 'Something went wrong!';
                 header('Location: ../add_users.php');
+                exit();
             }
+
         } else {
             $_SESSION['message'] = 'Password do not match!';
             header('Location: ../add_users.php');
+            exit();
         }
     }
 }
@@ -51,19 +49,18 @@ if (isset($_POST['login-btn'])) {
 
     if (isset($_SESSION['auth_admin'])) {
         header('Location: ../dashboard.php');
+        exit();
     } else {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $login_query = "SELECT * FROM users WHERE email=? AND password=? AND role != 'customer'";
-        $login_stmt = mysqli_prepare($connection, $login_query);
-        mysqli_stmt_bind_param($login_stmt, "ss", $email, $password);
-        mysqli_stmt_execute($login_stmt);
-        $run_query = mysqli_stmt_get_result($login_stmt);
+        $login_query = "SELECT * FROM users WHERE email = $1 AND password = $2 AND role != 'customer'";
+        $run_query = pg_query_params($connection, $login_query, [$email, $password]);
 
-        if (mysqli_num_rows($run_query) > 0) {
+        if ($run_query && pg_num_rows($run_query) > 0) {
             $_SESSION['auth_admin'] = true;
-            $userdata = mysqli_fetch_array($run_query);
+
+            $userdata = pg_fetch_assoc($run_query);
             $user_name = $userdata['full_name'];
             $user_email = $userdata['email'];
 
@@ -72,9 +69,11 @@ if (isset($_POST['login-btn'])) {
                 'email' => $user_email
             ];
             header('Location: ../dashboard.php');
+            exit();
         } else {
             $_SESSION['message'] = 'Invalid Credentials!';
             header('Location: ../index.php');
+            exit();
         }
     }
 }

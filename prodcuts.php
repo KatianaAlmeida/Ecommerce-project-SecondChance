@@ -9,13 +9,13 @@ include('config/dbcon.php');
 
  $category_name = $_GET['category'];
  $category_query =  "SELECT * FROM categories WHERE name = '$category_name' LIMIT 1";
- $result = mysqli_query($connection, $category_query);
+ $result = pg_query($connection, $category_query);
 
  ?>
   <main class="shop_all_page">
     <?php
-    if ($result && mysqli_num_rows($result) > 0) {
-      $category = mysqli_fetch_assoc($result);
+    if ($result && pg_num_rows($result) > 0) {
+      $category = pg_fetch_assoc($result);
       $category_id = $category["id"];
       ?>
       <div>
@@ -39,10 +39,10 @@ include('config/dbcon.php');
         <div class="shop_category_container">
           <?php
             $sql = "SELECT * FROM categories";
-            $result =  mysqli_query($connection, $sql);
+            $result =  pg_query($connection, $sql);
             if ($result) {
-              if (mysqli_num_rows($result) > 0) {
-                foreach ($result as $items) {
+              if (pg_num_rows($result) > 0) {
+                while ($items = pg_fetch_assoc($result)) {
                   if ($items["status"] != "Hidden") {
                     $isActive = $items["name"] === $category_name ? 'active-category' : '';
                     ?>
@@ -68,12 +68,12 @@ include('config/dbcon.php');
         <div class="product-containerr" id="product-container">
           <?php
             $sql = "SELECT * FROM products WHERE category_id = '$category_id'";
-            $result = mysqli_query($connection, $sql);
+            $result = pg_query($connection, $sql);
 
             if ($result) {
-              if (mysqli_num_rows($result) > 0) {
+              if (pg_num_rows($result) > 0) {
                 $count = 0;
-                foreach ($result as $items) {
+                while ($items = pg_fetch_assoc($result)) {
                   ?>
                   <div class="productt">
                     <a href="each_product_view.php?product=<?= $items["incremented_name"];?>&page_name=prodcuts&category=Computers">

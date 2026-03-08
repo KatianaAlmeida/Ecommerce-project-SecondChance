@@ -36,11 +36,11 @@
           </tr>
           <?php
           $sql = "SELECT 'Customer' AS Role, u.full_name AS Name, m.id, u.email, m.subject, m.content FROM message m JOIN users u ON m.user_id = u.id UNION ALL SELECT 'Visitor' AS Role, CONCAT(v.first_name, ' ', v.last_name) AS Name, m.id, v.email, m.subject, m.content FROM message m JOIN visitor v ON m.visitor_id = v.id;";
-          $result =  mysqli_query($connection, $sql);
+          $result =  pg_query($connection, $sql);
 
           if ($result) {
-          if (mysqli_num_rows($result) > 0) {
-            foreach ($result as $items) {
+          if (pg_num_rows($result) > 0) {
+            while ($items = pg_fetch_assoc($result)) {
               ?>
                 <tr>
                   <td class="user_row"><?= $items["Role"]; ?></td>

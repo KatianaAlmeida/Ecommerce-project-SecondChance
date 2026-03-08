@@ -10,12 +10,12 @@ include('../functions/place_order.php');
 
 if(isset($_POST['make_checkout_btn'])){
   if(isset($_SESSION['auth'])){
-    $delivery_type = mysqli_real_escape_string($connection, $_POST['delivery_type_h']);
-    $choosen_address = mysqli_real_escape_string($connection, $_POST['choosen_address_h']);
-    $choosen_payment = mysqli_real_escape_string($connection, $_POST['choosen_payment_h']);
-    $delivery = mysqli_real_escape_string($connection, $_POST['delivery']);
-    $total_price = mysqli_real_escape_string($connection, $_POST['total_price']);
-    $payment_id = mysqli_real_escape_string($connection, $_POST['payment_id']);
+    $delivery_type = pg_escape_string($connection, $_POST['delivery_type_h']);
+    $choosen_address = pg_escape_string($connection, $_POST['choosen_address_h']);
+    $choosen_payment = pg_escape_string($connection, $_POST['choosen_payment_h']);
+    $delivery = pg_escape_string($connection, $_POST['delivery']);
+    $total_price = pg_escape_string($connection, $_POST['total_price']);
+    $payment_id = pg_escape_string($connection, $_POST['payment_id']);
     
     // STORE DATA IN SESSION
     $_SESSION['checkout_data'] = [

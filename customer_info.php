@@ -31,10 +31,10 @@
               <?php
               $user_id = $_SESSION['auth_user']['id'];
               $user_detail_query = "SELECT * FROM users WHERE id = '$user_id' LIMIT 1";
-              $user_detail_query_run =  mysqli_query($connection, $user_detail_query);
+              $user_detail_query_run =  pg_query($connection, $user_detail_query);
 
-              if ($user_detail_query_run && mysqli_num_rows($user_detail_query_run) > 0) {
-                $user_data = mysqli_fetch_array($user_detail_query_run);
+              if ($user_detail_query_run && pg_num_rows($user_detail_query_run) > 0) {
+                $user_data = pg_fetch_assoc($user_detail_query_run);
                 $id = $user_data['id'];
                 $username = $user_data['username'];
                 $full_name = $user_data['full_name'];
@@ -91,10 +91,10 @@
             <?php
             $user_id = $_SESSION['auth_user']['id'];
             $sql = "SELECT * FROM orders WHERE userd_id = '$user_id'";
-            $result = mysqli_query($connection, $sql);
+            $result = pg_query($connection, $sql);
 
             if ($result) {
-              if (mysqli_num_rows($result) > 0) {
+              if (pg_num_rows($result) > 0) {
                 ?>
                 <div class=""></div>
                 <table class="styled_table1">
@@ -106,7 +106,8 @@
                     <th>Order Details</th>
                   </tr>
                   <?php
-                  foreach ($result as $index => $items) {
+                  $index = 0;
+                  while ($items = pg_fetch_assoc($result)) {
                     $tracking_no = $items["tracking_no"];
                     $total_price = $items["total_price"];
                   ?>
@@ -141,14 +142,14 @@
                                         JOIN address_book ab ON o.address_id = ab.id
                                         JOIN products p ON oi.product_id = p.id
                                         WHERE o.id = oi.order_id AND o.tracking_no = '$tracking_no'";
-                        $order_detail_run = mysqli_query($connection, $order_detail);
+                        $order_detail_run = pg_query($connection, $order_detail);
 
-                        if ($order_detail_run && mysqli_num_rows($order_detail_run) > 0) {
+                        if ($order_detail_run && pg_num_rows($order_detail_run) > 0) {
                           ?>
                           <div class="all_products_order">
                             <?php
                             $subtotal = 0;
-                            foreach ($order_detail_run as $items) {
+                            while ($items = pg_fetch_assoc($order_detail_run)) {
                             ?>
                               <div class="div1">
                                 <img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["image"]; ?>">
@@ -218,14 +219,14 @@
                             JOIN orders o ON oi.order_id = o.id 
                             JOIN products p ON oi.product_id = p.id
                             WHERE o.id = oi.order_id AND o.tracking_no = '$tracking_no'";
-                          $order_detail_collect_run =  mysqli_query($connection, $order_detail_collect);
+                          $order_detail_collect_run =  pg_query($connection, $order_detail_collect);
 
-                          if ($order_detail_collect_run && mysqli_num_rows($order_detail_collect_run) > 0) {
+                          if ($order_detail_collect_run && pg_num_rows($order_detail_collect_run) > 0) {
                             ?>
                             <div class="all_products_order">
                               <?php
                               $subtotal = 0;
-                              foreach ($order_detail_collect_run as $items) { 
+                              while ($items = pg_fetch_assoc($order_detail_collect_run)) {
                                 ?>
                                 <div class="div1">
                                   <img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["image"]; ?>">
@@ -279,6 +280,7 @@
                       </td>
                     </tr>
                   <?php
+                    $index++;
                   }
                   ?>
                 </table>
@@ -290,7 +292,7 @@
               }
             } else {
               ?>
-              <p class="message_order">Query failed: <?= mysqli_error($connection); ?></p>
+              <p class="message_order">Query failed: <?= pg_last_error($connection); ?></p>
             <?php
             }
             ?>
@@ -309,11 +311,11 @@
               <!----><div class="address_info">
                 <?php
                 $address_sql = "SELECT * FROM address_book WHERE user_id = '$user_id'";
-                $address_sql_run =  mysqli_query($connection, $address_sql);
+                $address_sql_run =  pg_query($connection, $address_sql);
                 if ($address_sql_run) {
-                  if (mysqli_num_rows($address_sql_run) > 0) {
+                  if (pg_num_rows($address_sql_run) > 0) {
                     $count = 0;
-                    foreach ($address_sql_run as $items) {
+                    while ($items = pg_fetch_assoc($address_sql_run)) {
                       $count++; // Increment count at the beginning of the loop
                       ?>
                       <div class="radio_container">
@@ -430,11 +432,11 @@
               <!----><div class="address_info">
                 <?php
                 $card_sql = "SELECT * FROM card_details WHERE user_id = '$user_id'";
-                $card_sql_run =  mysqli_query($connection, $card_sql);
+                $card_sql_run =  pg_query($connection, $card_sql);
                 if ($card_sql_run) {
-                  if (mysqli_num_rows($card_sql_run) > 0) {
+                  if (pg_num_rows($card_sql_run) > 0) {
                     $count = 0;
-                    foreach ($card_sql_run as $items) {
+                    while ($items = pg_fetch_assoc($card_sql_run)) {
                       $count++; 
                       $last_4_digits = substr($items["card_number"], -4);
                       ?>
@@ -539,11 +541,11 @@
                         FROM wishlist w
                         JOIN products p ON w.product_id = p.id
                         WHERE w.user_id = '$user_id';";
-                $wishlist_query_run = mysqli_query($connection, $wishlist_query);
+                $wishlist_query_run = pg_query($connection, $wishlist_query);
 
                 if ($wishlist_query_run) {
-                  if (mysqli_num_rows($wishlist_query_run) > 0) {
-                    foreach ($wishlist_query_run as $items) {
+                  if (pg_num_rows($wishlist_query_run) > 0) {
+                  while ($items = pg_fetch_assoc($wishlist_query_run)) {
                       ?>
                       <div class="productt">
                         <a href="">

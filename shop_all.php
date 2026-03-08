@@ -8,7 +8,7 @@ include('config/dbcon.php');
  <main class="shop_all_page">
     <?php
     if(isset($_POST['search_btnn']) && $_POST['search_box'] != ''){
-      $search_box = mysqli_real_escape_string($connection, $_POST['search_box']);
+      $search_box = pg_escape_string($connection, $_POST['search_box']);
       ?>
       <div>
         <h1>Searched for "<?= $search_box;?>"</h1>
@@ -25,10 +25,10 @@ include('config/dbcon.php');
                       FROM categories 
                       LEFT JOIN products ON categories.id = products.category_id 
                       GROUP BY categories.id, categories.name";
-              $result =  mysqli_query($connection, $sql);
+              $result =  pg_query($connection, $sql);
               if ($result) {
-                if (mysqli_num_rows($result) > 0) {
-                  foreach ($result as $items) {
+                if (pg_num_rows($result) > 0) {
+                  while ($items = pg_fetch_assoc($result)) {
                     if ($items["status"] != "Hidden") {
                       ?>
                       <div class="checkbox-container">
@@ -75,30 +75,30 @@ include('config/dbcon.php');
 
           // Get the total number of products
           $total_products_query = "SELECT COUNT(*) AS total FROM products";
-          $total_products_result = mysqli_query($connection, $total_products_query);
-          $total_products = mysqli_fetch_assoc($total_products_result)['total'];
+          $total_products_result = pg_query($connection, $total_products_query);
+          $total_products = pg_fetch_assoc($total_products_result)['total'];
 
           // Calculate the total number of pages
           $total_pages = ceil($total_products / $products_per_page);
 
           // Fetch products for the current page
           $sql = "SELECT * FROM products WHERE product_name LIKE '%{$search_box}%' LIMIT $products_per_page OFFSET $offset";
-          $result = mysqli_query($connection, $sql);
+          $result = pg_query($connection, $sql);
           $sql2 = "SELECT id FROM categories WHERE name LIKE '%{$search_box}%' LIMIT $products_per_page OFFSET $offset";
-          $result2 = mysqli_query($connection, $sql2);
+          $result2 = pg_query($connection, $sql2);
         ?>        
         <div class="shop_products">
           <div class="product-containerr" id="product-container">
             <?php
             if ($result || $result2) {
-              if (mysqli_num_rows($result2) > 0) {
+              if (pg_num_rows($result2) > 0) {
                 // -- result box used start {search category} --
-                $category = mysqli_fetch_assoc($result2);
+                $category = pg_fetch_assoc($result2);
                 $category_id = $category["id"];
                 $sql3 = "SELECT * FROM products WHERE category_id = '$category_id' LIMIT $products_per_page OFFSET $offset";
-                $result3 = mysqli_query($connection, $sql3);
+                $result3 = pg_query($connection, $sql3);
                 if($result3){
-                  foreach ($result3 as $items) {
+                  while ($items = pg_fetch_assoc($result3)) {
                     include 'functions/product_template.php'; // -- 1
                   }                 
                 }else {
@@ -110,9 +110,9 @@ include('config/dbcon.php');
                 }
                 unset($_POST['search_btnn']);
                 unset($_POST['search_box']);
-              }else if (mysqli_num_rows($result) > 0) {
+              }else if (pg_num_rows($result) > 0) {
                 // -- result box used start {search prodcuts} --
-                foreach ($result as $items) {
+                while ($items = pg_fetch_assoc($result)) {
                   include 'functions/product_template.php'; // -- 2
                 }
                 unset($_POST['search_btnn']);
@@ -159,10 +159,10 @@ include('config/dbcon.php');
                       FROM categories 
                       LEFT JOIN products ON categories.id = products.category_id 
                       GROUP BY categories.id, categories.name";
-              $result =  mysqli_query($connection, $sql);
+              $result =  pg_query($connection, $sql);
               if ($result) {
-                if (mysqli_num_rows($result) > 0) {
-                  foreach ($result as $items) {
+                if (pg_num_rows($result) > 0) {
+                  while ($items = pg_fetch_assoc($result)) {
                     if ($items["status"] != "Hidden") {
                       ?>
                       <div class="checkbox-container">
@@ -205,22 +205,22 @@ include('config/dbcon.php');
 
           // Get the total number of products
           $total_products_query = "SELECT COUNT(*) AS total FROM products";
-          $total_products_result = mysqli_query($connection, $total_products_query);
-          $total_products = mysqli_fetch_assoc($total_products_result)['total'];
+          $total_products_result = pg_query($connection, $total_products_query);
+          $total_products = pg_fetch_assoc($total_products_result)['total'];
 
           // Calculate the total number of pages
           $total_pages = ceil($total_products / $products_per_page);
 
           // Fetch products for the current page
           $sql = "SELECT * FROM products LIMIT $products_per_page OFFSET $offset";
-          $result = mysqli_query($connection, $sql);
+          $result = pg_query($connection, $sql);
         ?>      
         <div class="shop_products">
           <div class="product-containerr" id="product-container">
             <?php
             if ($result) {
-              if (mysqli_num_rows($result) > 0) {
-                foreach ($result as $items) {
+              if (pg_num_rows($result) > 0) {
+                while ($items = pg_fetch_assoc($result)) {
                   include 'functions/product_template.php'; // -- 3
                 }
               } else {

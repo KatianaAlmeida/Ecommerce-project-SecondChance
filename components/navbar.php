@@ -9,10 +9,10 @@
 
     // Query to get the count of items in the user's cart
     $sql = "SELECT SUM(product_qty) as cart_count FROM carts WHERE user_id = '$user_id'";
-    $result = mysqli_query($connection, $sql);
+    $result = pg_query($connection, $sql);
 
-    if ($result && mysqli_num_rows($result) > 0) {
-      $row = mysqli_fetch_assoc($result);
+    if ($result && pg_num_rows($result) > 0) {
+      $row = pg_fetch_assoc($result);
       $cart_count = $row['cart_count'];
       if($cart_count == ''){
         $cart_count = 0;

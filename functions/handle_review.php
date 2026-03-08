@@ -4,12 +4,12 @@ session_start();
 include('../config/dbcon.php');
 
 if(isset($_POST['publish_review_btn'])){
-  $SKU = mysqli_real_escape_string($connection, $_POST['SKU']);
+  $SKU = pg_escape_string($connection, $_POST['SKU']);
   if(isset($_SESSION['auth'])){
-    $review_title = mysqli_real_escape_string($connection, $_POST['review_title']);
-    $review_content = mysqli_real_escape_string($connection, $_POST['review_content']);
-    $review_rating = mysqli_real_escape_string($connection, $_POST['review_rating']);
-    $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
+    $review_title = pg_escape_string($connection, $_POST['review_title']);
+    $review_content = pg_escape_string($connection, $_POST['review_content']);
+    $review_rating = pg_escape_string($connection, $_POST['review_rating']);
+    $product_id = pg_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
     $image = $_FILES['image']['name'];
@@ -23,15 +23,15 @@ if(isset($_POST['publish_review_btn'])){
       header('Location: ../each_product_view.php?product='.$SKU.'');
     } else{
       $product_query =  "SELECT * FROM reviews WHERE product_id = '$product_id' AND user_id = '$user_id'";
-      $result = mysqli_query($connection, $product_query);
+      $result = pg_query($connection, $product_query);
   
-      if($result && mysqli_num_rows($result) > 0){
+      if($result && pg_num_rows($result) > 0){
         $_SESSION['cart_type'] = "info";
         $_SESSION['cart_add_message'] = 'There is a review on this product alredy, just update the existing one!';
         header('Location: ../each_product_view.php?product='.$SKU.'');
       }else{
         $sql = "INSERT INTO reviews (title, content, rating, image, user_id, product_id) VALUES ('$review_title', '$review_content', '$review_rating', '$filename', '$user_id', '$product_id')";
-        $insert_query_run = mysqli_query($connection, $sql);
+        $insert_query_run = pg_query($connection, $sql);
     
         if($insert_query_run){
           move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
@@ -54,12 +54,12 @@ if(isset($_POST['publish_review_btn'])){
 }
 
 if(isset($_POST['update_review_btn'])){
-  $SKU = mysqli_real_escape_string($connection, $_POST['SKU']);
+  $SKU = pg_escape_string($connection, $_POST['SKU']);
   if(isset($_SESSION['auth'])){
-    $review_title = mysqli_real_escape_string($connection, $_POST['review_title']);
-    $review_content = mysqli_real_escape_string($connection, $_POST['review_content']);
-    $review_rating = mysqli_real_escape_string($connection, $_POST['review_rating']);
-    $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
+    $review_title = pg_escape_string($connection, $_POST['review_title']);
+    $review_content = pg_escape_string($connection, $_POST['review_content']);
+    $review_rating = pg_escape_string($connection, $_POST['review_rating']);
+    $product_id = pg_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
     $image = $_FILES['image']['name'];
@@ -73,12 +73,12 @@ if(isset($_POST['update_review_btn'])){
       header('Location: ../each_product_view.php?product='.$SKU.'');
     } else{
       $product_query =  "SELECT * FROM reviews WHERE product_id = '$product_id' AND user_id = '$user_id'";
-      $result = mysqli_query($connection, $product_query);
+      $result = pg_query($connection, $product_query);
   
-      if($result && mysqli_num_rows($result) > 0){
+      if($result && pg_num_rows($result) > 0){
         $sql =  "UPDATE reviews SET title = '$review_title', content = '$review_content', rating = '$review_rating', image = '$filename'
           WHERE user_id = '$user_id' AND product_id = '$product_id'";
-        $update_query_run = mysqli_query($connection, $sql);
+        $update_query_run = pg_query($connection, $sql);
         
         if($update_query_run){
           move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
@@ -105,19 +105,19 @@ if(isset($_POST['update_review_btn'])){
 }
 
 if(isset($_POST['delete_btn'])){
-  $SKU = mysqli_real_escape_string($connection, $_POST['SKU']);
+  $SKU = pg_escape_string($connection, $_POST['SKU']);
   if(isset($_SESSION['auth'])){
-    $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
+    $product_id = pg_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
     
     $check_existing_cart = "SELECT * FROM reviews WHERE user_id = '$user_id' AND product_id = '$product_id'";
-    $check_existing_cart_run = mysqli_query($connection, $check_existing_cart);
+    $check_existing_cart_run = pg_query($connection, $check_existing_cart);
 
-    if ($check_existing_cart_run && mysqli_num_rows($check_existing_cart_run) > 0) {
+    if ($check_existing_cart_run && pg_num_rows($check_existing_cart_run) > 0) {
       // Delete
       $sql = "DELETE FROM reviews WHERE user_id = '$user_id' AND product_id = '$product_id'";;
-      $delete_query_run = mysqli_query($connection, $sql);
+      $delete_query_run = pg_query($connection, $sql);
 
       if($delete_query_run){
         $_SESSION['cart_type'] = "success";

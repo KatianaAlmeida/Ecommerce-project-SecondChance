@@ -17,11 +17,11 @@ if (!is_dir($imageDirectory)) {
     </tr>
   <?php
   $sql = "SELECT * FROM categories";
-  $result =  mysqli_query($connection, $sql);
+  $result =  pg_query($connection, $sql);
 
   if ($result) {
-    if (mysqli_num_rows($result) > 0) {
-      foreach ($result as $items) {
+    if (pg_num_rows($result) > 0) {
+      while ($items = pg_fetch_assoc($result)) {
         ?>
           <tr>
             <td class="user_row"><img width="70px" height="70px" src="./uploads/<?= $items["image"];?>" alt="<?= $items["name"]; ?>"></td>

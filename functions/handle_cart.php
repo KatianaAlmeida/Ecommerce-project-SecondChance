@@ -8,7 +8,7 @@ function move_to($page, $SKU, $connection) {
   if($page == 'shop_all'){
     header('Location: ../shop_all.php');
   } else if($page == 'category_search'){
-    $category_name = mysqli_real_escape_string($connection, $_POST['category_name']);
+    $category_name = pg_escape_string($connection, $_POST['category_name']);
     header('Location: ../prodcuts.php?category='.$category_name.'');
   } else if($page == 'customer_info'){
     header('Location: ../customer_info.php#cust_page5');
@@ -18,20 +18,20 @@ function move_to($page, $SKU, $connection) {
 }
 
 if(isset($_POST['add_to_cart-btn'])){
-  $SKU = mysqli_real_escape_string($connection, $_POST['SKU']);
-  $page = mysqli_real_escape_string($connection, $_POST['page']);
+  $SKU = pg_escape_string($connection, $_POST['SKU']);
+  $page = pg_escape_string($connection, $_POST['page']);
   if(isset($_SESSION['auth'])){
-    $new_qty = (int) mysqli_real_escape_string($connection, $_POST['quantity']);
-    $current_qty = (int) mysqli_real_escape_string($connection, $_POST['stock_qty']);
-    $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
+    $new_qty = (int) pg_escape_string($connection, $_POST['quantity']);
+    $current_qty = (int) pg_escape_string($connection, $_POST['stock_qty']);
+    $product_id = pg_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
     //echo "quantity ".$quantity." product_id ".$product_id." user_id ".$user_id;
 
     $check_existing_cart = "SELECT * FROM carts WHERE user_id ='$user_id' AND	product_id = ' $product_id'";
-    $check_existing_cart_run = mysqli_query($connection, $check_existing_cart);
+    $check_existing_cart_run = pg_query($connection, $check_existing_cart);
 
-    if ($check_existing_cart_run && mysqli_num_rows($check_existing_cart_run) > 0) {
+    if ($check_existing_cart_run && pg_num_rows($check_existing_cart_run) > 0) {
       $_SESSION['cart_type'] = "info";
       $_SESSION['cart_add_message'] = 'Product alredy in Cart!';
       move_to($page, $SKU, $connection);
@@ -39,7 +39,7 @@ if(isset($_POST['add_to_cart-btn'])){
     }else{
       if(($current_qty - $new_qty) >= 0){
         $sql = "INSERT INTO carts (user_id,	product_id,	product_qty) VALUES('$user_id', '$product_id', '$new_qty')";
-        $insert_query_run = mysqli_query($connection, $sql);
+        $insert_query_run = pg_query($connection, $sql);
     
         if($insert_query_run){
           $_SESSION['cart_type'] = "success";
@@ -65,21 +65,21 @@ if(isset($_POST['add_to_cart-btn'])){
 
 if(isset($_POST['update_cart_btn'])){
   if(isset($_SESSION['auth'])){
-    $product_qty = (int) mysqli_real_escape_string($connection, $_POST['product_qty']);
-    $stock_qty = (int) mysqli_real_escape_string($connection, $_POST['stock_qty']);
-    $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
+    $product_qty = (int) pg_escape_string($connection, $_POST['product_qty']);
+    $stock_qty = (int) pg_escape_string($connection, $_POST['stock_qty']);
+    $product_id = pg_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
     
     $check_existing_cart = "SELECT * FROM carts WHERE user_id = '$user_id' AND product_id = '$product_id'";
-    $check_existing_cart_run = mysqli_query($connection, $check_existing_cart);
+    $check_existing_cart_run = pg_query($connection, $check_existing_cart);
 
-    if ($check_existing_cart_run && mysqli_num_rows($check_existing_cart_run) > 0) {
+    if ($check_existing_cart_run && pg_num_rows($check_existing_cart_run) > 0) {
       if($product_qty != 0){
         if(($stock_qty - $product_qty) >= 0){
           // Update
           $sql = "UPDATE carts SET product_qty = '$product_qty' WHERE product_id = '$product_id' AND user_id = '$user_id'";;
-          $update_query_run = mysqli_query($connection, $sql);
+          $update_query_run = pg_query($connection, $sql);
 
           if($update_query_run){
             $_SESSION['cart_type'] = "success";
@@ -98,7 +98,7 @@ if(isset($_POST['update_cart_btn'])){
       }else{
         // Delete
         $sql = "DELETE FROM carts WHERE user_id = '$user_id' AND product_id = '$product_id'";;
-        $delete_query_run = mysqli_query($connection, $sql);
+        $delete_query_run = pg_query($connection, $sql);
 
         if($delete_query_run){
           header('Location: ../cart_page.php');
@@ -123,17 +123,17 @@ if(isset($_POST['update_cart_btn'])){
 
 if(isset($_POST['delete_prod_btn'])){
   if(isset($_SESSION['auth'])){
-    $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
+    $product_id = pg_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
     
     $check_existing_cart = "SELECT * FROM carts WHERE user_id = '$user_id' AND product_id = '$product_id'";
-    $check_existing_cart_run = mysqli_query($connection, $check_existing_cart);
+    $check_existing_cart_run = pg_query($connection, $check_existing_cart);
 
-    if ($check_existing_cart_run && mysqli_num_rows($check_existing_cart_run) > 0) {
+    if ($check_existing_cart_run && pg_num_rows($check_existing_cart_run) > 0) {
       // Delete
       $sql = "DELETE FROM carts WHERE user_id = '$user_id' AND product_id = '$product_id'";;
-      $delete_query_run = mysqli_query($connection, $sql);
+      $delete_query_run = pg_query($connection, $sql);
 
       if($delete_query_run){
         header('Location: ../cart_page.php');
@@ -157,21 +157,21 @@ if(isset($_POST['delete_prod_btn'])){
 /* ====================== wishlist ======================= */
 
 if(isset($_POST['add_whish_btn'])){
-  $SKU = mysqli_real_escape_string($connection, $_POST['SKU']);
+  $SKU = pg_escape_string($connection, $_POST['SKU']);
   if(isset($_SESSION['auth'])){
-    $product_id = mysqli_real_escape_string($connection, $_POST['product_id']);
+    $product_id = pg_escape_string($connection, $_POST['product_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
     $product_query =  "SELECT * FROM wishlist WHERE product_id = '$product_id' AND user_id = '$user_id'";
-    $result = mysqli_query($connection, $product_query);
+    $result = pg_query($connection, $product_query);
 
-    if($result && mysqli_num_rows($result) > 0){
+    if($result && pg_num_rows($result) > 0){
       $_SESSION['cart_type'] = "info";
       $_SESSION['cart_add_message'] = 'Product is alredy in the whish list!';
       header('Location: ../each_product_view.php?product='.$SKU.'');
     }else{
       $sql = "INSERT INTO wishlist (user_id,	product_id) VALUES ('$user_id', '$product_id')";
-      $insert_query_run = mysqli_query($connection, $sql);
+      $insert_query_run = pg_query($connection, $sql);
   
       if($insert_query_run){
         $_SESSION['cart_type'] = "success";
@@ -194,17 +194,17 @@ if(isset($_POST['add_whish_btn'])){
 
 if(isset($_POST['delete_wishlist_btn'])){
   if(isset($_SESSION['auth'])){
-    $wishlist_id = mysqli_real_escape_string($connection, $_POST['wishlist_id']);
+    $wishlist_id = pg_escape_string($connection, $_POST['wishlist_id']);
     $user_id = $_SESSION['auth_user']['id'];
 
     
     $check_existing_wishlist = "SELECT * FROM wishlist WHERE id = '$wishlist_id' AND user_id = '$user_id'";
-    $wishlist_query_run = mysqli_query($connection, $check_existing_wishlist);
+    $wishlist_query_run = pg_query($connection, $check_existing_wishlist);
 
-    if ($wishlist_query_run && mysqli_num_rows($wishlist_query_run) > 0) {
+    if ($wishlist_query_run && pg_num_rows($wishlist_query_run) > 0) {
       // Delete
       $sql = "DELETE FROM wishlist WHERE user_id = '$user_id' AND id = '$wishlist_id'";;
-      $delete_query_run = mysqli_query($connection, $sql);
+      $delete_query_run = pg_query($connection, $sql);
 
       if($delete_query_run){
         $_SESSION['cart_type'] = "success";

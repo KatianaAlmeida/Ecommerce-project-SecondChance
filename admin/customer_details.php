@@ -46,11 +46,11 @@ include('includes/sideBar.php');
                     email,
                     'Visitor' AS role
                   FROM visitor";
-        $result = mysqli_query($connection, $sql);
+        $result = pg_query($connection, $sql);
 
         if ($result) {
-          if (mysqli_num_rows($result) > 0) {
-            foreach ($result as $items) {
+          if (pg_num_rows($result) > 0) {
+            while ($items = pg_fetch_assoc($result)) {
               ?>
               <tr>
                 <td class="user_row"><?= $items["full_name"]; ?></td>
@@ -104,10 +104,10 @@ include('includes/sideBar.php');
         if (isset($_SESSION['id'])) {
           $user_id = $_SESSION['id'];
           $sql = "SELECT * FROM orders WHERE userd_id = '$user_id'";
-          $result = mysqli_query($connection, $sql);
+          $result = pg_query($connection, $sql);
   
           if ($result) {
-            if (mysqli_num_rows($result) > 0) {
+            if (pg_num_rows($result) > 0) {
               ?>
               <table class="styled_table1">
                 <tr>
@@ -118,7 +118,7 @@ include('includes/sideBar.php');
                   <th>Mode</th>
                 </tr>
                 <?php
-                foreach ($result as $items) {
+                while ($items = pg_fetch_assoc($result)) {
                   $tracking_no = $items["tracking_no"];
                   $total_price = $items["total_price"];
                   ?>

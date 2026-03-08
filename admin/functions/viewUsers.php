@@ -3,10 +3,10 @@
 include('../config/dbcon.php');
 
   $sql = "SELECT * FROM users WHERE role != 'customer'";
-  $result =  mysqli_query($connection, $sql);
+  $result =  pg_query($connection, $sql);
 
   if ($result) {
-    if (mysqli_num_rows($result) > 0) {
+    if (pg_num_rows($result) > 0) {
       ?>
       <table class="displayUser">
         <tr>

@@ -4,16 +4,16 @@ session_start();
 include('../../config/dbcon.php');
 
 if(isset($_POST['update-btn'])){
-  $username = mysqli_real_escape_string($connection, $_POST['username']);
-  $fullName = mysqli_real_escape_string($connection, $_POST['fullName']);
-  $email = mysqli_real_escape_string($connection, $_POST['email']);
-  $role = mysqli_real_escape_string($connection, $_POST['role']);
-  $password = mysqli_real_escape_string($connection, $_POST['password']);
-  $confirmed_password = mysqli_real_escape_string($connection, $_POST['confirm-password']);
+  $username = pg_escape_string($connection, $_POST['username']);
+  $fullName = pg_escape_string($connection, $_POST['fullName']);
+  $email = pg_escape_string($connection, $_POST['email']);
+  $role = pg_escape_string($connection, $_POST['role']);
+  $password = pg_escape_string($connection, $_POST['password']);
+  $confirmed_password = pg_escape_string($connection, $_POST['confirm-password']);
 
   // SQL to retrieve id based on username
   $sql = "SELECT id FROM users WHERE username = '$username'";
-  $result =  mysqli_query($connection, $sql);
+  $result =  pg_query($connection, $sql);
 
   if ($result) {
     if ($result->num_rows > 0) {
@@ -29,7 +29,7 @@ if(isset($_POST['update-btn'])){
       // full name
       if($fullName != null || $fullName != ''){
         $sql_fullName = "UPDATE users SET full_name = '$fullName' WHERE id = $user_id";
-        $update_fullName_run = mysqli_query($connection, $sql_fullName);
+        $update_fullName_run = pg_query($connection, $sql_fullName);
         if($update_fullName_run){
           $_SESSION['update'] = 'Updated Successfully!';
           header('Location: ../view_update_user.php');
@@ -42,7 +42,7 @@ if(isset($_POST['update-btn'])){
       // email
       if($email != null || $email != ''){
         $sql_email = "UPDATE users SET email = '$email' WHERE id = $user_id";
-        $update_email_run = mysqli_query($connection, $sql_email);
+        $update_email_run = pg_query($connection, $sql_email);
         if($update_email_run){
           $_SESSION['update'] = 'Updated Successfully!';
           header('Location: ../view_update_user.php');
@@ -55,7 +55,7 @@ if(isset($_POST['update-btn'])){
       // role
       if($role != null || $role != ''){
         $sql_role = "UPDATE users SET role = '$role' WHERE id = $user_id";
-        $update_role_run = mysqli_query($connection, $sql_role);
+        $update_role_run = pg_query($connection, $sql_role);
         if($update_role_run){
           $_SESSION['update'] = 'Updated Successfully!';
           header('Location: ../view_update_user.php');
@@ -69,7 +69,7 @@ if(isset($_POST['update-btn'])){
       if($password == $confirmed_password){
         if($password != null || $password != ''){
           $sql_password = "UPDATE users SET password = '$password' WHERE id = $user_id";
-          $update_password_run = mysqli_query($connection, $sql_password);
+          $update_password_run = pg_query($connection, $sql_password);
           if($update_password_run){
             $_SESSION['update'] = 'Updated Successfully!';
             header('Location: ../view_update_user.php');
@@ -93,11 +93,11 @@ if(isset($_POST['update-btn'])){
 }
 
 if(isset($_POST['delete-btn'])){
-  $username = mysqli_real_escape_string($connection, $_POST['username']);
+  $username = pg_escape_string($connection, $_POST['username']);
 
   // SQL to retrieve id based on username
   $sql = "SELECT id FROM users WHERE username = '$username'";
-  $result =  mysqli_query($connection, $sql);
+  $result =  pg_query($connection, $sql);
 
   if ($result) {
     if ($result->num_rows > 0) {
@@ -107,11 +107,11 @@ if(isset($_POST['delete-btn'])){
 
       // delete user
       $deleteUserSql = "DROP USER '$username'@'localhost'";
-      $deleteUserSql_run = mysqli_query($connection, $deleteUserSql);
+      $deleteUserSql_run = pg_query($connection, $deleteUserSql);
 
       // delete user data
       $sql_delete = "DELETE FROM users WHERE id = $user_id";
-      $delete_user = mysqli_query($connection, $sql_delete);
+      $delete_user = pg_query($connection, $sql_delete);
       if($delete_user && $deleteUserSql_run){
         $_SESSION['update'] = 'User Deleted Successfully!';
         header('Location: ../view_update_user.php');
@@ -133,8 +133,8 @@ if(isset($_POST['delete-btn'])){
 }
 
 if(isset($_POST['customer_id_btn'])){
-  $customer_id = mysqli_real_escape_string($connection, $_POST['customer_id']);
-  $full_name = mysqli_real_escape_string($connection, $_POST['full_name']);
+  $customer_id = pg_escape_string($connection, $_POST['customer_id']);
+  $full_name = pg_escape_string($connection, $_POST['full_name']);
 
   $_SESSION['getID_message'] = 'You are viewing '.$full_name.' orders. Customer: {'.$customer_id.'}';
   $_SESSION['name'] = $full_name;
