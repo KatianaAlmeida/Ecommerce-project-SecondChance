@@ -229,7 +229,7 @@ include('includes/sideBar.php');
           }
         } else {
           ?>
-          <p class="message_order">Execution Error: <?= $connection->error;?></p>
+          <p class="message_order">Execution Error: <?= pg_last_error($connection);?></p>
           <?php
         }
         ?>

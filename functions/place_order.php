@@ -20,7 +20,7 @@ function save_order_to_db($data, $connection){
   $cart_sql = "SELECT c.product_id, c.product_qty as product_qty, p.price as product_price
   FROM carts c, products p 
   WHERE c.product_id = p.id AND c.user_id = '$user_id' 
-  ORDER BY c.id DEsC;";
+  ORDER BY c.id DESC;";
   $cart_sql_run = pg_query($connection, $cart_sql);
   $total_price  = 0;
 
@@ -34,6 +34,7 @@ function save_order_to_db($data, $connection){
       $_SESSION['cart_type'] = "error";
       $_SESSION['cart_add_message'] = 'No product foud! ';
       header('Location: ../checkout.php');
+      exit();
     }
   }
   /*-------------------------------------------------------------------------------------*/
@@ -42,10 +43,10 @@ function save_order_to_db($data, $connection){
     $sql = "";
     if($delivery_type == 'Delivery' && $choosen_address != 'choosen_address'){
       $sql = "INSERT INTO orders (tracking_no,	userd_id,	delivery_mode,	address_id,	total_price, delivery_fee,	payment_mode,	payment_id, status)
-              VALUES('$tracking_no', '$user_id', '$delivery_type', '$choosen_address', '$total_price', '$delivery', '$choosen_payment', '$payment_id', 'In Progress')";
+              VALUES('$tracking_no', '$user_id', '$delivery_type', '$choosen_address', '$total_price', '$delivery', '$choosen_payment', '$payment_id', 'In Progress') RETURNING id";
     } else{
       $sql = "INSERT INTO orders (tracking_no,	userd_id,	delivery_mode,total_price, delivery_fee, payment_mode,	payment_id, status)
-      VALUES('$tracking_no', '$user_id', '$delivery_type', '$total_price', '$delivery', '$choosen_payment', '$payment_id', 'In Progress')";
+      VALUES('$tracking_no', '$user_id', '$delivery_type', '$total_price', '$delivery', '$choosen_payment', '$payment_id', 'In Progress') RETURNING id";
     }
 
     $insert_query_run = pg_query($connection, $sql);
@@ -54,7 +55,8 @@ function save_order_to_db($data, $connection){
       //$order_id = mysqli_insert_id($connection);
       // Get the inserted order ID
       $order_id = pg_fetch_result($insert_query_run, 0, 'id');
-      foreach($cart_sql_run as $cart_items){
+      $cart_sql_run = pg_query($connection, $cart_sql);
+      while ($cart_items = pg_fetch_assoc($cart_sql_run)) {
         $product_id = $cart_items['product_id'];
         $product_qty = $cart_items['product_qty'];
         $product_price = $cart_items['product_price'];
@@ -80,16 +82,19 @@ function save_order_to_db($data, $connection){
         $_SESSION['cart_type'] = "success";
       $_SESSION['cart_add_message'] = 'Order Placed Sucessfully!';
       header('Location: ../customer_info.php#cust_page2');
+      exit();
     }else{
-      $_SESSION['cart_type'] = "error";
-      $_SESSION['cart_add_message'] = 'Order placement failed: '.$connection->error;
-      header('Location: ../checkout.php');
+    $_SESSION['cart_type'] = "error";
+    $_SESSION['cart_add_message'] = 'Order placement failed: ' . pg_last_error($connection);
+    header('Location: ../checkout.php');
+    exit(); // <- VERY important
     }
     
   }else{
     $_SESSION['cart_type'] = "info";
     $_SESSION['cart_add_message'] = 'Fill in all the information needed!';
     header('Location: ../checkout.php');
+    exit();
   }
   
 }
@@ -128,8 +133,10 @@ function get_paypal_access_token(): string {
 function move_to($page) {
   if($page == 'checkout_page'){
     header('Location: ../checkout.php');
+    exit();
   } else if($page == 'customer_info'){
     header('Location: ../customer_info.php#cust_page3');
+    exit();
   }
 }
 
@@ -155,7 +162,7 @@ if(isset($_POST['save_address_btn'])){
       $_SESSION['adress_added'] = 'Address Added Sucessfully!';
       move_to($page);
     }else{
-      $_SESSION['adress_added'] = 'Error: '.$connection->error;
+      $_SESSION['adress_added'] = 'Error: ' . pg_last_error($connection);
       move_to($page);
     }
     
@@ -184,11 +191,11 @@ if(isset($_POST['delete_address_btn'])){
         $_SESSION['adress_added'] = 'Address Deleted!';
         move_to($page);
       }else{
-        $_SESSION['adress_added'] = 'Error: '.$connection->error;
+        $_SESSION['adress_added'] = 'Error: ' . pg_last_error($connection);
         move_to($page);
       }
     }else{
-      $_SESSION['adress_added'] = 'Error: '.$connection->error;
+      $_SESSION['adress_added'] = 'Error: ' . pg_last_error($connection);
       move_to($page);
     }
   }else{
@@ -201,8 +208,10 @@ if(isset($_POST['delete_address_btn'])){
 function move_to1($page) {
   if($page == 'checkout_page'){
     header('Location: ../checkout.php');
+    exit();
   } else if($page == 'customer_info'){
     header('Location: ../customer_info.php#cust_page4');
+    exit();
   }
 }
 
@@ -224,7 +233,7 @@ if(isset($_POST['save_card_btn'])){
       $_SESSION['card_added'] = 'Cart Added Sucessfully!';
       move_to1($page);
     }else{
-      $_SESSION['card_added'] = 'Error: '.$connection->error;
+      $_SESSION['card_added'] = 'Error: ' . pg_last_error($connection);
       move_to1($page);
     }
     
@@ -253,11 +262,11 @@ if(isset($_POST['delete_card_btn'])){
         $_SESSION['card_added'] = 'Card Deleted!';
         move_to1($page);
       }else{
-        $_SESSION['card_added'] = 'Error: '.$connection->error;
+        $_SESSION['card_added'] = 'Error: ' . pg_last_error($connection);
         move_to1($page);
       }
     }else{
-      $_SESSION['card_added'] = 'Error: '.$connection->error;
+      $_SESSION['card_added'] = 'Error: ' . pg_last_error($connection);
       move_to1($page);
     }
   }else{

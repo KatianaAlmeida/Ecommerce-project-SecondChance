@@ -84,7 +84,7 @@
                       }
                     }
                   } else {
-                    $_SESSION['adress_added'] = 'Execution Error: '. $connection->error;
+                    $_SESSION['adress_added'] = 'Execution Error: '. pg_last_error($connection);
                     header('Location: ../adress_added.php');
                   }
                   ?>
@@ -302,7 +302,7 @@
         } else {
           ?>
           <div class="each_category">
-            <p>Execution Error: <?= $connection->error; ?></p>
+            <p>Execution Error: <?= pg_last_error($connection); ?></p>
           </div>
           <?php
         }

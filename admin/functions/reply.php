@@ -26,7 +26,7 @@ if (isset($_POST['send_reply-btn'])) {
     $_SESSION['reply_to_message'] = 'Message Send Sucessfully!';
     header('Location: ../customer_messages.php');
   } else {
-    $_SESSION['reply_to_message'] = 'Reply didnt save: ' . $connection->error;
+    $_SESSION['reply_to_message'] = 'Reply didnt save: ' . pg_last_error($connection);
     header('Location: ../customer_messages.php');
   }
 }

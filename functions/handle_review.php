@@ -40,7 +40,7 @@ if(isset($_POST['publish_review_btn'])){
           header('Location: ../each_product_view.php?product='.$SKU.'');
         }else{
           $_SESSION['cart_type'] = "error";
-          $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+          $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
           header('Location: ../each_product_view.php?product='.$SKU.'');
         }
       }
@@ -87,7 +87,7 @@ if(isset($_POST['update_review_btn'])){
           header('Location: ../each_product_view.php?product='.$SKU.'');
         }else{
           $_SESSION['cart_type'] = "error";
-          $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+          $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
           header('Location: ../each_product_view.php?product='.$SKU.'');
         }
       }else{
@@ -125,12 +125,12 @@ if(isset($_POST['delete_btn'])){
         header('Location: ../each_product_view.php?product='.$SKU.'');
       }else{
         $_SESSION['cart_type'] = "error";
-        $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+        $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
         header('Location: ../each_product_view.php?product='.$SKU.'');
       }
     }else{
       $_SESSION['cart_type'] = "error";
-      $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+      $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
       header('Location: ../each_product_view.php?product='.$SKU.'');
     }
   }else{

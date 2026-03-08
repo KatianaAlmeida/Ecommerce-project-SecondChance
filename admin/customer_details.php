@@ -75,7 +75,7 @@ include('includes/sideBar.php');
           }
         } else {
           ?>
-          <span class="message">Execution Error: <?= $connection->error; ?></span>
+          <span class="message">Execution Error: <?= pg_last_error($connection); ?></span>
           <?php
         }
         ?>
@@ -141,7 +141,7 @@ include('includes/sideBar.php');
             }
           } else {
             ?>
-            <p class="message_order">Execution Error: <?= $connection->error; ?></p>
+            <p class="message_order">Execution Error: <?= pg_last_error($connection); ?></p>
             <?php
           }
           unset($_SESSION['name']);

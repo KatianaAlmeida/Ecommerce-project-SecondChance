@@ -40,7 +40,7 @@
                   header('Location: ../add_products.php');
                 }
               } else {
-                $_SESSION['message'] = 'Execution Error: '. $connection->error;
+                $_SESSION['message'] = 'Execution Error: '. pg_last_error($connection);
                 header('Location: ../add_products.php');
               }
               ?>
@@ -137,7 +137,7 @@
               header('Location: ../category.php');
             }
           } else {
-            $_SESSION['delete_message'] = 'Execution Error: '. $connection->error;
+            $_SESSION['delete_message'] = 'Execution Error: '. pg_last_error($connection);
             header('Location: ../category.php');
           }
           ?>

@@ -31,7 +31,7 @@ if(isset($_POST['send-btn'])){
             $_SESSION['send_message'] = 'Message Send Successfully!';
             header('Location: ../contact_us.php');
           }else{
-            $_SESSION['send_message'] = "Error: ".$connection->error;
+            $_SESSION['send_message'] = "Error: " . pg_last_error($connection);
             header('Location: ../contact_us.php');
           }
         }else{ 
@@ -46,7 +46,7 @@ if(isset($_POST['send-btn'])){
             $_SESSION['send_message'] = 'Message Send Successfully!';
             header('Location: ../contact_us.php');
           }else{
-            $_SESSION['send_message'] = "Error: ".$connection->error;
+            $_SESSION['send_message'] = "Error: " . pg_last_error($connection);
             header('Location: ../contact_us.php');
           }
         }
@@ -60,7 +60,7 @@ if(isset($_POST['send-btn'])){
       header('Location: ../contact_us.php');
     }
   }else{
-    $_SESSION['send_message'] = 'Someting Went Wrong'.$connection->error;
+    $_SESSION['send_message'] = 'Someting Went Wrong' . pg_last_error($connection);
     header('Location: ../contact_us.php');
   }
 }

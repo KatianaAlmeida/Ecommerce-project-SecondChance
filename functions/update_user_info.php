@@ -28,7 +28,7 @@ if(isset($_POST['save-newpassword-btn'])){
             $_SESSION['message'] = 'Password Updated Successfully!';
             header('Location: ../login.php');
           }else{
-            $_SESSION['message'] = "Error updating user's detail: " . $connection->error;
+            $_SESSION['message'] = "Error updating user's detail: " . pg_last_error($connection);
             header('Location: ../login.php');
           }
         }
@@ -58,7 +58,7 @@ if(isset($_POST['reset-btn'])){
 
   $stmt = $connection->prepare($sql);
   if (!$stmt) {
-    die('Error preparing statement: ' . $connection->error);
+    die('Error preparing statement: ' . pg_last_error($connection));
   }
   $stmt->bind_param("sss", $token_hash, $expiry, $email);
   if (!$stmt->execute()) {
@@ -126,7 +126,7 @@ if(isset($_POST['save-newpassword-btn'])) {
                 header('Location: ../login.php');
                 exit();
             } else {
-                $_SESSION['message'] = "Error updating password: " . pg_last_error($connection);
+                $_SESSION['message'] = "Error updating password: " . connection->error;
                 header('Location: ../login.php');
                 exit();
             }
@@ -207,7 +207,7 @@ if(isset($_POST['update_user_info_btn'])){
         $_SESSION['message'] = 'Profile Updated Successfully!';
         header('Location: ../customer_info.php#cust_page1');
       }else{
-        $_SESSION['message'] = "Error updating user's detail: " . $connection->error;
+        $_SESSION['message'] = "Error updating user's detail: " . pg_last_error($connection);
         header('Location: ../customer_info.php#cust_page1');
       }
     }else{
@@ -221,7 +221,7 @@ if(isset($_POST['update_user_info_btn'])){
       $_SESSION['message'] = 'Profile Updated Successfully!';
       header('Location: ../customer_info.php#cust_page1');
     }else{
-      $_SESSION['message'] = "Error updating user's detail: " . $connection->error;
+      $_SESSION['message'] = "Error updating user's detail: " . pg_last_error($connection);
       header('Location: ../customer_info.php#cust_page1');
     }
   }

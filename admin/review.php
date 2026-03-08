@@ -80,7 +80,7 @@
           }
         } else {
           ?>
-          <span class="message">Execution Error: <?= $connection->error; ?></span>
+          <span class="message">Execution Error: <?= pg_last_error($connection); ?></span>
           <?php
         }
         ?>

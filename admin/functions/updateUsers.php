@@ -34,7 +34,7 @@ if(isset($_POST['update-btn'])){
           $_SESSION['update'] = 'Updated Successfully!';
           header('Location: ../view_update_user.php');
         }else{
-          $_SESSION['update'] = "Error updating user's detail: " . $connection->error;
+          $_SESSION['update'] = "Error updating user's detail: " . pg_last_error($connection);
           header('Location: ../view_update_user.php');
         }
       }
@@ -47,7 +47,7 @@ if(isset($_POST['update-btn'])){
           $_SESSION['update'] = 'Updated Successfully!';
           header('Location: ../view_update_user.php');
         }else{
-          $_SESSION['update'] = "Error updating user's detail: " . $connection->error;
+          $_SESSION['update'] = "Error updating user's detail: " . pg_last_error($connection);
           header('Location: ../view_update_user.php');
         }
       }
@@ -60,7 +60,7 @@ if(isset($_POST['update-btn'])){
           $_SESSION['update'] = 'Updated Successfully!';
           header('Location: ../view_update_user.php');
         }else{
-          $_SESSION['update'] = "Error updating user's detail: " . $connection->error;
+          $_SESSION['update'] = "Error updating user's detail: " . pg_last_error($connection);
           header('Location: ../view_update_user.php');
         }
       }
@@ -74,7 +74,7 @@ if(isset($_POST['update-btn'])){
             $_SESSION['update'] = 'Updated Successfully!';
             header('Location: ../view_update_user.php');
           }else{
-            $_SESSION['update'] = "Error updating user's detail: " . $connection->error;
+            $_SESSION['update'] = "Error updating user's detail: " . pg_last_error($connection);
             header('Location: ../view_update_user.php');
           }
         }
@@ -116,7 +116,7 @@ if(isset($_POST['delete-btn'])){
         $_SESSION['update'] = 'User Deleted Successfully!';
         header('Location: ../view_update_user.php');
       }else{
-        $_SESSION['update'] = "Error deleting user: " . $connection->error;
+        $_SESSION['update'] = "Error deleting user: " . pg_last_error($connection);
         header('Location: ../view_update_user.php');
       }
 

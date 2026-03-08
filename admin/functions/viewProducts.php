@@ -47,7 +47,7 @@ if (!is_dir($imageDirectory)) {
     header('Location: ../category.php');
   }
 } else {
-  $_SESSION['message'] = 'Execution Error: '. $connection->error;
+  $_SESSION['message'] = 'Execution Error: '. pg_last_error($connection);
   header('Location: ../category.php');
 }
 ?>

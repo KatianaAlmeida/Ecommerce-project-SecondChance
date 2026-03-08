@@ -51,7 +51,7 @@ include('config/dbcon.php');
               } else {
                 ?>
                 <div class="each_category">
-                  <p>Execution Error: <?= $connection->error; ?></p>
+                  <p>Execution Error: <?= pg_last_error($connection); ?></p>
                 </div>
                 <?php
               }
@@ -182,7 +182,7 @@ include('config/dbcon.php');
               } else {
                 ?>
                 <div class="each_category">
-                  <p>Execution Error: <?= $connection->error; ?></p>
+                  <p>Execution Error: <?= pg_last_error($connection); ?></p>
                 </div>
                 <?php
               }

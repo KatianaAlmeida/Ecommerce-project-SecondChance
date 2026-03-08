@@ -38,7 +38,7 @@
                 }
               }else{
                 ?>
-                <p>Error: <?= $connection->error; ?></p>
+                <p>Error: <?= pg_last_error($connection); ?></p>
                 <?php
               }
               ?>
@@ -62,7 +62,7 @@
                 }
               }else{
                 ?>
-                <p>Error: <?= $connection->error; ?></p>
+                <p>Error: <?= pg_last_error($connection); ?></p>
                 <?php
               }
               ?>
@@ -86,7 +86,7 @@
                 }
               }else{
                 ?>
-                <p>Error: <?= $connection->error; ?></p>
+                <p>Error: <?= pg_last_error($connection); ?></p>
                 <?php
               }
               ?>
@@ -110,7 +110,7 @@
                 }
               }else{
                 ?>
-                <p>Error: <?= $connection->error; ?></p>
+                <p>Error: <?= pg_last_error($connection); ?></p>
                 <?php
               }
               ?>
@@ -134,7 +134,7 @@
                 }
               }else{
                 ?>
-                <p>Error: <?= $connection->error; ?></p>
+                <p>Error: <?= pg_last_error($connection); ?></p>
                 <?php
               }
               ?>
@@ -158,7 +158,7 @@
                 }
               }else{
                 ?>
-                <p>Error: <?= $connection->error; ?></p>
+                <p>Error: <?= pg_last_error($connection); ?></p>
                 <?php
               }
               ?>
@@ -182,7 +182,7 @@
                 }
               }else{
                 ?>
-                <p>Error: <?= $connection->error; ?></p>
+                <p>Error: <?= pg_last_error($connection); ?></p>
                 <?php
               }
               ?>
@@ -216,7 +216,7 @@
                 }
               }else{
                 ?>
-                <p>Error: <?= $connection->error; ?></p>
+                <p>Error: <?= pg_last_error($connection); ?></p>
                 <?php
               }
               ?>
@@ -249,7 +249,7 @@
                 }
               }else{
                 ?>
-                <p>Error: <?= $connection->error; ?></p>
+                <p>Error: <?= pg_last_error($connection); ?></p>
                 <?php
               }
               ?>

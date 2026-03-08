@@ -22,7 +22,7 @@ if(isset($_POST['add_category-btn'])){
     $_SESSION['message'] = 'Category Added Sucessfully!';
     header('Location: ../category.php');
   }else{
-    $_SESSION['message'] = 'Someting Went Wrong'.$connection->error;
+    $_SESSION['message'] = 'Someting Went Wrong' . pg_last_error($connection);
     header('Location: ../category.php');
   }
 }
@@ -37,7 +37,7 @@ if(isset($_POST['delete_category-btn'])){
     $_SESSION['message'] = 'Category Deleted Sucessfully';
     header('Location: ../category.php');
   }else{
-    $_SESSION['message'] = 'Someting Went Wrong'.$connection->error;
+    $_SESSION['message'] = 'Someting Went Wrong' . pg_last_error($connection);
     header('Location: ../category.php');
   }
 }

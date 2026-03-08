@@ -47,7 +47,7 @@ if(isset($_POST['add_to_cart-btn'])){
           move_to($page, $SKU, $connection);
         }else{
           $_SESSION['cart_type'] = "error";
-          $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+          $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
           move_to($page, $SKU, $connection);
         }
       }else{
@@ -87,7 +87,7 @@ if(isset($_POST['update_cart_btn'])){
             header('Location: ../cart_page.php');
           }else{
             $_SESSION['cart_type'] = "error";
-            $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+            $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
             header('Location: ../cart_page.php');
           }
         }else{
@@ -104,14 +104,14 @@ if(isset($_POST['update_cart_btn'])){
           header('Location: ../cart_page.php');
         }else{
           $_SESSION['cart_type'] = "error";
-          $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+          $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
           header('Location: ../cart_page.php');
         }
       }
       
     }else{
       $_SESSION['cart_type'] = "error";
-      $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+      $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
       header('Location: ../cart_page.php');
     }
   }else{
@@ -139,12 +139,12 @@ if(isset($_POST['delete_prod_btn'])){
         header('Location: ../cart_page.php');
       }else{
         $_SESSION['cart_type'] = "error";
-        $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+        $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
         header('Location: ../cart_page.php');
       }
     }else{
       $_SESSION['cart_type'] = "error";
-      $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+      $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
       header('Location: ../cart_page.php');
     }
   }else{
@@ -179,7 +179,7 @@ if(isset($_POST['add_whish_btn'])){
         header('Location: ../each_product_view.php?product='.$SKU.'');
       }else{
         $_SESSION['cart_type'] = "error";
-        $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+        $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
         header('Location: ../each_product_view.php?product='.$SKU.'');
       }
     }
@@ -212,7 +212,7 @@ if(isset($_POST['delete_wishlist_btn'])){
         header('Location: ../customer_info.php#cust_page5');
       }else{
         $_SESSION['cart_type'] = "error";
-        $_SESSION['cart_add_message'] = 'Error: '.$connection->error;
+        $_SESSION['cart_add_message'] = 'Error: ' . pg_last_error($connection);
         header('Location: ../customer_info.php#cust_page5');
       }
     }else{

@@ -37,7 +37,7 @@ if (isset($_POST['add_product-btn'])) {
     $_SESSION['message'] = 'Product Added Sucessfully!';
     header('Location: ../add_products.php');
   } else {
-    $_SESSION['message'] = 'Someting Went Wrong: ' . $connection->error . $category_id;
+    $_SESSION['message'] = 'Someting Went Wrong: ' . pg_last_error($connection) . $category_id;
     header('Location: ../add_products.php');
   }
 }
@@ -52,7 +52,7 @@ if (isset($_POST['delete_products-btn'])) {
     $_SESSION['delete_message'] = 'Product Deleted Sucessfully';
     header('Location: ../add_products.php');
   } else {
-    $_SESSION['delete_message'] = 'Someting Went Wrong' . $connection->error;
+    $_SESSION['delete_message'] = 'Someting Went Wrong' . pg_last_error($connection);
     header('Location: ../add_products.php');
   }
 }
@@ -106,7 +106,7 @@ if (isset($_POST['update-btn'])) {
           $_SESSION['update_message'] = 'Updated Successfully!';
           header('Location: ../update_products.php');
         } else {
-          $_SESSION['update_message'] = "Error updating user's detail" . $connection->error;
+          $_SESSION['update_message'] = "Error updating user's detail" . pg_last_error($connection);
           header('Location: ../update_products.php');
         }
       }
@@ -119,7 +119,7 @@ if (isset($_POST['update-btn'])) {
           $_SESSION['update_message'] = 'Updated Successfully!';
           header('Location: ../update_products.php');
         } else {
-          $_SESSION['update_message'] = "Error updating user's detail" . $connection->error;
+          $_SESSION['update_message'] = "Error updating user's detail" . pg_last_error($connection);
           header('Location: ../update_products.php');
         }
       }
@@ -132,7 +132,7 @@ if (isset($_POST['update-btn'])) {
           $_SESSION['update_message'] = 'Updated Successfully!';
           header('Location: ../update_products.php');
         } else {
-          $_SESSION['update_message'] = "Error updating user's detail" . $connection->error;
+          $_SESSION['update_message'] = "Error updating user's detail" . pg_last_error($connection);
           header('Location: ../update_products.php');
         }
       }
@@ -145,7 +145,7 @@ if (isset($_POST['update-btn'])) {
           $_SESSION['update_message'] = 'Updated Successfully!';
           header('Location: ../update_products.php');
         } else {
-          $_SESSION['update_message'] = "Error updating user's detail" . $connection->error;
+          $_SESSION['update_message'] = "Error updating user's detail" . pg_last_error($connection);
           header('Location: ../update_products.php');
         }
       }
@@ -158,7 +158,7 @@ if (isset($_POST['update-btn'])) {
           $_SESSION['update_message'] = 'Updated Successfully!';
           header('Location: ../update_products.php');
         } else {
-          $_SESSION['update_message'] = "Error updating user's detail" . $connection->error;
+          $_SESSION['update_message'] = "Error updating user's detail" . pg_last_error($connection);
           header('Location: ../update_products.php');
         }
       }
@@ -175,7 +175,7 @@ if (isset($_POST['update-btn'])) {
           $_SESSION['update_message'] = 'Updated Successfully!';
           header('Location: ../update_products.php');
         } else {
-          $_SESSION['update_message'] = "Error updating user's detail" . $connection->error;
+          $_SESSION['update_message'] = "Error updating user's detail" . pg_last_error($connection);
           header('Location: ../update_products.php');
         }
       }
@@ -192,7 +192,7 @@ if (isset($_POST['update-btn'])) {
           $_SESSION['update_message'] = 'Updated Successfully!';
           header('Location: ../update_products.php');
         } else {
-          $_SESSION['update_message'] = "Error updating user's detail" . $connection->error;
+          $_SESSION['update_message'] = "Error updating user's detail" . pg_last_error($connection);
           header('Location: ../update_products.php');
         }
       }
@@ -209,12 +209,12 @@ if (isset($_POST['update-btn'])) {
           $_SESSION['update_message'] = 'Updated Successfully!';
           header('Location: ../update_products.php');
         } else {
-          $_SESSION['update_message'] = "Error updating user's detail" . $connection->error;
+          $_SESSION['update_message'] = "Error updating user's detail" . pg_last_error($connection);
           header('Location: ../update_products.php');
         }
       }
     } else {
-      $_SESSION['update_message'] = "Product not found" . $connection->error;;
+      $_SESSION['update_message'] = "Product not found" . pg_last_error($connection);;
       header('Location: ../update_products.php');
     }
     // Free result set
@@ -235,7 +235,7 @@ if (isset($_POST['delete_products_review_btn'])) {
     $_SESSION['delete_message'] = 'Product Review Deleted Sucessfully';
     header('Location: ../review.php');
   } else {
-    $_SESSION['delete_message'] = 'Someting Went Wrong' . $connection->error;
+    $_SESSION['delete_message'] = 'Someting Went Wrong' . pg_last_error($connection);
     header('Location: ../review.php');
   }
 }
@@ -267,11 +267,11 @@ if (isset($_POST['update_status_btn'])) {
       $_SESSION['delete_message'] = 'Order Status Updated Sucessfully!';
       header('Location: ../orders.php');
     } else {
-      $_SESSION['delete_message'] = 'Error 1: ' . $connection->error;
+      $_SESSION['delete_message'] = 'Error 1: ' . pg_last_error($connection);
       header('Location: ../orders.php');
     }
   } else {
-    $_SESSION['delete_message'] = 'Error 2: ' . $connection->error;
+    $_SESSION['delete_message'] = 'Error 2: ' . pg_last_error($connection);
     header('Location: ../orders.php');
   }
 }

@@ -57,7 +57,7 @@ include('config/dbcon.php');
                 header('Location: ../add_products.php');
               }
             } else {
-              $_SESSION['message'] = 'Execution Error: '. $connection->error;
+              $_SESSION['message'] = 'Execution Error: '. pg_last_error($connection);
               header('Location: ../add_products.php');
             }
           ?>

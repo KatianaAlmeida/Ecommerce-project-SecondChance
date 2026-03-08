@@ -1,10 +1,17 @@
 <?php
   // Supabase database credentials - Render
-  $host = getenv("DB_HOST");
+  /*$host = getenv("DB_HOST");
   $username = getenv("DB_USER");
   $password = getenv("DB_PASSWORD");
   $database = getenv("DB_NAME");
-  $port = getenv("DB_PORT");
+  $port = getenv("DB_PORT");*/
+
+  $host = 'aws-1-eu-central-1.pooler.supabase.com';
+  $username = 'postgres.pynlhyhtbebvieunvxwb';
+  $password = 'carlaGomesVistorio';
+  $database = 'postgres';
+  $port = '6543';
+
 
   // Create PostgreSQL connection
   $connection = pg_connect(

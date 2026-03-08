@@ -29,7 +29,7 @@ if (isset($_POST['save-btn'])) {
           $_SESSION['permission_message'] = 'Permission granted to ' . $username . '.';
           header('Location: ../add_users.php');
         } else {
-          $_SESSION['permission_message'] = $connection->error;
+          $_SESSION['permission_message'] = pg_last_error($connection);
           header('Location: ../add_users.php');
         }
       } else {
@@ -40,7 +40,7 @@ if (isset($_POST['save-btn'])) {
           $_SESSION['permission_message'] = 'Permission to INSERT revoked from ' . $username . '.';
           header('Location: ../add_users.php');
         } else {
-          $_SESSION['permission_message'] = $connection->error;
+          $_SESSION['permission_message'] = pg_last_error($connection);
           header('Location: ../add_users.php');
         }
       }
@@ -54,7 +54,7 @@ if (isset($_POST['save-btn'])) {
           $_SESSION['permission_message'] = 'Permission granted to ' . $username . '.';
           header('Location: ../add_users.php');
         } else {
-          $_SESSION['permission_message'] = $connection->error;
+          $_SESSION['permission_message'] = pg_last_error($connection);
           header('Location: ../add_users.php');
         }
       } else {
@@ -65,7 +65,7 @@ if (isset($_POST['save-btn'])) {
           $_SESSION['permission_message'] = 'Permission to UPDATE revoked from ' . $username . '.';
           header('Location: ../add_users.php');
         } else {
-          $_SESSION['permission_message'] = $connection->error;
+          $_SESSION['permission_message'] = pg_last_error($connection);
           header('Location: ../add_users.php');
         }
       }
@@ -79,7 +79,7 @@ if (isset($_POST['save-btn'])) {
           $_SESSION['permission_message'] = 'Permission granted to ' . $username . '.';
           header('Location: ../add_users.php');
         } else {
-          $_SESSION['permission_message'] = $connection->error;
+          $_SESSION['permission_message'] = pg_last_error($connection);
           header('Location: ../add_users.php');
         }
       } else {
@@ -90,7 +90,7 @@ if (isset($_POST['save-btn'])) {
           $_SESSION['permission_message'] = 'Permission to DELETE revoked from ' . $username . '.';
           header('Location: ../add_users.php');
         } else {
-          $_SESSION['permission_message'] = $connection->error;
+          $_SESSION['permission_message'] = pg_last_error($connection);
           header('Location: ../add_users.php');
         }
       }
@@ -104,7 +104,7 @@ if (isset($_POST['save-btn'])) {
           $_SESSION['permission_message'] = 'Permission granted to ' . $username . '.';
           header('Location: ../add_users.php');
         } else {
-          $_SESSION['permission_message'] = $connection->error;
+          $_SESSION['permission_message'] = pg_last_error($connection);
           header('Location: ../add_users.php');
         }
       } else {
@@ -115,7 +115,7 @@ if (isset($_POST['save-btn'])) {
           $_SESSION['permission_message'] = 'Permission to SELECT revoked from ' . $username . '.';
           header('Location: ../add_users.php');
         } else {
-          $_SESSION['permission_message'] = $connection->error;
+          $_SESSION['permission_message'] = pg_last_error($connection);
           header('Location: ../add_users.php');
         }
       }
@@ -124,7 +124,7 @@ if (isset($_POST['save-btn'])) {
       header('Location: ../add_users.php');
     }
   } else {
-    $_SESSION['permission_message'] = 'Execution Error: ' . $connection->error;;
+    $_SESSION['permission_message'] = 'Execution Error: ' . pg_last_error($connection);;
     header('Location: ../add_users.php');
   }
 }

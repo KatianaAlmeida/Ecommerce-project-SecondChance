@@ -124,7 +124,7 @@
                         $order_detail = "SELECT 
                                         p.image_1 AS image,
                                         p.product_name,
-                                        p.incremented_name AS SKU,
+                                        p.incremented_name AS sku,
                                         p.price,
                                         oi.qty AS product_quantity,
                                         o.delivery_fee,
@@ -155,7 +155,7 @@
                                 <img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["image"]; ?>">
                                 <div>
                                   <p><?= $items["product_name"]; ?></p>
-                                  <p>SKU: <?= $items["SKU"]; ?></p>
+                                  <p>SKU: <?= $items["sku"]; ?></p>
                                 </div>
                                 <div>
                                   <p>QTY: <?= $items["product_quantity"]; ?></p>
@@ -211,7 +211,7 @@
                           $order_detail_collect = "SELECT 
                             p.image_1 AS image,
                             p.product_name,
-                            p.incremented_name AS SKU,
+                            p.incremented_name AS sku,
                             p.price,
                             oi.qty AS product_quantity,
                             o.delivery_fee
@@ -232,7 +232,7 @@
                                   <img src="admin/uploads/<?= $items["image"]; ?>" alt="<?= $items["image"]; ?>">
                                   <div>
                                     <p><?= $items["product_name"]; ?></p>
-                                    <p>SKU: <?= $items["SKU"]; ?></p>
+                                    <p>SKU: <?= $items["sku"]; ?></p>
                                   </div>
                                   <div><p>QTY: <?= $items["product_quantity"]; ?></p></div>
                                   <div><p>R <?= $items["price"]; ?></p></div>
@@ -341,7 +341,7 @@
                     }
                   }
                 } else {
-                  $_SESSION['adress_added'] = 'Execution Error: '. $connection->error;
+                  $_SESSION['adress_added'] = 'Execution Error: '. pg_last_error($connection);
                   header('Location: ../adress_added.php');
                 }
                 ?>
@@ -462,7 +462,7 @@
                     }
                   }
                 } else {
-                  $_SESSION['adress_added'] = 'Execution Error: '. $connection->error;
+                  $_SESSION['adress_added'] = 'Execution Error: '. pg_last_error($connection);
                   header('Location: ../adress_added.php');
                 }
                 ?>
