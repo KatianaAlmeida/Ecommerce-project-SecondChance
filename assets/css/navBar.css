@@ -140,8 +140,8 @@
 
 .user_icon,
 .favorite_icon{
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-left: 5px;
 }
 
@@ -150,8 +150,8 @@
 }
 
 .cart_icon{
-  width: 45px;
-  height: 45px;
+  width: 30px;
+  height: 30px;
 }
 
 .notification_Container{
@@ -166,8 +166,8 @@
   border-radius: 10px;
 
   position: absolute;
-  top: -2px;
-  right: 0;
+  top: -10px;
+  right: 3px;
 }
 
 /* ===================================== bottom_section ===================================== */

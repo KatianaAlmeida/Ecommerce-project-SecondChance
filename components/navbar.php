@@ -47,7 +47,7 @@
     <div class="nav_top_section">
       <div class="left">
         <a href="../home.php"><img class="logo" src="assets/images/secondChance1.png" alt="logo"></a>
-        <a class="navbar_brand" href="../home.php">SecondChange</a>          
+        <a class="navbar_brand" href="../home.php">SecondChance</a>          
       </div>
       <div class="middle js-search1">
         <!-- loadHTMLItems(); -->
@@ -74,16 +74,16 @@
         }else{
           ?>
           <a class="user_account" href="register.php">
-            <img class="user_icon" src="https://img.icons8.com/material-sharp/24/user-male-circle.png" alt="user-male-circle"/>
+            <img class="user_icon" src="/assets//images/user_icon.png" alt="user-male-circle"/>
             <div class="signin_Container">
               <span class="sign_up_in">Sign Up</span>
             </div>
           </a>
           <?php
         }?>
-          <a href="../customer_info.php#cust_page5"><img class="favorite_icon" src="https://img.icons8.com/fluency-systems-filled/48/hearts.png" alt="hearts"/></a>
+          <a href="../customer_info.php#cust_page5"><img class="favorite_icon" src="/assets//images/favorite_icon.png" alt="hearts"/></a>
           <div class="notification_Container">
-            <a href="../cart_page.php"><img class="cart_icon" src="https://img.icons8.com/windows/32/shopping-cart.png" alt="shopping-cart"/></a>
+            <a href="../cart_page.php"><img class="cart_icon" src="/assets//images/cart_icon.png" alt="shopping-cart"/></a>
             <div class="notificationCount"><?= $cart_count; ?></div>
           </div>
         <!-- -------------------------- -->
