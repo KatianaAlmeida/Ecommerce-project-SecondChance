@@ -59,7 +59,7 @@
           $user_name = $_SESSION['auth_user']['full_name'];
         ?>
         <div class="signin_Container2 js-signin_Container">
-          <img class="user_icon" src="https://img.icons8.com/material-sharp/24/user-male-circle.png" alt="user-male-circle"/>
+          <img class="user_icon" src="/assets//images/user_icon.png" alt="user-male-circle"/>
           <span class="sign_up_in"><?= $user_name?></span>
           <div class="dropdown-content2">
             <a class="dropdown-item"  href="../customer_info.php#cust_page1">My Account</a>
